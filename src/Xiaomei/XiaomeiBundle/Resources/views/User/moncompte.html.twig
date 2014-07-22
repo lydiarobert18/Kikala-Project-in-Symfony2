@@ -1,0 +1,16 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}
+	{{ parent() }} - Mon compte !
+{% endblock %}
+
+{% block wrapper %}
+{#  content.image etc  comme la page de kilkologue  #}
+
+
+<a href="{{ path('xiaomei_xiaomei_modifierprofil') }}">Modifier</a>
+<a href="{{ path('xiaomei_xiaomei_create_cours') }}">creer formation</a>
+<a href="{{ path('xiaomei_xiaomei_mesformations') }}">mes formation</a>
+<a href="{{ path('xiaomei_xiaomei_mesinscriptions') }}">mes inscriptions</a>
+
+{% endblock %}

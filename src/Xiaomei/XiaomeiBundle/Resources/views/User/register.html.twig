@@ -1,0 +1,12 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}
+	{{ parent() }} - Inscription !
+{% endblock %}
+
+{% block wrapper %}
+	<h1>Inscrivez-vous !</h1>
+
+{{ form(register_form, {'attr': {'novalidate': 'novalidate'}}) }}
+
+{% endblock %}

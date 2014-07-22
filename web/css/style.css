@@ -1,0 +1,78 @@
+@import "reset.css";
+
+
+body{
+	background-color:lightgrey;
+	margin:auto;
+	width:85%;
+
+}
+
+#wrapper{
+	height:900px;
+	border:1px solid black;
+	padding:20px;
+
+}
+
+#wrapper p{
+	margin-top:15px;
+
+
+}
+#wrapper h3{
+	margin-top:15px;
+
+}
+
+#wrapper li{
+	margin-left:15px;
+	line-height: 25px;
+
+}
+
+.liste a{
+	text-transform:capitalize
+}
+
+
+h1{
+	font-size:1.3em;
+	font-weight: bold;
+	padding:15px;
+}
+
+
+footer{
+	position:fix;
+	bottom:0;
+}
+
+footer li{
+	list-style: none
+}
+
+.MYCLASSFOR_LABEL{
+	width:50px;
+	display:block;
+}
+
+.menu li{
+ float:left;
+ padding:15px;
+
+}
+
+.menu{
+	overflow:hidden;
+}
+
+.home_stat{
+	color:red;
+}
+
+#spancours{
+	color:red;
+	margin-left:40%;
+	background-color:yellow;
+}

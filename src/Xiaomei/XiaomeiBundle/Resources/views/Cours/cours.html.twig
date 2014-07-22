@@ -1,0 +1,38 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}
+{{ parent() }} - Cours
+{% endblock %}
+
+{% block wrapper %}
+<h1>Les formations disponibles pour vous </h1>
+
+
+
+
+<ul class="liste">
+{# boucle sur la variable contents #}
+{% for content in contents %}
+
+	{# pour afficher un lien vers chaque contenu #}
+	<li><a href="{{ path( 'xiaomei_xiaomei_showcour', {'id': content.id} ) }}" 
+	     title="{{ content.name }}">{{ content.name }}</a> 
+	     ({% if content.category is not null %}
+	      catégorie: {{ content.category.name }}     
+	     {% else %}
+	     non-catégorisée
+	     {% endif %})
+      place:{{ content.nrPlacerestant}} 
+      {% if content.nrPlacerestant==0  %} <span id='spancours'>Complete    </span> {% endif %}
+
+<span>{{content.dateCours|date('d-m-Y')}}</span> 
+	</li>
+
+
+
+{% endfor %}
+</ul>
+
+
+{% endblock %}
+

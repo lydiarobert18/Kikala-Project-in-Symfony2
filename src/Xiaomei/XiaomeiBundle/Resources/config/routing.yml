@@ -1,0 +1,54 @@
+xiaomei_xiaomei_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: XiaomeiXiaomeiBundle:Default:index }
+
+xiaomei_xiaomei_home:
+    path:     /
+    defaults: { _controller: XiaomeiXiaomeiBundle:Default:home }
+
+xiaomei_xiaomei_legal:
+    path:     /legal/
+    defaults: { _controller: XiaomeiXiaomeiBundle:Default:legal }
+
+xiaomei_xiaomei_about:
+    path:     /a-propos/
+    defaults: { _controller: XiaomeiXiaomeiBundle:Default:about }
+
+xiaomei_xiaomei_showcoursall:
+    path:     /cours/{tri=null}
+    defaults: { _controller: XiaomeiXiaomeiBundle:Cours:showcours }
+
+xiaomei_xiaomei_showcour:
+    path:     /cours/{id}
+    defaults: { _controller: XiaomeiXiaomeiBundle:Cours:showcour }
+
+xiaomei_xiaomei_delete:
+    path:     /deletecontenu/{id}/
+    defaults: { _controller: XiaomeiXiaomeiBundle:Cours:deletecontenu }
+
+xiaomei_xiaomei_moncompte:
+    path:     /moncompte/
+    defaults: { _controller: XiaomeiXiaomeiBundle:User:moncompte }
+xiaomei_xiaomei_create_cours:
+    path:     /createcours/
+    defaults: { _controller: XiaomeiXiaomeiBundle:Cours:createcours }
+
+xiaomei_xiaomei_formateur:
+    path:     /formateur/{username}
+    defaults: { _controller: XiaomeiXiaomeiBundle:User:formateur }
+
+xiaomei_xiaomei_modifierprofil:
+    path:     /modifier/
+    defaults: { _controller: XiaomeiXiaomeiBundle:User:modifierprofil }
+#user
+xiaomei_xiaomei_register:
+    path:     /inscription/
+    defaults: { _controller: XiaomeiXiaomeiBundle:User:register }
+
+xiaomei_xiaomei_inscriptioncours:
+    path:     /inscriptioncours/{id}
+    defaults: { _controller: XiaomeiXiaomeiBundle:Cours:registercours }
+
+xiaomei_xiaomei_inscriptioncoursconfirmer:
+    path:     /inscriptioncoursconfirmer/{id}
+    defaults: { _controller: XiaomeiXiaomeiBundle:Cours:registercoursconfirmer }

@@ -1,0 +1,14 @@
+xiaomei_xiaomei:
+    resource: "@XiaomeiXiaomeiBundle/Resources/config/routing.yml"
+    prefix:   /
+
+
+login:
+    pattern:   /connexion/
+    defaults:  { _controller: XiaomeiXiaomeiBundle:User:login }
+
+login_check:
+    pattern:   /login_check
+
+logout:
+    pattern:   /logout

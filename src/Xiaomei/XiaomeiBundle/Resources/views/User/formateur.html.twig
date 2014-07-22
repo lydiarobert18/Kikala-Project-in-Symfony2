@@ -1,0 +1,22 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}
+	{{ parent() }} - kikologue !
+{% endblock %}
+
+{% block wrapper %}
+	<h1>Kikologue {{content.username }}:</h1>
+	<p>age par tranche de 10 ans </p>
+	<p>photo: </p>
+	<p>descriptif: </p>
+    <p>sexe: {{ content.sex}}</p>
+
+
+	<p>les cours dispenses:  </p>
+	<p>les cours suivis: </p>
+	<p>les cours annulés: </p>
+
+
+
+
+{% endblock %}

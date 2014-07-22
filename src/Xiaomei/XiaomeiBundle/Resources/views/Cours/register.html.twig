@@ -1,0 +1,26 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}
+{{ parent() }} - inscription au cours
+{% endblock %}
+
+{% block wrapper %}
+<h1>Inscription au cours</h1>
+
+<div class="col">
+
+                     {% if app.user %}
+                     Veuillez confirmer votre inscription au cours; 
+                     vous êtres connécté comme :session username:
+
+                     <a href="{{ path('xiaomei_xiaomei_inscriptioncoursconfirmer', {'id': content} ) }}">Confirmer</a>
+
+                     
+                    {% else %}
+                    <h3>Vous n'êtres pas connecté;merci de faire inscirption ou connexiton
+                    <li><a href="{{ path('login') }}">Connexion</a></li>
+                    <li><a href="{{ path('xiaomei_xiaomei_register') }}">Inscription</a></li>
+                {% endif %}     
+</div>
+
+{% endblock %}

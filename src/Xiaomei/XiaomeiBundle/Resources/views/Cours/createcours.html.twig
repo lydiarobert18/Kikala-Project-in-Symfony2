@@ -1,0 +1,28 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}
+{{ parent() }} - Create Cours
+{% endblock %}
+
+{% block wrapper %}
+<h1>Créez de la connaissance !</h1>
+
+<div class="col">
+{{ form(ccfv, {'attr': {'novalidate': 'novalidate'}}) }}
+</div>
+
+{% endblock %}
+
+{# chargement du calendar jQuery UI #}
+{% block stylesheets %}
+	<link rel="stylesheet" type="text/css" href="{{ asset('jquery-ui/jquery-ui.min.css') }}" />
+	{{ parent() }}{# Mes CSS ensuite #}
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}{# jQuery d'abord ! #}
+	<script src="{{ asset('jquery-ui/jquery-ui.min.js') }}"></script>
+	<script>
+		$("#xiaomei_xiaomeibundle_cours_dateCours").datepicker();
+	</script>
+{% endblock %}
