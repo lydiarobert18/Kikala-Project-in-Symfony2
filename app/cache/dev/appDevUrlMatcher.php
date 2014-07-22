@@ -176,17 +176,26 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array (  '_controller' => 'Xiaomei\\XiaomeiBundle\\Controller\\DefaultController::aboutAction',  '_route' => 'xiaomei_xiaomei_about',);
         }
 
-        if (0 === strpos($pathinfo, '/cours')) {
+        if (0 === strpos($pathinfo, '/show')) {
             // xiaomei_xiaomei_showcoursall
-            if ($pathinfo === '/cours/{tri=null}') {
-                return array (  '_controller' => 'Xiaomei\\XiaomeiBundle\\Controller\\CoursController::showcoursAction',  '_route' => 'xiaomei_xiaomei_showcoursall',);
+            if (0 === strpos($pathinfo, '/showcours') && preg_match('#^/showcours(?:/(?P<tri>[^/]++))?$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'xiaomei_xiaomei_showcoursall')), array (  '_controller' => 'Xiaomei\\XiaomeiBundle\\Controller\\CoursController::showcoursAction',  'tri' => NULL,));
             }
 
-            // xiaomei_xiaomei_showcour
-            if (preg_match('#^/cours/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'xiaomei_xiaomei_showcour')), array (  '_controller' => 'Xiaomei\\XiaomeiBundle\\Controller\\CoursController::showcourAction',));
+            // xiaomei_xiaomei_showtri
+            if (rtrim($pathinfo, '/') === '/showtri') {
+                if (substr($pathinfo, -1) !== '/') {
+                    return $this->redirect($pathinfo.'/', 'xiaomei_xiaomei_showtri');
+                }
+
+                return array (  '_controller' => 'Xiaomei\\XiaomeiBundle\\Controller\\CoursController::showtriAction',  '_route' => 'xiaomei_xiaomei_showtri',);
             }
 
+        }
+
+        // xiaomei_xiaomei_showcour
+        if (0 === strpos($pathinfo, '/cours') && preg_match('#^/cours/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'xiaomei_xiaomei_showcour')), array (  '_controller' => 'Xiaomei\\XiaomeiBundle\\Controller\\CoursController::showcourAction',));
         }
 
         // xiaomei_xiaomei_delete

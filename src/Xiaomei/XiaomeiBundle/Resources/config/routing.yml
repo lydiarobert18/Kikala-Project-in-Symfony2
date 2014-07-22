@@ -20,8 +20,12 @@ xiaomei_xiaomei_about:
     defaults: { _controller: XiaomeiXiaomeiBundle:Default:about }
 
 xiaomei_xiaomei_showcoursall:
-    path:     /cours/{tri=null}
-    defaults: { _controller: XiaomeiXiaomeiBundle:Cours:showcours }
+    path:     /showcours/{tri}
+    defaults: { _controller: XiaomeiXiaomeiBundle:Cours:showcours,tri:null}
+
+xiaomei_xiaomei_showtri:
+    path:     /showtri/
+    defaults: { _controller: XiaomeiXiaomeiBundle:Cours:showtri }
 
 xiaomei_xiaomei_showcour:
     path:     /cours/{id}
@@ -57,3 +61,5 @@ xiaomei_xiaomei_inscriptioncours:
 xiaomei_xiaomei_inscriptioncoursconfirmer:
     path:     /inscriptioncoursconfirmer/{id}
     defaults: { _controller: XiaomeiXiaomeiBundle:Cours:registercoursconfirmer }
+
+

@@ -22,7 +22,7 @@ class CoursController extends Controller
 
         $form = $this->createFormBuilder($defaultData)
        // ->setAction($this->generateUrl('target_route'))
-         //->setMethod('GET')
+         ->setMethod('GET')
          ->add('order', 'choice', array(
          'choices' => array('c.categorie.name' => 'Category', 'c.lieu' => 'lieu de formation','c.nrPlaceReste' => 'places restantes')))
          ->add('ok','submit')
@@ -32,24 +32,32 @@ class CoursController extends Controller
         if ($form->isValid()) {
             // Les données sont un tableau avec les clés "name", "email", et "message"
             $data = $form->getData();
-        }
-            
+        }    
+           
           print_r($data);
         //$contentCreateForm = $this->createForm(new CoursType, $content);
 
  
-         $contentCreateFormView = $form->createView();
+         $contentCreateFormView1 = $form->createView();
 
-        $params = array(
-            "order" => $contentCreateFormView
+        $params2 = array(
+            "order" => $contentCreateFormView1
         );
         // ... affiche le formulaire
-        return $this->render('XiaomeiXiaomeiBundle:Cours:order.html.twig',$params);
+        return $this->render('XiaomeiXiaomeiBundle:Cours:order.html.twig',$params2);
     }
    
+   /* public function showtriAction(){
+            $request=$this->getRequest();
+            $tri=$request->query->get ('form[order]'); 
+            echo $tri ;
+            die(); 
+           // $this->generateUrl("xiaomei_xiaomei_showcoursall");
 
 
-    public function showcoursAction($tri=null)
+    }*/
+    
+    public function showcoursAction($tri=null,Request $request)
     {
        $contentRepository = $this->getDoctrine()->getRepository("XiaomeiXiaomeiBundle:Cours");
        
@@ -57,15 +65,50 @@ class CoursController extends Controller
         $contents = $contentRepository->findHomeContents($tri=null);
         
         //$daydifference=(time()-strtotime($this->birthday))/(24*60*60);
-       
-        $params = array(
-            "contents" => $contents,
-            //"daydifference" => $daydifference
-        );
-      
-        return $this->render('XiaomeiXiaomeiBundle:Cours:cours.html.twig',$params);
-    }
+           
 
+// début 
+    $defaultData = array();
+
+        $form = $this->createFormBuilder($defaultData)
+         //->setAction($this->generateUrl('xiaomei_xiaomei_showtri'))
+         ->setMethod('GET')
+         ->add('order', 'choice', array(
+         'choices' => array('c.categorie.name' => 'Category', 'c.lieu' => 'lieu de formation','c.nrPlaceReste' => 'places restantes')))
+         ->add('ok','submit')
+         ->getForm();
+         $form->handleRequest($request);
+
+       
+
+
+        if ($form->isValid()) {
+            // Les données sont un tableau avec les clés "name", "email", et "message"
+            $data = $form->getData();
+        }
+
+             //print_r($data);         
+            //Array ( [order] => c.categorie.name )
+            //echo $data['order'];
+    
+            
+            
+
+        //$contentCreateForm = $this->createForm(new CoursType, $content);
+
+ 
+         $contentCreateFormView1 = $form->createView();
+
+        $params2 = array(
+            "order" => $contentCreateFormView1,
+              "contents" => $contents,
+
+        );
+        // ... affiche le formulaire
+        return $this->render('XiaomeiXiaomeiBundle:Cours:cours.html.twig',$params2);
+//fin 
+    }
+    
      public function showcourAction($id){
 
        $contentRepository = $this->getDoctrine()->getRepository("XiaomeiXiaomeiBundle:Cours");
