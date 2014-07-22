@@ -25,9 +25,7 @@ class CoursRepository extends EntityRepository
 	// 	return $contents;
 	// 	}
 
-	public function findHomeContents($tri=null){
-
-		 $tri="c.dateCours"; 
+	public function findHomeContents($tri='c.dateCours'){
 
 		//$tri="c.nrPlaceReste"
 		//$tri='c.categorie.name'

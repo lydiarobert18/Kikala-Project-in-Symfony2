@@ -47,22 +47,27 @@ class CoursController extends Controller
         return $this->render('XiaomeiXiaomeiBundle:Cours:order.html.twig',$params2);
     }
    
-   /* public function showtriAction(){
+       public function showtriAction(){
+          
+            //print_r($_POST);
+            $tri=$_POST['form']['order'];
+           
+           /* 
             $request=$this->getRequest();
-            $tri=$request->query->get ('form[order]'); 
-            echo $tri ;
-            die(); 
-           // $this->generateUrl("xiaomei_xiaomei_showcoursall");
-
-
-    }*/
+            $form=$request->query->get('form'); 
+            print_r($form);*/
+         
+           // Array ( [form] => Array ( [order] => c.lieu [ok] => [_token] => drjgPLARQ6qb2GUTJkSfgnWyk08o0bBRJO7LUmhxPGM ) )
+         return $this->redirect($this->generateUrl('xiaomei_xiaomei_showcoursall',array('tri'=>"$tri")));  
+       }
     
-    public function showcoursAction($tri=null,Request $request)
+
+    public function showcoursAction($tri='c.dateCours',Request $request)
     {
        $contentRepository = $this->getDoctrine()->getRepository("XiaomeiXiaomeiBundle:Cours");
        
         //récupère tous les contenus de la table, avec tri et limit
-        $contents = $contentRepository->findHomeContents($tri=null);
+        $contents = $contentRepository->findHomeContents($tri='c.dateCours');
         
         //$daydifference=(time()-strtotime($this->birthday))/(24*60*60);
            
@@ -71,8 +76,8 @@ class CoursController extends Controller
     $defaultData = array();
 
         $form = $this->createFormBuilder($defaultData)
-         //->setAction($this->generateUrl('xiaomei_xiaomei_showtri'))
-         ->setMethod('GET')
+         ->setAction($this->generateUrl('xiaomei_xiaomei_showtri'))
+         //->setMethod('GET')
          ->add('order', 'choice', array(
          'choices' => array('c.categorie.name' => 'Category', 'c.lieu' => 'lieu de formation','c.nrPlaceReste' => 'places restantes')))
          ->add('ok','submit')
@@ -90,9 +95,7 @@ class CoursController extends Controller
              //print_r($data);         
             //Array ( [order] => c.categorie.name )
             //echo $data['order'];
-    
-            
-            
+        
 
         //$contentCreateForm = $this->createForm(new CoursType, $content);
 
