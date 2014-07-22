@@ -16,3 +16,6 @@ f1fd9c,::1,GET,http://localhost/Symfony/web/app_dev.php/cours/%7Btri=null%7D,140
 1a6de3,::1,GET,http://localhost/Symfony/web/app_dev.php/cours/%7Btri=null%7D,1406019133,
 0e2df3,::1,GET,http://localhost/Symfony/web/app_dev.php/cours/2,1406019137,
 3349fb,::1,GET,http://localhost/Symfony/web/app_dev.php/inscriptioncours/2,1406019139,
+1f0f67,::1,GET,http://localhost/Symfony/web/app_dev.php/,1406021896,
+65c6f8,::1,GET,http://localhost/Symfony/web/app_dev.php/,1406024844,
+ebf181,::1,GET,http://localhost/Symfony/web/app_dev.php/cours/%7Btri=null%7D,1406024847,

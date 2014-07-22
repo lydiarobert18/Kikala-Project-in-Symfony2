@@ -67,7 +67,6 @@ class Cours
 
     /**
      * @var string
-     * @Assert\NotBlank(message="Le pseudoFormateur ne peut pas être vide !")
      *
      * @ORM\Column(name="pseudoFormateur", type="string", length=50)
      */
@@ -116,6 +115,14 @@ class Cours
        */
 
     private $category;
+
+     /**
+       * @var Xiaomei\XiaomeiBundle\Entity\User;
+       *
+       * @ORM\ManyToOne(targetEntity="User")
+       */
+
+    private $user;
 
 
     /**
@@ -382,4 +389,27 @@ class Cours
     }
 
     
+
+    /**
+     * Set user
+     *
+     * @param \Xiaomei\XiaomeiBundle\Entity\User $user
+     * @return Cours
+     */
+    public function setUser(\Xiaomei\XiaomeiBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Xiaomei\XiaomeiBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
 }

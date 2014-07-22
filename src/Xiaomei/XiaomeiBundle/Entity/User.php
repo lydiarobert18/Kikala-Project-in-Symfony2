@@ -154,24 +154,6 @@ class User implements UserInterface, EquatableInterface, \Serializable
     private $dateRegistered;
 
 
-     /**
-       * @var \Doctrine\Common\Collections\ArrayCollection;
-       *
-       * @ORM\ManyToMany(targetEntity="Statut")
-       */
-
-    private $statut;
-
-
-        /**
-         * @var \Doctrine\Common\Collections\ArrayCollection;
-         *
-         * @ORM\ManyToMany(targetEntity="Cours")
-         */
-
-        private $cours;
-
-
 
      /**
     *  @var \Doctrine\Common\Collections\ArrayCollection
@@ -180,10 +162,8 @@ class User implements UserInterface, EquatableInterface, \Serializable
     */
      private $roles;
 
-
-
-
-
+    
+  
 
 
     /**
@@ -644,70 +624,5 @@ class User implements UserInterface, EquatableInterface, \Serializable
     }
 
    
-
-    /**
-     * Add statut
-     *
-     * @param \Xiaomei\XiaomeiBundle\Entity\Statut $statut
-     * @return User
-     */
-    public function addStatut(\Xiaomei\XiaomeiBundle\Entity\Statut $statut)
-    {
-        $this->statut[] = $statut;
-
-        return $this;
-    }
-
-    /**
-     * Remove statut
-     *
-     * @param \Xiaomei\XiaomeiBundle\Entity\Statut $statut
-     */
-    public function removeStatut(\Xiaomei\XiaomeiBundle\Entity\Statut $statut)
-    {
-        $this->statut->removeElement($statut);
-    }
-
-    /**
-     * Get statut
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getStatut()
-    {
-        return $this->statut;
-    }
-
-    /**
-     * Add cours
-     *
-     * @param \Xiaomei\XiaomeiBundle\Entity\Cours $cours
-     * @return User
-     */
-    public function addCour(\Xiaomei\XiaomeiBundle\Entity\Cours $cours)
-    {
-        $this->cours[] = $cours;
-
-        return $this;
-    }
-
-    /**
-     * Remove cours
-     *
-     * @param \Xiaomei\XiaomeiBundle\Entity\Cours $cours
-     */
-    public function removeCour(\Xiaomei\XiaomeiBundle\Entity\Cours $cours)
-    {
-        $this->cours->removeElement($cours);
-    }
-
-    /**
-     * Get cours
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getCours()
-    {
-        return $this->cours;
-    }
+    
 }
