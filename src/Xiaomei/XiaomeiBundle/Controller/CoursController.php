@@ -15,30 +15,38 @@ class CoursController extends Controller
 
 {   
 
-    // public function trisubmitAction(Request $request)
-    // {
-    //     $defaultData = array('message' => 'Type your message here');
-    //     $form = $this->createFormBuilder($defaultData)
-    //         ->add('name', 'text')
-    //         ->add('email', 'email')
-    //         ->add('message', 'textarea')
-    //         ->getForm();
 
-    //     $form->handleRequest($request);
+    public function ordersubmitAction(Request $request)
+    {
+        $defaultData = array();
 
-    //     if ($form->isValid()) {
-    //         // Les données sont un tableau avec les clés "name", "email", et "message"
-    //         $data = $form->getData();
-    //     }
+        $form = $this->createFormBuilder($defaultData)
+       // ->setAction($this->generateUrl('target_route'))
+         //->setMethod('GET')
+         ->add('order', 'choice', array(
+         'choices' => array('c.categorie.name' => 'Category', 'c.lieu' => 'lieu de formation','c.nrPlaceReste' => 'places restantes')))
+         ->add('ok','submit')
+         ->getForm();
+      $form->handleRequest($request);
 
-    //      $contentCreateFormView = $contentCreateForm->createView();
+        if ($form->isValid()) {
+            // Les données sont un tableau avec les clés "name", "email", et "message"
+            $data = $form->getData();
+        }
+            
+          print_r($data);
+        //$contentCreateForm = $this->createForm(new CoursType, $content);
 
-    //     $params = array(
-    //         "formtri" => $contentCreateFormView
-    //     );
-    //     // ... affiche le formulaire
-    //     return $this->render('XiaomeiXiaomeiBundle:Cours:cours.html.twig',$params);
-    // }
+ 
+         $contentCreateFormView = $form->createView();
+
+        $params = array(
+            "order" => $contentCreateFormView
+        );
+        // ... affiche le formulaire
+        return $this->render('XiaomeiXiaomeiBundle:Cours:order.html.twig',$params);
+    }
+   
 
 
     public function showcoursAction($tri=null)
@@ -82,6 +90,8 @@ class CoursController extends Controller
         if ($contentCreateForm->isValid()){
             $place=$content->getNrPlaceTotal();
             $content->setNrPlaceRestant($place);
+
+
 
             $content->setDateCreated(new DateTime());
          //$content->setPsydoformateur(session user username);

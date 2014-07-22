@@ -27,19 +27,19 @@ class CoursRepository extends EntityRepository
 
 	public function findHomeContents($tri=null){
 
-		 //$tri="dateCours"; 
+		 $tri="c.dateCours"; 
 
-		//$tri="nrPlaceReste"
-		//$tri='categorie'
-		//$tri='lieu'
+		//$tri="c.nrPlaceReste"
+		//$tri='c.categorie.name'
+		//$tri='c.lieu'
 
 		//utiliser formulaire get pour obtenir le valeur de $tri: 
 
 		$query = $this->createQueryBuilder('c')
-				->select('c, cat')	//hyper facile à oublier
-						    
-			    ->leftJoin('c.category', 'cat')			    
-			    //->orderBy($tri,'DESC')
+				->select('c, cat,user')	//hyper facile à oublier						    
+			    ->leftJoin('c.category', 'cat')	
+			    ->leftJoin('c.user', 'user')
+			    ->orderBy($tri,'DESC')
 			    //->LIMIT BY 30 
 			    ->getQuery();
          //order by limit by 
@@ -52,15 +52,27 @@ class CoursRepository extends EntityRepository
 	public function findFullSingleContent($id){
 
 		$query = $this->createQueryBuilder('c')
-				->select('c, cat')	//hyper facile à oublier
+				->select('c, cat,user')	//hyper facile à oublier
 			    ->where('c.id = :id')
 			    ->leftJoin('c.category', 'cat')
+			    ->leftJoin('c.user', 'user')		
 			    ->setParameter('id', $id)
 			    ->getQuery();
 
 		$content = $query->getSingleResult();
-
+       
 		return $content;
 	}
 
+
+/*SELECT SUM(product.price) AS cart_price, cart.cart_id 
+FROM cart
+LEFT JOIN cart_product ON cart.cart_id = cart_product.cart_id
+LEFT JOIN product ON product.product_id = cart_product.product_id
+GROUP BY cart.cart_id
+ORDER BY cart_price DESC 
+LIMIT 10 */
+
 }
+
+ 

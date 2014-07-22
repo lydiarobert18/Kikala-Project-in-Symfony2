@@ -29,7 +29,6 @@ class CoursType extends AbstractType
 
             ->add('lieu')
             ->add('duration')
-            ->add('pseudoFormateur')
             ->add('descriptif','textarea',array(
                     "required" => false,
                     "label" => "descriptif",

@@ -158,6 +158,15 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array (  '_controller' => 'Xiaomei\\XiaomeiBundle\\Controller\\DefaultController::legalAction',  '_route' => 'xiaomei_xiaomei_legal',);
         }
 
+        // xiaomei_xiaomei_order
+        if (rtrim($pathinfo, '/') === '/order') {
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'xiaomei_xiaomei_order');
+            }
+
+            return array (  '_controller' => 'Xiaomei\\XiaomeiBundle\\Controller\\CoursController::ordersubmitAction',  '_route' => 'xiaomei_xiaomei_order',);
+        }
+
         // xiaomei_xiaomei_about
         if (rtrim($pathinfo, '/') === '/a-propos') {
             if (substr($pathinfo, -1) !== '/') {

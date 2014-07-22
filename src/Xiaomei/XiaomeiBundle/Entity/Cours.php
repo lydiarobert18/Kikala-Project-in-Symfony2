@@ -65,13 +65,7 @@ class Cours
      */
     private $duration;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="pseudoFormateur", type="string", length=50)
-     */
-    private $pseudoFormateur;
-
+   
     /**
      * @var string
      * @Assert\NotBlank(message="Le descriptif ne peut pas être vide !")
@@ -250,29 +244,7 @@ class Cours
         return $this->duration;
     }
 
-    /**
-     * Set pseudoFormateur
-     *
-     * @param string $pseudoFormateur
-     * @return Cours
-     */
-    public function setPseudoFormateur($pseudoFormateur)
-    {
-        $this->pseudoFormateur = $pseudoFormateur;
-
-        return $this;
-    }
-
-    /**
-     * Get pseudoFormateur
-     *
-     * @return string 
-     */
-    public function getPseudoFormateur()
-    {
-        return $this->pseudoFormateur;
-    }
-
+    
     /**
      * Set descriptif
      *

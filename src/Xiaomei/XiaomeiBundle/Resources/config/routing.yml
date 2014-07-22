@@ -10,6 +10,11 @@ xiaomei_xiaomei_legal:
     path:     /legal/
     defaults: { _controller: XiaomeiXiaomeiBundle:Default:legal }
 
+xiaomei_xiaomei_order:
+    path:     /order/
+    defaults: { _controller: XiaomeiXiaomeiBundle:Cours:ordersubmit }
+
+
 xiaomei_xiaomei_about:
     path:     /a-propos/
     defaults: { _controller: XiaomeiXiaomeiBundle:Default:about }
