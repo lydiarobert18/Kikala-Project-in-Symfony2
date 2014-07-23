@@ -262,7 +262,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
         }
 
         // xiaomei_xiaomei_formateur
-        if (0 === strpos($pathinfo, '/formateur') && preg_match('#^/formateur/(?P<username>[^/]++)$#s', $pathinfo, $matches)) {
+        if (0 === strpos($pathinfo, '/formateur') && preg_match('#^/formateur/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'xiaomei_xiaomei_formateur')), array (  '_controller' => 'Xiaomei\\XiaomeiBundle\\Controller\\UserController::formateurAction',));
         }
 

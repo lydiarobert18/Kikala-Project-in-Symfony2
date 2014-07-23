@@ -17,8 +17,7 @@
 <p>Date de formation: {{ content.dateCours|date('d-m-Y')}}</p>
 <p>lieu de formation: {{ content.lieu}}</p>
 <p>Durée de formation( en heures): {{ content.duration}}</p>
-<p>Peudo de Formation (avec lien):
-<a href="{{ path( 'xiaomei_xiaomei_formateur', {'username': content.user.username} ) }}">Voir les details de kikologue; {{ content.user.username}}</a>  
+<a href="{{ path( 'xiaomei_xiaomei_formateur', {'id': content.user.id} ) }}">Voir les details de kikologue; {{ content.user.username}}</a>  
 
 </p>
 <p>Le descriptif de la formation: {{ content.descriptif}}</p>

@@ -26,8 +26,7 @@ class UserRepository extends EntityRepository
 
 		return $content;
 //comment faire jointure many to many ; User et cours, pour avoir liste des cours dispensé et liste de cours suivi
-
-		
+	
 
 	}
 

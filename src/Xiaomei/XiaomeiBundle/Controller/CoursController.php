@@ -173,7 +173,6 @@ class CoursController extends Controller
             "content" => $id
         );
     return $this->render('XiaomeiXiaomeiBundle:Cours:register.html.twig',$params);
-
     }
 
     public function registercoursconfirmerAction($id){

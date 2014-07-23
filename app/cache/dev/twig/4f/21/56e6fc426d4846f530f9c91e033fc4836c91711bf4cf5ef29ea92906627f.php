@@ -71,25 +71,24 @@ class __TwigTemplate_4f2156e6fc426d4846f530f9c91e033fc4836c91711bf4cf5ef29ea9290
         // line 19
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["content"]) ? $context["content"] : $this->getContext($context, "content")), "duration"), "html", null, true);
         echo "</p>
-<p>Peudo de Formation (avec lien):
 <a href=\"";
-        // line 21
-        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("xiaomei_xiaomei_formateur", array("username" => $this->getAttribute($this->getAttribute((isset($context["content"]) ? $context["content"] : $this->getContext($context, "content")), "user"), "username"))), "html", null, true);
+        // line 20
+        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("xiaomei_xiaomei_formateur", array("id" => $this->getAttribute($this->getAttribute((isset($context["content"]) ? $context["content"] : $this->getContext($context, "content")), "user"), "id"))), "html", null, true);
         echo "\">Voir les details de kikologue; ";
         echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["content"]) ? $context["content"] : $this->getContext($context, "content")), "user"), "username"), "html", null, true);
         echo "</a>  
 
 </p>
 <p>Le descriptif de la formation: ";
-        // line 24
+        // line 23
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["content"]) ? $context["content"] : $this->getContext($context, "content")), "descriptif"), "html", null, true);
         echo "</p>
 <p>Nombre de places total :";
-        // line 25
+        // line 24
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["content"]) ? $context["content"] : $this->getContext($context, "content")), "nrPlaceTotal"), "html", null, true);
         echo "</p>
 <p>il en reste ";
-        // line 26
+        // line 25
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["content"]) ? $context["content"] : $this->getContext($context, "content")), "nrPlaceRestant"), "html", null, true);
         echo " de place(s)</p>
 
@@ -97,7 +96,7 @@ class __TwigTemplate_4f2156e6fc426d4846f530f9c91e033fc4836c91711bf4cf5ef29ea9290
 
 
 <p>la formation a été crée: ";
-        // line 31
+        // line 30
         echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute((isset($context["content"]) ? $context["content"] : $this->getContext($context, "content")), "dateCreated"), "d-m-Y"), "html", null, true);
         echo "</p>
 <br/> 
@@ -105,21 +104,21 @@ class __TwigTemplate_4f2156e6fc426d4846f530f9c91e033fc4836c91711bf4cf5ef29ea9290
 
 
 ";
-        // line 37
+        // line 36
         echo "
 <button type=\"button\" class=\"btn btn-default btn-lg\">
  <a href=\"";
-        // line 39
+        // line 38
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("xiaomei_xiaomei_inscriptioncours", array("id" => $this->getAttribute((isset($context["content"]) ? $context["content"] : $this->getContext($context, "content")), "id"))), "html", null, true);
         echo "\" 
 \t     title=\"";
-        // line 40
+        // line 39
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["content"]) ? $context["content"] : $this->getContext($context, "content")), "name"), "html", null, true);
         echo "\">S'inscrire au cours</a> 
 </button>
 
 ";
-        // line 43
+        // line 42
         echo " 
 
 
@@ -139,6 +138,6 @@ class __TwigTemplate_4f2156e6fc426d4846f530f9c91e033fc4836c91711bf4cf5ef29ea9290
 
     public function getDebugInfo()
     {
-        return array (  113 => 39,  77 => 21,  170 => 60,  167 => 59,  129 => 6,  124 => 63,  76 => 36,  70 => 20,  480 => 162,  474 => 161,  469 => 158,  461 => 155,  457 => 153,  453 => 151,  444 => 149,  440 => 148,  437 => 147,  435 => 146,  430 => 144,  427 => 143,  423 => 142,  413 => 134,  409 => 132,  407 => 131,  402 => 130,  398 => 129,  393 => 126,  387 => 122,  384 => 121,  381 => 120,  379 => 119,  374 => 116,  368 => 112,  365 => 111,  362 => 110,  360 => 109,  355 => 106,  341 => 105,  337 => 103,  322 => 101,  314 => 99,  312 => 98,  309 => 97,  305 => 95,  298 => 91,  294 => 90,  285 => 89,  283 => 88,  278 => 86,  268 => 85,  264 => 84,  258 => 81,  252 => 80,  247 => 78,  241 => 77,  229 => 73,  220 => 70,  214 => 69,  177 => 65,  169 => 60,  140 => 55,  132 => 51,  128 => 49,  107 => 36,  61 => 13,  273 => 96,  269 => 94,  254 => 92,  243 => 88,  240 => 86,  238 => 85,  235 => 74,  230 => 82,  227 => 81,  224 => 71,  221 => 77,  219 => 76,  217 => 75,  208 => 68,  204 => 72,  179 => 69,  159 => 51,  143 => 11,  135 => 7,  119 => 42,  102 => 32,  71 => 35,  67 => 15,  63 => 15,  59 => 30,  38 => 7,  94 => 28,  89 => 25,  85 => 24,  75 => 17,  68 => 18,  56 => 15,  87 => 40,  21 => 2,  26 => 6,  93 => 26,  88 => 6,  78 => 23,  46 => 7,  27 => 4,  44 => 9,  31 => 6,  28 => 3,  201 => 92,  196 => 90,  183 => 82,  171 => 61,  166 => 71,  163 => 62,  158 => 67,  156 => 66,  151 => 63,  142 => 59,  138 => 8,  136 => 56,  121 => 46,  117 => 40,  105 => 51,  91 => 27,  62 => 23,  49 => 19,  24 => 1,  25 => 3,  19 => 1,  79 => 18,  72 => 19,  69 => 34,  47 => 11,  40 => 8,  37 => 18,  22 => 2,  246 => 90,  157 => 56,  145 => 46,  139 => 45,  131 => 52,  123 => 43,  120 => 40,  115 => 43,  111 => 37,  108 => 52,  101 => 31,  98 => 31,  96 => 28,  83 => 25,  74 => 14,  66 => 15,  55 => 29,  52 => 14,  50 => 27,  43 => 9,  41 => 8,  35 => 7,  32 => 4,  29 => 3,  209 => 82,  203 => 78,  199 => 67,  193 => 73,  189 => 71,  187 => 84,  182 => 66,  176 => 64,  173 => 65,  168 => 72,  164 => 58,  162 => 57,  154 => 50,  149 => 51,  147 => 58,  144 => 49,  141 => 48,  133 => 55,  130 => 41,  125 => 44,  122 => 58,  116 => 55,  112 => 54,  109 => 37,  106 => 36,  103 => 50,  99 => 31,  95 => 28,  92 => 41,  86 => 28,  82 => 39,  80 => 19,  73 => 19,  64 => 17,  60 => 16,  57 => 11,  54 => 10,  51 => 14,  48 => 13,  45 => 17,  42 => 7,  39 => 9,  36 => 5,  33 => 4,  30 => 7,);
+        return array (  122 => 42,  116 => 39,  112 => 38,  108 => 36,  100 => 30,  92 => 25,  88 => 24,  84 => 23,  76 => 20,  72 => 19,  68 => 18,  64 => 17,  60 => 16,  56 => 15,  52 => 14,  47 => 11,  43 => 9,  41 => 8,  38 => 7,  32 => 4,  29 => 3,);
     }
 }

@@ -56,7 +56,7 @@ xiaomei_xiaomei_create_cours:
     defaults: { _controller: XiaomeiXiaomeiBundle:Cours:createcours }
 
 xiaomei_xiaomei_formateur:
-    path:     /formateur/{username}
+    path:     /formateur/{id}
     defaults: { _controller: XiaomeiXiaomeiBundle:User:formateur }
 
 

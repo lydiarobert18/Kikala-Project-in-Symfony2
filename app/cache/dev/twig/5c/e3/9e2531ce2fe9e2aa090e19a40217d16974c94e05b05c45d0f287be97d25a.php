@@ -59,36 +59,32 @@ class __TwigTemplate_5ce39e2531ce2fe9e2aa090e19a40217d16974c94e05b05c45d0f287be9
         echo $this->env->getExtension('routing')->getPath("xiaomei_xiaomei_showcoursall");
         echo "\">liste des cours</a></li>
                    
-                    <li><a href=\"";
-        // line 32
-        echo $this->env->getExtension('routing')->getPath("xiaomei_xiaomei_create_cours");
-        echo "\">create formations</a></li>
-                   
+            
                      ";
-        // line 34
+        // line 33
         if ($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "user")) {
-            // line 35
+            // line 34
             echo "                    <li><a href=\"";
             echo $this->env->getExtension('routing')->getPath("logout");
             echo "\">Déconnexion</a></li>
                     <li><a href=\"";
-            // line 36
+            // line 35
             echo $this->env->getExtension('routing')->getPath("xiaomei_xiaomei_moncompte");
             echo "\">Mon compte</a></li>
 
                     ";
         } else {
-            // line 39
+            // line 38
             echo "                    <li><a href=\"";
             echo $this->env->getExtension('routing')->getPath("login");
             echo "\">Connexion</a></li>
                     <li><a href=\"";
-            // line 40
+            // line 39
             echo $this->env->getExtension('routing')->getPath("xiaomei_xiaomei_register");
             echo "\">Inscription</a></li>
                 ";
         }
-        // line 41
+        // line 40
         echo "      
                      
                 </ul> 
@@ -99,28 +95,28 @@ class __TwigTemplate_5ce39e2531ce2fe9e2aa090e19a40217d16974c94e05b05c45d0f287be9
             <div id=\"wrapper\">
 
                 ";
-        // line 50
+        // line 49
         $this->displayBlock('wrapper', $context, $blocks);
-        // line 51
+        // line 50
         echo "                ";
         $this->displayBlock('body', $context, $blocks);
-        // line 52
+        // line 51
         echo "            </div>
             <footer class=\"menu\">
                 <li><a href=\"";
-        // line 54
+        // line 53
         echo $this->env->getExtension('routing')->getPath("xiaomei_xiaomei_legal");
         echo "\">Mention legal</a></li>
                 <li><a href=\"";
-        // line 55
+        // line 54
         echo $this->env->getExtension('routing')->getPath("xiaomei_xiaomei_legal");
         echo "\">contact us</a></li>
 
              </footer>
         ";
-        // line 58
+        // line 57
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 63
+        // line 62
         echo "    </body>
 </html>";
     }
@@ -150,23 +146,23 @@ class __TwigTemplate_5ce39e2531ce2fe9e2aa090e19a40217d16974c94e05b05c45d0f287be9
         ";
     }
 
-    // line 50
+    // line 49
     public function block_wrapper($context, array $blocks = array())
     {
     }
 
-    // line 51
+    // line 50
     public function block_body($context, array $blocks = array())
     {
     }
 
-    // line 58
+    // line 57
     public function block_javascripts($context, array $blocks = array())
     {
-        // line 59
+        // line 58
         echo "        <script src=\"http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js\"></script>
         <script>window.jQuery || document.write('<script src=\"";
-        // line 60
+        // line 59
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/jquery.min.js"), "html", null, true);
         echo "\">\\x3C/script>')</script>
         <script src=\"//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js\"></script>
@@ -185,6 +181,6 @@ class __TwigTemplate_5ce39e2531ce2fe9e2aa090e19a40217d16974c94e05b05c45d0f287be9
 
     public function getDebugInfo()
     {
-        return array (  170 => 60,  167 => 59,  164 => 58,  159 => 51,  154 => 50,  143 => 11,  138 => 8,  135 => 7,  129 => 6,  124 => 63,  122 => 58,  116 => 55,  112 => 54,  108 => 52,  105 => 51,  103 => 50,  92 => 41,  87 => 40,  82 => 39,  76 => 36,  69 => 34,  55 => 29,  50 => 27,  37 => 18,  35 => 7,  24 => 1,  74 => 24,  71 => 35,  68 => 22,  64 => 32,  59 => 30,  56 => 17,  48 => 11,  43 => 8,  40 => 7,  34 => 4,  31 => 6,);
+        return array (  166 => 59,  163 => 58,  160 => 57,  155 => 50,  150 => 49,  139 => 11,  134 => 8,  131 => 7,  125 => 6,  120 => 62,  118 => 57,  112 => 54,  108 => 53,  104 => 51,  101 => 50,  99 => 49,  88 => 40,  83 => 39,  78 => 38,  72 => 35,  67 => 34,  65 => 33,  59 => 30,  55 => 29,  50 => 27,  37 => 18,  35 => 7,  31 => 6,  24 => 1,);
     }
 }
