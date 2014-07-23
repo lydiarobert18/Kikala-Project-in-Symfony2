@@ -16,7 +16,7 @@ class CoursController extends Controller
 {   
 
 
-    public function ordersubmitAction(Request $request)
+  /*  public function ordersubmitAction(Request $request)
     {
         $defaultData = array();
 
@@ -46,7 +46,7 @@ class CoursController extends Controller
         // ... affiche le formulaire
         return $this->render('XiaomeiXiaomeiBundle:Cours:order.html.twig',$params2);
     }
-   
+   */
        public function showtriAction(){
           
             //print_r($_POST);
@@ -137,25 +137,26 @@ class CoursController extends Controller
             $place=$content->getNrPlaceTotal();
             $content->setNrPlaceRestant($place);
 
-
-
             $content->setDateCreated(new DateTime());
-         //$content->setPsydoformateur(session user username);
+            $user= $this->getUser();
+            $content->setUser($user);
 
             //récupération du manager pour sauvegarder l'entity
             $em = $this->getDoctrine()->getManager();
             $em->persist( $content );
             $em->flush();
+            return $this->redirect($this->generateUrl('xiaomei_xiaomei_showcoursall'));
+
 
         }
 
         //crée la "vue" du formulaire, à passer dans render()
         $contentCreateFormView = $contentCreateForm->createView();
-
+        
         $params = array(
             "ccfv" => $contentCreateFormView
         );
-
+      
         return $this->render('XiaomeiXiaomeiBundle:Cours:createcours.html.twig', $params);
      }
 

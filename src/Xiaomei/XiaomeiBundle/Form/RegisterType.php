@@ -36,8 +36,7 @@ class RegisterType extends AbstractType
                     'format' => 'yyyy'
                 ))
             ->add('sex','choice', array(
-             'choices' => array('m' => 'Male', 'f' => 'Female')
-             
+             'choices' => array('m' => 'Male', 'f' => 'Female')))            
             ->add('metier')
             ->add('descriptifFormateur')
             ->add('descriptifEtudiant')
