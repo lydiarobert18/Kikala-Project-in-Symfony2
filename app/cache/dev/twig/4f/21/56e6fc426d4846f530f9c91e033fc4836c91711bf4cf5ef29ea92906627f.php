@@ -40,7 +40,7 @@ class __TwigTemplate_4f2156e6fc426d4846f530f9c91e033fc4836c91711bf4cf5ef29ea9290
         // line 8
         if ($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "user")) {
             // line 9
-            echo "\t<p>vous êtes inscrit</p>
+            echo "\t<p>vous êtes connecté</p>
 ";
         }
         // line 11

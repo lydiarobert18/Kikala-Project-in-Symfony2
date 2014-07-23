@@ -219,26 +219,49 @@ class CoursController extends Controller
    // }
 
     public function registercoursconfirmerAction($id){
-
+//pas encore fait la condition de crédit pour qu'il puisse pouvoir s'inscrire 
+//pas encore fait comment empecher s'inscrire 2 fois 
+          /* $user = $this->getDoctrine()->getRepository("XiaomeiXiaomeiBundle:User");
+           $userSession = $user->findOneByName($name);??
+            $nombreCredit=$user->getNombreCredit();*/
+      
               $user=$this->getUser();
+              $nombrecredit= $user->getNombreCredit();
+              //requete avec $id pour avoir $cours;
+            
+              $coursRepo= $this->getDoctrine()->getRepository("XiaomeiXiaomeiBundle:Cours");
+              $cours = $coursRepo->findOneById($id);
+              $creditcours=$cours->getDuration();
+              $nombreplacerestant=$cours->getNrPlaceRestant();
 
+     // nombreReste>0  ; and if je ne suis pas déja inscrit;  && $nombreplacerestant >0 faut mettre ailleurs
+             if($nombrecredit >=$creditcours && $nombreplacerestant >0  ){
               $content=new Inscription();
               $content->setUser($user);
+
              $content->setDateInscription(new DateTime());
              $content->setIsannulation('true');
-         
-      
-             //requete avec $id pour avoir $cours;
-              $coursRepo= $this->getDoctrine()->getRepository("XiaomeiXiaomeiBundle:Cours");
-             $cours = $coursRepo->findOneById($id);
               $content->setCours($cours);
 
             //récupération du manager pour sauvegarder l'entity
             $em = $this->getDoctrine()->getManager();
             $em->persist( $content );
             $em->flush();
+
+            //Update: nombrecrédit dans User moins-durée de cours: nombreplacerestant dans user moins-1
+            //update: nombrecrdit dans user autre ID  + durée de cours:
+            $cours->setNrPlaceRestant( $nombreplacerestant-1);
+            $user->setNombreCredit($nombrecredit-$creditcours);
+            $em->flush();
          
-         return $this->redirect($this->generateUrl('xiaomei_xiaomei_showcoursall'));
+
+
+          return $this->redirect($this->generateUrl('xiaomei_xiaomei_showcoursall'));}
+           else{ 
+            echo 'you have not enough credit in your account ';
+          
+             };
+ 
     }
 
 }
