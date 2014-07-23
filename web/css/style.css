@@ -76,3 +76,15 @@ footer li{
 	margin-left:40%;
 	background-color:yellow;
 }
+
+
+#moncompte a{
+ margin-right:20px;
+
+ color:red;
+}
+
+
+#moncompte{
+	padding-top:20px;
+}

@@ -15,10 +15,10 @@ class UserRepository extends EntityRepository
 	public function findFullSingleContent($id){
 
 		$query = $this->createQueryBuilder('u')
-				->select('u,')	//hyper facile à oublier
-				 ->where('u.id = :id')  
-				->leftJoin('u.', 'cat')	
-			    ->leftJoin('c.user', 'user')		   
+				->select('u,i,c')	//hyper facile à oublier
+				 ->where('u.id = :id') 
+				 ->leftJoin('u.inscription', 'i')	
+			    ->leftJoin('u.cours', 'c')					   
 			    ->setParameter(':id', $id)
 			    ->getQuery();
 
@@ -26,6 +26,8 @@ class UserRepository extends EntityRepository
 
 		return $content;
 //comment faire jointure many to many ; User et cours, pour avoir liste des cours dispensé et liste de cours suivi
+
+		
 
 	}
 

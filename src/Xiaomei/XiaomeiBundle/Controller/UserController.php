@@ -58,7 +58,9 @@ public function moncompteAction()
     {
         $contentRepository = $this->getDoctrine()->getRepository("XiaomeiXiaomeiBundle:User");
         
-        $content = $contentRepository->findFullSingleContent();
+        $iduser=$this->getUser()->getID();
+      
+        $content = $contentRepository->findFullSingleContent($iduser);
         
         //shoote ça à la vue
         $params = array(
