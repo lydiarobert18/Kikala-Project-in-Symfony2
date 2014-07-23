@@ -89,6 +89,8 @@
   'XiaomeiXiaomeiBundle:Default:legal.html.twig' => 'C:\\xampp\\htdocs\\Symfony\\src\\Xiaomei\\XiaomeiBundle/Resources/views/Default/legal.html.twig',
   'XiaomeiXiaomeiBundle:User:formateur.html.twig' => 'C:\\xampp\\htdocs\\Symfony\\src\\Xiaomei\\XiaomeiBundle/Resources/views/User/formateur.html.twig',
   'XiaomeiXiaomeiBundle:User:login.html.twig' => 'C:\\xampp\\htdocs\\Symfony\\src\\Xiaomei\\XiaomeiBundle/Resources/views/User/login.html.twig',
+  'XiaomeiXiaomeiBundle:User:mesformations.html.twig' => 'C:\\xampp\\htdocs\\Symfony\\src\\Xiaomei\\XiaomeiBundle/Resources/views/User/mesformations.html.twig',
+  'XiaomeiXiaomeiBundle:User:mesinscriptions.html.twig' => 'C:\\xampp\\htdocs\\Symfony\\src\\Xiaomei\\XiaomeiBundle/Resources/views/User/mesinscriptions.html.twig',
   'XiaomeiXiaomeiBundle:User:modifierprofil.html.twig' => 'C:\\xampp\\htdocs\\Symfony\\src\\Xiaomei\\XiaomeiBundle/Resources/views/User/modifierprofil.html.twig',
   'XiaomeiXiaomeiBundle:User:moncompte.html.twig' => 'C:\\xampp\\htdocs\\Symfony\\src\\Xiaomei\\XiaomeiBundle/Resources/views/User/moncompte.html.twig',
   'XiaomeiXiaomeiBundle:User:register.html.twig' => 'C:\\xampp\\htdocs\\Symfony\\src\\Xiaomei\\XiaomeiBundle/Resources/views/User/register.html.twig',

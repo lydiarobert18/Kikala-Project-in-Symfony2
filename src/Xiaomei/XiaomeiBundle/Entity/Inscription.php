@@ -56,8 +56,8 @@ class Inscription
 
     /**
      * @var \DateTime
-     *
-     * @ORM\Column(name="dateCancellation", type="datetime")
+     * 
+     * @ORM\Column(name="dateCancellation", type="datetime",nullable=true)
      */
     private $dateCancellation;
 

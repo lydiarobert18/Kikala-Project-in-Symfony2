@@ -4,6 +4,7 @@ namespace Xiaomei\XiaomeiBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Xiaomei\XiaomeiBundle\Entity\Cours;
+use Xiaomei\XiaomeiBundle\Entity\Inscription;
 use Symfony\Component\HttpFoundation\Request;
 use Xiaomei\XiaomeiBundle\Form\CoursType;
 use \Datetime;
@@ -175,7 +176,8 @@ class CoursController extends Controller
     return $this->render('XiaomeiXiaomeiBundle:Cours:register.html.twig',$params);
     }
 
-    public function registercoursconfirmerAction($id){
+
+    //public function registercoursconfirmerAction($id){
      //condition déja login:$_Session(login)=true;  {% if app.user %}:déja fait
      //condition crédit est bon :
     //faire une requete du nombre crédit de la personne ; $nombreCredit
@@ -197,7 +199,7 @@ class CoursController extends Controller
     //resultat: table intermédiare cours-user: deux ligne de plus
     // id cours id user statut (stagiaire)
 
-            $userSession->addcours($coursid);
+           
     //????ajouter  statut stagiaire ????
 
 
@@ -212,11 +214,32 @@ class CoursController extends Controller
    //update $NrPlaceRestant-1 dans Cours.php:
     
 
-    return $this->render('XiaomeiXiaomeiBundle:Cours:registerok.html.twig');
+    //return $this->render('XiaomeiXiaomeiBundle:Cours:registerok.html.twig');
 
+   // }
+
+    public function registercoursconfirmerAction($id){
+
+              $user=$this->getUser();
+
+              $content=new Inscription();
+              $content->setUser($user);
+             $content->setDateInscription(new DateTime());
+             $content->setIsannulation('true');
+         
+      
+             //requete avec $id pour avoir $cours;
+              $coursRepo= $this->getDoctrine()->getRepository("XiaomeiXiaomeiBundle:Cours");
+             $cours = $coursRepo->findOneById($id);
+              $content->setCours($cours);
+
+            //récupération du manager pour sauvegarder l'entity
+            $em = $this->getDoctrine()->getManager();
+            $em->persist( $content );
+            $em->flush();
+         
+         return $this->redirect($this->generateUrl('xiaomei_xiaomei_showcoursall'));
     }
-
-
 
 }
 
