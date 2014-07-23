@@ -1,6 +1,6 @@
 xiaomei_xiaomei_homepage:
     path:     /hello/{name}
-    defaults: { _controller: XiaomeiXiaomeiBundle:Default:index }
+    defaults: { _controller: XiaomeiXiaomeiBundle:Default:index :name='default'}
 
 xiaomei_xiaomei_home:
     path:     /
@@ -32,23 +32,34 @@ xiaomei_xiaomei_showcour:
     defaults: { _controller: XiaomeiXiaomeiBundle:Cours:showcour }
 
 xiaomei_xiaomei_delete:
-    path:     /deletecontenu/{id}/
+    path:     /moncompte/deletecontenu/{id}/
     defaults: { _controller: XiaomeiXiaomeiBundle:Cours:deletecontenu }
 
 xiaomei_xiaomei_moncompte:
     path:     /moncompte/
     defaults: { _controller: XiaomeiXiaomeiBundle:User:moncompte }
+
+xiaomei_xiaomei_modifierprofil:
+    path:     /moncompte/modifierprofil/
+    defaults: { _controller: XiaomeiXiaomeiBundle:User:modifierprofil }
+
+xiaomei_xiaomei_mesformations:
+    path:     /moncompte/mesformations/
+    defaults: { _controller: XiaomeiXiaomeiBundle:User:mesformations }
+
+xiaomei_xiaomei_mesinscriptions:
+    path:     /moncompte/mesinscriptions/
+    defaults: { _controller: XiaomeiXiaomeiBundle:User:mesinscriptions }
+
 xiaomei_xiaomei_create_cours:
-    path:     /createcours/
+    path:     /moncompte/createcours/
     defaults: { _controller: XiaomeiXiaomeiBundle:Cours:createcours }
 
 xiaomei_xiaomei_formateur:
     path:     /formateur/{username}
     defaults: { _controller: XiaomeiXiaomeiBundle:User:formateur }
 
-xiaomei_xiaomei_modifierprofil:
-    path:     /modifier/
-    defaults: { _controller: XiaomeiXiaomeiBundle:User:modifierprofil }
+
 #user
 xiaomei_xiaomei_register:
     path:     /inscription/

@@ -25,7 +25,7 @@ class Inscription
      /**
        * @var Xiaomei\XiaomeiBundle\Entity\Cours;
        *
-       * @ORM\ManyToOne(targetEntity="Cours")
+       * @ORM\ManyToOne(targetEntity="Cours",inversedBy="inscription")
        */
 
     private $cours ;
@@ -33,7 +33,7 @@ class Inscription
     /**
        * @var Xiaomei\XiaomeiBundle\Entity\User;
        *
-       * @ORM\ManyToOne(targetEntity="User")
+       * @ORM\ManyToOne(targetEntity="User",inversedBy="inscription")
        */
 
     private $user ;
@@ -52,6 +52,14 @@ class Inscription
      * @ORM\Column(name="isannulation", type="boolean")
      */
     private $isannulation;
+
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateCancellation", type="datetime")
+     */
+    private $dateCancellation;
 
 
     /**
@@ -86,6 +94,33 @@ class Inscription
     {
         return $this->dateInscription;
     }
+
+
+
+  /**
+     * Set dateCancellation
+     *
+     * @param \DateTime $dateCancellation
+     * @return Cancellation
+     */
+    public function setDateCancellation($dateCancellation)
+    {
+        $this->dateCancellation = $dateCancellation;
+
+        return $this;
+    }
+
+    /**
+     * Get dateCancellation
+     *
+     * @return \DateTime 
+     */
+    public function getDateCancellation()
+    {
+        return $this->DateCancellation;
+    }
+
+
 
     /**
      * Set isannulation

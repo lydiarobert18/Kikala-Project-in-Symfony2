@@ -29,6 +29,15 @@ class Category
     private $name;
 
 
+     /**
+    *  @var \Doctrine\Common\Collections\ArrayCollection
+    *  
+    * @ORM\OneToMany(targetEntity="Cours",mappedBy="category")
+    */
+     private $cours;
+
+
+
     /**
      * Get id
      *
@@ -60,5 +69,45 @@ class Category
     public function getName()
     {
         return $this->name;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->cours = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add cours
+     *
+     * @param \Xiaomei\XiaomeiBundle\Entity\Cours $cours
+     * @return Category
+     */
+    public function addCour(\Xiaomei\XiaomeiBundle\Entity\Cours $cours)
+    {
+        $this->cours[] = $cours;
+
+        return $this;
+    }
+
+    /**
+     * Remove cours
+     *
+     * @param \Xiaomei\XiaomeiBundle\Entity\Cours $cours
+     */
+    public function removeCour(\Xiaomei\XiaomeiBundle\Entity\Cours $cours)
+    {
+        $this->cours->removeElement($cours);
+    }
+
+    /**
+     * Get cours
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCours()
+    {
+        return $this->cours;
     }
 }

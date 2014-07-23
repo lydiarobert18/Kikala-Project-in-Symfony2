@@ -39,12 +39,12 @@ class __TwigTemplate_019f9d272ab2a539c7bfb2d7d352a402cca47e747acaf23017a4aa65489
     public function block_wrapper($context, array $blocks = array())
     {
         // line 9
-        echo "
+        echo "<p> nombre de kilos: </p>
 
 <a href=\"";
         // line 11
         echo $this->env->getExtension('routing')->getPath("xiaomei_xiaomei_modifierprofil");
-        echo "\">Modifier</a>
+        echo "\">Modifier mon profil </a>
 <a href=\"";
         // line 12
         echo $this->env->getExtension('routing')->getPath("xiaomei_xiaomei_create_cours");

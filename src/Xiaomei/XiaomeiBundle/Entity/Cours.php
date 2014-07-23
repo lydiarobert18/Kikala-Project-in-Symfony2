@@ -105,18 +105,28 @@ class Cours
     /**
        * @var Xiaomei\XiaomeiBundle\Entity\Category;
        *
-       * @ORM\ManyToOne(targetEntity="Category")
+       * @ORM\ManyToOne(targetEntity="Category",inversedBy="cours")
        */
 
     private $category;
 
+
      /**
        * @var Xiaomei\XiaomeiBundle\Entity\User;
        *
-       * @ORM\ManyToOne(targetEntity="User")
+       * @ORM\ManyToOne(targetEntity="User",inversedBy="cours")
        */
 
     private $user;
+
+
+        /**
+    *  @var \Doctrine\Common\Collections\ArrayCollection
+    *  
+    * @ORM\OneToMany(targetEntity="Inscription",mappedBy="cours")
+    */
+     private $inscription;
+
 
 
     /**
@@ -383,5 +393,45 @@ class Cours
     public function getUser()
     {
         return $this->user;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->inscription = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add inscription
+     *
+     * @param \Xiaomei\XiaomeiBundle\Entity\Inscription $inscription
+     * @return Cours
+     */
+    public function addInscription(\Xiaomei\XiaomeiBundle\Entity\Inscription $inscription)
+    {
+        $this->inscription[] = $inscription;
+
+        return $this;
+    }
+
+    /**
+     * Remove inscription
+     *
+     * @param \Xiaomei\XiaomeiBundle\Entity\Inscription $inscription
+     */
+    public function removeInscription(\Xiaomei\XiaomeiBundle\Entity\Inscription $inscription)
+    {
+        $this->inscription->removeElement($inscription);
+    }
+
+    /**
+     * Get inscription
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getInscription()
+    {
+        return $this->inscription;
     }
 }

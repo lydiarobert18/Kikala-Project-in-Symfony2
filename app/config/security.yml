@@ -16,7 +16,7 @@ security:
                 domain:   ~ # Defaults to the current domain from $_SERVER
 
     access_control:
-        - { path: ^/createcours/, roles: ROLE_USER }
+        - { path: ^/moncompte/, roles: ROLE_USER }
 
     providers:
         users:

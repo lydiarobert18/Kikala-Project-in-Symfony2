@@ -12,20 +12,20 @@ use Doctrine\ORM\EntityRepository;
  */
 class UserRepository extends EntityRepository
 {
-	public function findFullSingleContent($username=null){
+	public function findFullSingleContent($id){
 
 		$query = $this->createQueryBuilder('u')
-				->select('u')	//hyper facile à oublier
-			    ->where('u.username = :username')  
-			    ->setParameter(':username', $username)
+				->select('u,')	//hyper facile à oublier
+				 ->where('u.id = :id')  
+				->leftJoin('u.', 'cat')	
+			    ->leftJoin('c.user', 'user')		   
+			    ->setParameter(':id', $id)
 			    ->getQuery();
 
 		$content = $query->getSingleResult();
 
 		return $content;
 //comment faire jointure many to many ; User et cours, pour avoir liste des cours dispensé et liste de cours suivi
-
-		
 
 	}
 

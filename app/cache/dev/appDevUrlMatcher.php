@@ -137,7 +137,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         // xiaomei_xiaomei_homepage
         if (0 === strpos($pathinfo, '/hello') && preg_match('#^/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
-            return $this->mergeDefaults(array_replace($matches, array('_route' => 'xiaomei_xiaomei_homepage')), array (  '_controller' => 'Xiaomei\\XiaomeiBundle\\Controller\\DefaultController::indexAction',));
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'xiaomei_xiaomei_homepage')), array (  '_controller' => 'XiaomeiXiaomeiBundle:Default:index :name=\'default\'',));
         }
 
         // xiaomei_xiaomei_home
@@ -198,45 +198,72 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'xiaomei_xiaomei_showcour')), array (  '_controller' => 'Xiaomei\\XiaomeiBundle\\Controller\\CoursController::showcourAction',));
         }
 
-        // xiaomei_xiaomei_delete
-        if (0 === strpos($pathinfo, '/deletecontenu') && preg_match('#^/deletecontenu/(?P<id>[^/]++)/?$#s', $pathinfo, $matches)) {
-            if (substr($pathinfo, -1) !== '/') {
-                return $this->redirect($pathinfo.'/', 'xiaomei_xiaomei_delete');
+        if (0 === strpos($pathinfo, '/moncompte')) {
+            // xiaomei_xiaomei_delete
+            if (0 === strpos($pathinfo, '/moncompte/deletecontenu') && preg_match('#^/moncompte/deletecontenu/(?P<id>[^/]++)/?$#s', $pathinfo, $matches)) {
+                if (substr($pathinfo, -1) !== '/') {
+                    return $this->redirect($pathinfo.'/', 'xiaomei_xiaomei_delete');
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'xiaomei_xiaomei_delete')), array (  '_controller' => 'Xiaomei\\XiaomeiBundle\\Controller\\CoursController::deletecontenuAction',));
             }
 
-            return $this->mergeDefaults(array_replace($matches, array('_route' => 'xiaomei_xiaomei_delete')), array (  '_controller' => 'Xiaomei\\XiaomeiBundle\\Controller\\CoursController::deletecontenuAction',));
-        }
+            // xiaomei_xiaomei_moncompte
+            if (rtrim($pathinfo, '/') === '/moncompte') {
+                if (substr($pathinfo, -1) !== '/') {
+                    return $this->redirect($pathinfo.'/', 'xiaomei_xiaomei_moncompte');
+                }
 
-        // xiaomei_xiaomei_moncompte
-        if (rtrim($pathinfo, '/') === '/moncompte') {
-            if (substr($pathinfo, -1) !== '/') {
-                return $this->redirect($pathinfo.'/', 'xiaomei_xiaomei_moncompte');
+                return array (  '_controller' => 'Xiaomei\\XiaomeiBundle\\Controller\\UserController::moncompteAction',  '_route' => 'xiaomei_xiaomei_moncompte',);
             }
 
-            return array (  '_controller' => 'Xiaomei\\XiaomeiBundle\\Controller\\UserController::moncompteAction',  '_route' => 'xiaomei_xiaomei_moncompte',);
-        }
+            if (0 === strpos($pathinfo, '/moncompte/m')) {
+                // xiaomei_xiaomei_modifierprofil
+                if (rtrim($pathinfo, '/') === '/moncompte/modifierprofil') {
+                    if (substr($pathinfo, -1) !== '/') {
+                        return $this->redirect($pathinfo.'/', 'xiaomei_xiaomei_modifierprofil');
+                    }
 
-        // xiaomei_xiaomei_create_cours
-        if (rtrim($pathinfo, '/') === '/createcours') {
-            if (substr($pathinfo, -1) !== '/') {
-                return $this->redirect($pathinfo.'/', 'xiaomei_xiaomei_create_cours');
+                    return array (  '_controller' => 'Xiaomei\\XiaomeiBundle\\Controller\\UserController::modifierprofilAction',  '_route' => 'xiaomei_xiaomei_modifierprofil',);
+                }
+
+                if (0 === strpos($pathinfo, '/moncompte/mes')) {
+                    // xiaomei_xiaomei_mesformations
+                    if (rtrim($pathinfo, '/') === '/moncompte/mesformations') {
+                        if (substr($pathinfo, -1) !== '/') {
+                            return $this->redirect($pathinfo.'/', 'xiaomei_xiaomei_mesformations');
+                        }
+
+                        return array (  '_controller' => 'Xiaomei\\XiaomeiBundle\\Controller\\UserController::mesformationsAction',  '_route' => 'xiaomei_xiaomei_mesformations',);
+                    }
+
+                    // xiaomei_xiaomei_mesinscriptions
+                    if (rtrim($pathinfo, '/') === '/moncompte/mesinscriptions') {
+                        if (substr($pathinfo, -1) !== '/') {
+                            return $this->redirect($pathinfo.'/', 'xiaomei_xiaomei_mesinscriptions');
+                        }
+
+                        return array (  '_controller' => 'Xiaomei\\XiaomeiBundle\\Controller\\UserController::mesinscriptionsAction',  '_route' => 'xiaomei_xiaomei_mesinscriptions',);
+                    }
+
+                }
+
             }
 
-            return array (  '_controller' => 'Xiaomei\\XiaomeiBundle\\Controller\\CoursController::createcoursAction',  '_route' => 'xiaomei_xiaomei_create_cours',);
+            // xiaomei_xiaomei_create_cours
+            if (rtrim($pathinfo, '/') === '/moncompte/createcours') {
+                if (substr($pathinfo, -1) !== '/') {
+                    return $this->redirect($pathinfo.'/', 'xiaomei_xiaomei_create_cours');
+                }
+
+                return array (  '_controller' => 'Xiaomei\\XiaomeiBundle\\Controller\\CoursController::createcoursAction',  '_route' => 'xiaomei_xiaomei_create_cours',);
+            }
+
         }
 
         // xiaomei_xiaomei_formateur
         if (0 === strpos($pathinfo, '/formateur') && preg_match('#^/formateur/(?P<username>[^/]++)$#s', $pathinfo, $matches)) {
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'xiaomei_xiaomei_formateur')), array (  '_controller' => 'Xiaomei\\XiaomeiBundle\\Controller\\UserController::formateurAction',));
-        }
-
-        // xiaomei_xiaomei_modifierprofil
-        if (rtrim($pathinfo, '/') === '/modifier') {
-            if (substr($pathinfo, -1) !== '/') {
-                return $this->redirect($pathinfo.'/', 'xiaomei_xiaomei_modifierprofil');
-            }
-
-            return array (  '_controller' => 'Xiaomei\\XiaomeiBundle\\Controller\\UserController::modifierprofilAction',  '_route' => 'xiaomei_xiaomei_modifierprofil',);
         }
 
         if (0 === strpos($pathinfo, '/inscription')) {

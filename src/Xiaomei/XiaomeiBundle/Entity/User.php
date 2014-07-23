@@ -162,8 +162,24 @@ class User implements UserInterface, EquatableInterface, \Serializable
     */
      private $roles;
 
-    
+
+     /**
+    *  @var \Doctrine\Common\Collections\ArrayCollection
+    *  
+    * @ORM\OneToMany(targetEntity="Cours",mappedBy="user")
+    */
+     private $cours;
+
   
+      /**
+    *  @var \Doctrine\Common\Collections\ArrayCollection
+    *  
+    * @ORM\OneToMany(targetEntity="Inscription",mappedBy="user")
+    */
+     private $inscription;
+
+
+
 
 
     /**
@@ -623,6 +639,70 @@ class User implements UserInterface, EquatableInterface, \Serializable
         $this->roles = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
-   
-    
+
+    /**
+     * Add cours
+     *
+     * @param \Xiaomei\XiaomeiBundle\Entity\Cours $cours
+     * @return User
+     */
+    public function addCour(\Xiaomei\XiaomeiBundle\Entity\Cours $cours)
+    {
+        $this->cours[] = $cours;
+
+        return $this;
+    }
+
+    /**
+     * Remove cours
+     *
+     * @param \Xiaomei\XiaomeiBundle\Entity\Cours $cours
+     */
+    public function removeCour(\Xiaomei\XiaomeiBundle\Entity\Cours $cours)
+    {
+        $this->cours->removeElement($cours);
+    }
+
+    /**
+     * Get cours
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCours()
+    {
+        return $this->cours;
+    }
+
+    /**
+     * Add inscription
+     *
+     * @param \Xiaomei\XiaomeiBundle\Entity\Inscription $inscription
+     * @return User
+     */
+    public function addInscription(\Xiaomei\XiaomeiBundle\Entity\Inscription $inscription)
+    {
+        $this->inscription[] = $inscription;
+
+        return $this;
+    }
+
+    /**
+     * Remove inscription
+     *
+     * @param \Xiaomei\XiaomeiBundle\Entity\Inscription $inscription
+     */
+    public function removeInscription(\Xiaomei\XiaomeiBundle\Entity\Inscription $inscription)
+    {
+        $this->inscription->removeElement($inscription);
+    }
+
+    /**
+     * Get inscription
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getInscription()
+    {
+        return $this->inscription;
+    }
 }
