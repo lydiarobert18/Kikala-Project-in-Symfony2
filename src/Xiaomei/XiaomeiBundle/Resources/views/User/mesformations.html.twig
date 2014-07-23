@@ -1,0 +1,22 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}
+	{{ parent() }} - mes formations !
+{% endblock %}
+
+{% block wrapper %}
+	<h1>Les formations que j'ai crées </h1>
+	{% for content in contents.cours %}
+
+	 <p><a href="{{ path( ) }}">{{ content.name}}</a></p>
+	
+	     
+    {# content.dateCreated|date('d-m-Y')#}
+	</li>
+
+
+
+{% endfor %}
+
+
+{% endblock %}

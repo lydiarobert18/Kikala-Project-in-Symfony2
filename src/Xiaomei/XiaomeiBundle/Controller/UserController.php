@@ -72,6 +72,44 @@ public function moncompteAction()
     }
 
 
+
+
+public function mesformationsAction(){
+
+        $contentRepository = $this->getDoctrine()->getRepository("XiaomeiXiaomeiBundle:User");
+        
+        $iduser=$this->getUser()->getID();
+      
+        $content = $contentRepository->findFullSingleContent($iduser);
+
+        $params = array(
+            "contents" => $content
+         );
+
+        
+
+        return $this->render("XiaomeiXiaomeiBundle:User:mesformations.html.twig",$params);
+}
+
+public function mesinscriptionsAction(){
+        $contentRepository = $this->getDoctrine()->getRepository("XiaomeiXiaomeiBundle:User");
+        
+        $iduser=$this->getUser()->getID();
+      
+        $content = $contentRepository->findFullSingleContent($iduser);
+
+        $params = array(
+            "contents" => $content
+         );
+
+  
+        return $this->render("XiaomeiXiaomeiBundle:User:mesinscriptions.html.twig",$params);
+}
+     
+
+
+
+
 public function registerAction(Request $request){
         $user=new User();
         $register_form=$this->createForm(new RegisterType,$user);

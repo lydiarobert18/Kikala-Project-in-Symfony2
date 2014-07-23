@@ -1,0 +1,21 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}
+	{{ parent() }} - mes inscriptions !
+{% endblock %}
+
+{% block wrapper %}
+	<h1>Les cours danslequelles où je suis inscrites  </h1>
+	{% for content in contents.inscription %}
+			
+	 <p>{{ content.id ~")"}}</p>
+	 <p>nom du cours inscrit:{{ content.cours.name}}</p>
+    
+     <p>date d'inscription: {{ content.dateInscription|date('d-m-Y')}}</p>
+     
+    
+
+{% endfor %}
+
+
+{% endblock %}
