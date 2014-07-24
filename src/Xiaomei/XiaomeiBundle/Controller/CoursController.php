@@ -120,17 +120,21 @@ class CoursController extends Controller
         //si user est connecté et non inscrit à la formation 
           $user=$this->getUser();
         //if ($user==true && $dejainscrit=false  )    
-        $dejainscrit=$InscriptionRepository->findFullSingleContent($user,$id);
-
-
-
+         $dejainscrit=$InscriptionRepository->findFullSingleContent($user,$id);
+         $dejainscrit= $dejainscrit[1];
+     
+           
+          
+        
         //récupère l'objet Content dont l'id est égal à celui dans l'url
         $content = $contentRepository->findFullSingleContent($id);
+       // $content->getInscription();
 
         //shoote ça à la vue
         $params = array(
             "content" => $content,
-            "dejainscrit" => $dejainscrit
+            "dejainscrit" => $dejainscrit,
+            "connected"=>$user
         );
 
         return $this->render('XiaomeiXiaomeiBundle:Cours:cours_show.html.twig', $params);
@@ -242,14 +246,18 @@ class CoursController extends Controller
               $cours = $coursRepo->findOneById($id);
               $creditcours=$cours->getDuration();
               $nombreplacerestant=$cours->getNrPlaceRestant();
-
+              $createur=$cours->getUser();
+              
+               $userID=$user->getID();
+               $createurID=$createur->getID(); 
      // nombreReste>0  ; and if je ne suis pas déja inscrit;  && $nombreplacerestant >0 faut mettre ailleurs
-             if($nombrecredit >=$creditcours && $nombreplacerestant >0  ){
+            if( $userID!==$createurID ){
+             if($nombrecredit >=$creditcours && $nombreplacerestant >0 ){
               $content=new Inscription();
               $content->setUser($user);
 
              $content->setDateInscription(new DateTime());
-             $content->setIsannulation('true');
+             $content->setIsannulation(false);
               $content->setCours($cours);
 
             //récupération du manager pour sauvegarder l'entity
@@ -261,15 +269,25 @@ class CoursController extends Controller
             //update: nombrecrdit dans user autre ID  + durée de cours:
             $cours->setNrPlaceRestant( $nombreplacerestant-1);
             $user->setNombreCredit($nombrecredit-$creditcours);
+            $createur->setNombreCredit($nombrecredit+$creditcours);
             $em->flush();
          
 
 
-          return $this->redirect($this->generateUrl('xiaomei_xiaomei_showcoursall'));}
-           else{ 
-            echo 'you have not enough credit in your account ';
-          
-             };
+          return $this->render('XiaomeiXiaomeiBundle:Cours:inscriptionreussi.html.twig');}
+           elseif( $nombrecredit < $creditcours)
+
+              {return $this->render('XiaomeiXiaomeiBundle:Cours:pasdecredit.html.twig');
+             }
+          else
+
+          {return $this->render('XiaomeiXiaomeiBundle:Cours:pasdeplace.html.twig');
+         };
+     }
+     else{
+        return $this->render('XiaomeiXiaomeiBundle:Cours:pasderepetition.html.twig');;
+     }
+
  
     }
 

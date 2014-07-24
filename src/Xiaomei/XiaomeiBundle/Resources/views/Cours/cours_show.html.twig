@@ -5,13 +5,13 @@
 {% endblock %}
 
 {% block wrapper %}
-{% if app.user  if dejainscrit >=1 %}
+{% if app.user and  dejainscrit >=1 %}
 <div id="cours">
 	<span>vous êtes déja inscrit</span>
 </div>
-{% endif %}
 
 
+{% else %}
 
 <h1>Nom de formation: {{ content.name}}</h1>
 <h3>Nom de catégorie: {{ content.category.name }}</h3>
@@ -19,7 +19,7 @@
 <p>Date de formation: {{ content.dateCours|date('d-m-Y')}}</p>
 <p>lieu de formation: {{ content.lieu}}</p>
 <p>Durée de formation( en heures): {{ content.duration}}</p>
-<a href="{{ path( 'xiaomei_xiaomei_formateur', {'id': content.user.id} ) }}">Voir les details de kikologue; {{ content.user.username}}</a>  
+<a href="{# path( 'xiaomei_xiaomei_formateur', {'id': content.user.id} ) }}">Voir les details de kikologue; {{ content.user.username#}</a>  
 
 </p>
 <p>Le descriptif de la formation: {{ content.descriptif}}</p>
@@ -37,12 +37,11 @@
 {# if $user.nombrecredit>=dureedeformation #}
 
 <button type="button" class="btn btn-default btn-lg">
- <a href="{{ path( 'xiaomei_xiaomei_inscriptioncours', {'id': content.id} ) }}" 
+ <a href="{{ path( 'xiaomei_xiaomei_inscriptioncoursconfirmer', {'id': content.id} ) }}" 
 	     title="{{ content.name }}">S'inscrire au cours</a> 
 </button>
 
-{# endif #} 
 
-
+{% endif %}
 
 {% endblock %}

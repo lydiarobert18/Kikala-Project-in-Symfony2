@@ -1,0 +1,12 @@
+{% extends "::base.html.twig" %}
+
+
+
+{% block wrapper %}
+
+
+vous ne pouvez pas vous inscrire à un cours que vous avez crée vous meme.
+
+veuillez choisir un autre cours:
+  <p><a href=" {{ path('xiaomei_xiaomei_showcoursall')}} "> Liste des cours </a></p>
+{% endblock %}

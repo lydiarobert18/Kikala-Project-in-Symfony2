@@ -50,10 +50,11 @@ class CoursRepository extends EntityRepository
 	public function findFullSingleContent($id){
 
 		$query = $this->createQueryBuilder('c')
-				->select('c, cat,user')	//hyper facile à oublier
+				->select('c, cat,user,inscription')	//hyper facile à oublier
 			    ->where('c.id = :id')
 			    ->leftJoin('c.category', 'cat')
-			    ->leftJoin('c.user', 'user')		
+			    ->leftJoin('c.user', 'user')
+			    ->leftJoin('c.inscription', 'inscription')		
 			    ->setParameter('id', $id)
 			    ->getQuery();
 
