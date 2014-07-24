@@ -40,7 +40,7 @@ class CoursType extends AbstractType
                         "placeholder" => "descriptif")))
 
             ->add('nrPlaceTotal')
-            ->add('nrPlaceRestant')
+           
             ->add( 'category','entity',array(
                 "class"=>"XiaomeiXiaomeiBundle:Category",
                 "property"=>"name"

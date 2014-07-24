@@ -63,14 +63,15 @@ class CoursRepository extends EntityRepository
 		return $content;
 	}
 
+	public function findcount(){
+          $query = $this->createQueryBuilder('i')
+				->select( "COUNT ( i)"	)
+				->getQuery();
+				$nombrecours = $query->getSingleResult();
+       
+		return $nombrecours;
+    }
 
-/*SELECT SUM(product.price) AS cart_price, cart.cart_id 
-FROM cart
-LEFT JOIN cart_product ON cart.cart_id = cart_product.cart_id
-LEFT JOIN product ON product.product_id = cart_product.product_id
-GROUP BY cart.cart_id
-ORDER BY cart_price DESC 
-LIMIT 10 */
 
 }
 

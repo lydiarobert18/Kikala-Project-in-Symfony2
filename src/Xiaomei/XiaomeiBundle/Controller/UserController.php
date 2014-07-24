@@ -12,6 +12,7 @@ use Xiaomei\XiaomeiBundle\Entity\User;
 use \DateTime;
 
 use Xiaomei\XiaomeiBundle\Form\RegisterType;
+use Xiaomei\XiaomeiBundle\Form\ModifierType;
 
 class UserController extends Controller
 {
@@ -168,23 +169,28 @@ public function registerAction(Request $request){
   }
 
 
-// public function modifierprofilAction(Request $request){
-//     //update les contenus; on peut tout modifier sauf email ;
+   
+    public function modifierprofilAction(Request $request){
+    //update les contenus; on peut tout modifier sauf email ;
+        $user=$this->getUser();
+        $register_form=$this->createForm(new ModifierType,$user);
+        $register_form->handleRequest($request);
 
-      
-//         $em=$this->getDoctrine()->getManager();
+        if($register_form->isValid()){
+    
+        $em=$this->getDoctrine()->getManager();
         
-//         $em->persist($user);
-//         $em->flush();
-//         }
-       
+        $em->persist($user);
+        $em->flush();
+        }
+        //print_r($user);
 
-//         $params=array(
-//             "register_form"=>$register_form->createView()
-//             );
+        $params=array(
+            "register_form"=>$register_form->createView()
+            );
 
-//         return $this->render("XiaomeiXiaomeiBundle:User:modifierprofil.html.twig",$params);
-//     }
+        return $this->render("XiaomeiXiaomeiBundle:User:modifierprofil.html.twig",$params);
+    }
 
 
  }

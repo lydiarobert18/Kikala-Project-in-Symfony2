@@ -16,7 +16,6 @@ class CoursController extends Controller
 
 {   
 
-
   /*  public function ordersubmitAction(Request $request)
     {
         $defaultData = array();
