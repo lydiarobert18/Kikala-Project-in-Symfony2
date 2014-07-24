@@ -115,15 +115,24 @@ class CoursController extends Controller
     
      public function showcourAction($id){
 
-       $contentRepository = $this->getDoctrine()->getRepository("XiaomeiXiaomeiBundle:Cours");
-        
+        $contentRepository = $this->getDoctrine()->getRepository("XiaomeiXiaomeiBundle:Cours");
+        $InscriptionRepository=$this->getDoctrine()->getRepository("XiaomeiXiaomeiBundle:Inscription");
+        //si user est connecté et non inscrit à la formation 
+          $user=$this->getUser();
+        //if ($user==true && $dejainscrit=false  )    
+        $dejainscrit=$InscriptionRepository->findFullSingleContent($user,$id);
+
+
+
         //récupère l'objet Content dont l'id est égal à celui dans l'url
         $content = $contentRepository->findFullSingleContent($id);
 
         //shoote ça à la vue
         $params = array(
-            "content" => $content
+            "content" => $content,
+            "dejainscrit" => $dejainscrit
         );
+
         return $this->render('XiaomeiXiaomeiBundle:Cours:cours_show.html.twig', $params);
 
      }

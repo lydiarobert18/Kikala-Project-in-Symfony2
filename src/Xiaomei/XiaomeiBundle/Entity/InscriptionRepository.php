@@ -11,5 +11,21 @@ use Doctrine\ORM\EntityRepository;
  * repository methods below.
  */
 class InscriptionRepository extends EntityRepository
-{
+
+{  public function findFullSingleContent($userid,$id){
+
+		$query = $this->createQueryBuilder('i')
+				->select( "COUNT ( i)"	)//hyper facile à oublier
+			    ->where('cours.id = :id')
+			    ->andwhere('user.id = :id2')
+			    ->leftJoin('i.cours', 'cours')
+			    ->leftJoin('i.user', 'user')		
+			    ->setParameter(':id', $id)
+			     ->setParameter(':id2', $userid)
+			    ->getQuery();
+
+		$dejainscrit = $query->getSingleResult();
+       
+		return $dejainscrit;
+}
 }

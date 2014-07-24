@@ -40,39 +40,41 @@ class __TwigTemplate_4f2156e6fc426d4846f530f9c91e033fc4836c91711bf4cf5ef29ea9290
         // line 8
         if ($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "user")) {
             // line 9
-            echo "\t<p>vous êtes connecté</p>
+            echo "<div id=\"cours\">
+\t<span>vous êtes connecté</span>
+</div>
 ";
         }
-        // line 11
+        // line 13
         echo "
 
 
 <h1>Nom de formation: ";
-        // line 14
+        // line 16
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["content"]) ? $context["content"] : $this->getContext($context, "content")), "name"), "html", null, true);
         echo "</h1>
 <h3>Nom de catégorie: ";
-        // line 15
+        // line 17
         echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["content"]) ? $context["content"] : $this->getContext($context, "content")), "category"), "name"), "html", null, true);
         echo "</h3>
 <p>Image de formation: ";
-        // line 16
+        // line 18
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["content"]) ? $context["content"] : $this->getContext($context, "content")), "image"), "html", null, true);
         echo "</p>
 <p>Date de formation: ";
-        // line 17
+        // line 19
         echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute((isset($context["content"]) ? $context["content"] : $this->getContext($context, "content")), "dateCours"), "d-m-Y"), "html", null, true);
         echo "</p>
 <p>lieu de formation: ";
-        // line 18
+        // line 20
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["content"]) ? $context["content"] : $this->getContext($context, "content")), "lieu"), "html", null, true);
         echo "</p>
 <p>Durée de formation( en heures): ";
-        // line 19
+        // line 21
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["content"]) ? $context["content"] : $this->getContext($context, "content")), "duration"), "html", null, true);
         echo "</p>
 <a href=\"";
-        // line 20
+        // line 22
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("xiaomei_xiaomei_formateur", array("id" => $this->getAttribute($this->getAttribute((isset($context["content"]) ? $context["content"] : $this->getContext($context, "content")), "user"), "id"))), "html", null, true);
         echo "\">Voir les details de kikologue; ";
         echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["content"]) ? $context["content"] : $this->getContext($context, "content")), "user"), "username"), "html", null, true);
@@ -80,15 +82,15 @@ class __TwigTemplate_4f2156e6fc426d4846f530f9c91e033fc4836c91711bf4cf5ef29ea9290
 
 </p>
 <p>Le descriptif de la formation: ";
-        // line 23
+        // line 25
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["content"]) ? $context["content"] : $this->getContext($context, "content")), "descriptif"), "html", null, true);
         echo "</p>
 <p>Nombre de places total :";
-        // line 24
+        // line 26
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["content"]) ? $context["content"] : $this->getContext($context, "content")), "nrPlaceTotal"), "html", null, true);
         echo "</p>
 <p>il en reste ";
-        // line 25
+        // line 27
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["content"]) ? $context["content"] : $this->getContext($context, "content")), "nrPlaceRestant"), "html", null, true);
         echo " de place(s)</p>
 
@@ -96,7 +98,7 @@ class __TwigTemplate_4f2156e6fc426d4846f530f9c91e033fc4836c91711bf4cf5ef29ea9290
 
 
 <p>la formation a été crée: ";
-        // line 30
+        // line 32
         echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute((isset($context["content"]) ? $context["content"] : $this->getContext($context, "content")), "dateCreated"), "d-m-Y"), "html", null, true);
         echo "</p>
 <br/> 
@@ -104,21 +106,21 @@ class __TwigTemplate_4f2156e6fc426d4846f530f9c91e033fc4836c91711bf4cf5ef29ea9290
 
 
 ";
-        // line 36
+        // line 38
         echo "
 <button type=\"button\" class=\"btn btn-default btn-lg\">
  <a href=\"";
-        // line 38
+        // line 40
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("xiaomei_xiaomei_inscriptioncours", array("id" => $this->getAttribute((isset($context["content"]) ? $context["content"] : $this->getContext($context, "content")), "id"))), "html", null, true);
         echo "\" 
 \t     title=\"";
-        // line 39
+        // line 41
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["content"]) ? $context["content"] : $this->getContext($context, "content")), "name"), "html", null, true);
         echo "\">S'inscrire au cours</a> 
 </button>
 
 ";
-        // line 42
+        // line 44
         echo " 
 
 
@@ -138,6 +140,6 @@ class __TwigTemplate_4f2156e6fc426d4846f530f9c91e033fc4836c91711bf4cf5ef29ea9290
 
     public function getDebugInfo()
     {
-        return array (  122 => 42,  116 => 39,  112 => 38,  108 => 36,  100 => 30,  92 => 25,  88 => 24,  84 => 23,  76 => 20,  72 => 19,  68 => 18,  64 => 17,  60 => 16,  56 => 15,  52 => 14,  47 => 11,  43 => 9,  41 => 8,  38 => 7,  32 => 4,  29 => 3,);
+        return array (  124 => 44,  118 => 41,  114 => 40,  110 => 38,  102 => 32,  94 => 27,  90 => 26,  86 => 25,  78 => 22,  74 => 21,  70 => 20,  66 => 19,  62 => 18,  58 => 17,  54 => 16,  49 => 13,  43 => 9,  41 => 8,  38 => 7,  32 => 4,  29 => 3,);
     }
 }

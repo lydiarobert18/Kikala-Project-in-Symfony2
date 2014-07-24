@@ -5,8 +5,10 @@
 {% endblock %}
 
 {% block wrapper %}
-{% if app.user %}
-	<p>vous êtes connecté</p>
+{% if app.user  if dejainscrit >=1 %}
+<div id="cours">
+	<span>vous êtes déja inscrit</span>
+</div>
 {% endif %}
 
 

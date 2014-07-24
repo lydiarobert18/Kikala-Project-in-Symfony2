@@ -22,7 +22,9 @@ class UserRepository extends EntityRepository
 			    ->setParameter(':id', $id)
 			    ->getQuery();
 
-		$content = $query->getSingleResult();
+		 $content = $query->getSingleResult();
+		//$dejainscrit   coursid existe dans  u.inscription.id (array)
+	      //$content->getInscription();
 
 		return $content;
 //comment faire jointure many to many ; User et cours, pour avoir liste des cours dispensé et liste de cours suivi
