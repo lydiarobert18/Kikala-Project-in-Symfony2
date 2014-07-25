@@ -30,7 +30,10 @@ class ModifierType extends AbstractType
             ->add('metier')
             ->add('descriptifFormateur')
             ->add('descriptifEtudiant')
-            ->add('photo')          
+            
+            ->add('file', 'file',array(
+                    "label" => "Modifer votre photo"))        
+  
 
          
 

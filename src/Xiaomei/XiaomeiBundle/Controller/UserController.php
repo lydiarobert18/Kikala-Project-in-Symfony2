@@ -2,6 +2,8 @@
 
 namespace Xiaomei\XiaomeiBundle\Controller;
 
+use abeautifulsite\SimpleImage;
+//use Symfony\vendor\abeautifulsite\SimpleImage;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Util\SecureRandom;
@@ -109,8 +111,6 @@ public function mesinscriptionsAction(){
      
 
 
-
-
 public function registerAction(Request $request){
         $user=new User();
         $register_form=$this->createForm(new RegisterType,$user);
@@ -119,8 +119,45 @@ public function registerAction(Request $request){
         if($register_form->isValid()){
        //il manque un role 
 
+// photo reçue
+
+         $file = $user->getFile();
+         print_r($file);
+         $filename=$file->getPathName();
+        // $filename="C:/xampp/tmp/".$filename;
+
+         print_r($filename);
+   
+         //print_r($file['tmp_name']);
+        
 
 
+//      donnner nouveau nom et move et web/uploads
+        $dir = $this->get('kernel')->getRootDir() . '/../web/uploads';
+        $extension = $file->guessExtension();
+        //pour que le newname soit unique et aussi random; 
+        $newFilename = base64_encode(microtime()).'.'.$extension;
+
+       
+//simpleimage
+
+
+            $img = new SimpleImage($filename);
+
+            //medium image
+            $img->best_fit(400, 400)->save($dir.'/medium/'.$newFilename);
+ 
+            //thumbnails 
+            $img->thumbnail(150)->save($dir.'/thumbnails/'.$newFilename);
+           
+            //original
+           // move_uploaded_file($tmp_name, 'uploads/img/originals/'.$newFilename);
+
+ //original
+             $file->move($dir.'/original/', $newFilename);
+             $user->setPhoto($newFilename);
+
+//
         $user->setIsActive(true);
         $user->setDateRegistered(new Datetime());
         $user->setNombreCredit(2);
@@ -173,10 +210,57 @@ public function registerAction(Request $request){
     public function modifierprofilAction(Request $request){
     //update les contenus; on peut tout modifier sauf email ;
         $user=$this->getUser();
+         $photo=$user->getPhoto();
         $register_form=$this->createForm(new ModifierType,$user);
         $register_form->handleRequest($request);
-
+       
         if($register_form->isValid()){
+
+        //remettre photo
+        $file = $user->getFile();
+         print_r($file);
+         $filename=$file->getPathName();
+
+        // $filename="C:/xampp/tmp/".$filename;
+
+    /*    $file:Symfony\Component\HttpFoundation\File\UploadedFile Object ( [test:Symfony\Component\HttpFoundation\File\UploadedFile:private] => 
+        [originalName:Symfony\Component\HttpFoundation\File\UploadedFile:private] => 014c674.jpg 
+        [mimeType:Symfony\Component\HttpFoundation\File\UploadedFile:private] => image/jpeg 
+        [size:Symfony\Component\HttpFoundation\File\UploadedFile:private] => 9356 
+        [error:Symfony\Component\HttpFoundation\File\UploadedFile:private] => 0 
+        [pathName:SplFileInfo:private] => C:\xampp\tmp\php7A9B.tmp [fileName:SplFileInfo:private] =>
+         php7A9B.tmp ) C:\xampp\tmp\php7A9B.tmp*/
+
+//      donnner nouveau nom et move et web/uploads
+        $dir = $this->get('kernel')->getRootDir() . '/../web/uploads';
+        $extension = $file->guessExtension();
+        //pour que le newname soit unique et aussi random; 
+        $newFilename = base64_encode(microtime()).'.'.$extension;
+       
+
+       
+//simpleimage
+
+
+            $img = new SimpleImage($filename);
+
+            //medium image
+            $img->best_fit(400, 400)->save($dir.'/medium/'.$newFilename);
+ 
+            //thumbnails 
+            $img->thumbnail(150)->save($dir.'/thumbnails/'.$newFilename);
+           
+            //original
+           // move_uploaded_file($tmp_name, 'uploads/img/originals/'.$newFilename);
+
+ //original
+             $file->move($dir.'/original/', $newFilename);
+             $user->setPhoto($newFilename);
+
+//photo actuelle avant modif dans la base de données:
+         
+
+    //finir remettre photo
     
         $em=$this->getDoctrine()->getManager();
         
@@ -186,7 +270,8 @@ public function registerAction(Request $request){
         //print_r($user);
 
         $params=array(
-            "register_form"=>$register_form->createView()
+            "register_form"=>$register_form->createView(),
+            "photoshow" => $photo
             );
 
         return $this->render("XiaomeiXiaomeiBundle:User:modifierprofil.html.twig",$params);

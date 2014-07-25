@@ -40,7 +40,8 @@ class RegisterType extends AbstractType
             ->add('metier')
             ->add('descriptifFormateur')
             ->add('descriptifEtudiant')
-            ->add('photo')          
+           // ->add('photo')
+            ->add('file', 'file')        
 
             // ->add( 'cours','entity',array(
             //     "class"=>"XiaomeiXiaomeiBundle:Cours",

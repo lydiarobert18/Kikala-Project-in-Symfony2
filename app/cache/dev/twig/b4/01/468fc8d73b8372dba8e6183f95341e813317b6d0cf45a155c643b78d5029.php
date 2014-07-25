@@ -40,9 +40,13 @@ class __TwigTemplate_b401468fc8d73b8372dba8e6183f95341e813317b6d0cf45a155c643b78
     {
         // line 9
         echo "\t<h1>Modifier votre profil !</h1>
-
+\t<img src=\"";
+        // line 10
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl(("uploads/medium/" . (isset($context["photoshow"]) ? $context["photoshow"] : $this->getContext($context, "photoshow")))), "html", null, true);
+        echo "\" alt=\"photo\">
+        
 ";
-        // line 11
+        // line 12
         echo         $this->env->getExtension('form')->renderer->renderBlock((isset($context["register_form"]) ? $context["register_form"] : $this->getContext($context, "register_form")), 'form', array("attr" => array("novalidate" => "novalidate")));
         echo "
 
@@ -61,6 +65,6 @@ class __TwigTemplate_b401468fc8d73b8372dba8e6183f95341e813317b6d0cf45a155c643b78
 
     public function getDebugInfo()
     {
-        return array (  46 => 11,  42 => 9,  39 => 8,  32 => 5,  29 => 4,);
+        return array (  50 => 12,  45 => 10,  42 => 9,  39 => 8,  32 => 5,  29 => 4,);
     }
 }

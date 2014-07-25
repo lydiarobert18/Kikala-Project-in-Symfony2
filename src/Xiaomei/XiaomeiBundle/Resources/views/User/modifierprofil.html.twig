@@ -7,7 +7,8 @@
 
 {% block wrapper %}
 	<h1>Modifier votre profil !</h1>
-
+	<img src="{{ asset('uploads/medium/'~ photoshow) }}" alt="photo">
+        
 {{ form(register_form, {'attr': {'novalidate': 'novalidate'}}) }}
 
 {% endblock %}

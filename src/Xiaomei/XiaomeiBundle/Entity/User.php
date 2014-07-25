@@ -121,9 +121,22 @@ class User implements UserInterface, EquatableInterface, \Serializable
     /**
      * @var string
      *
-     * @ORM\Column(name="photo", type="string", length=255)
+     * @ORM\Column(name="photo", type="string", length=255,nullable=true)
      */
     private $photo;
+
+    
+     /**
+      * @Assert\Image(
+      *     minWidth = 50,
+      *     maxWidth = 2400,
+      *     minHeight = 50,
+      *     maxHeight = 2400
+      * )
+    */
+ 
+    private $file;
+
 
     /**
      * @var string
@@ -445,6 +458,29 @@ class User implements UserInterface, EquatableInterface, \Serializable
     public function getPhoto()
     {
         return $this->photo;
+    }
+
+    /**
+     * Set file
+     *
+     * @param string $file
+     * @return Profile
+     */
+    public function setFile($file)
+    {
+        $this->file = $file;
+
+        return $this;
+    }
+
+    /**
+     * Get file
+     *
+     * @return string 
+     */
+    public function getFile()
+    {
+        return $this->file;
     }
 
     /**

@@ -6,8 +6,10 @@
 
 {% block wrapper %}
 	<h1>Kikologue {{content.username }}:</h1>
+	<img src="{{ asset('uploads/medium/'~ content.photo) }}" alt="photo">
+	
 	<p>age par tranche de 10 ans </p>
-	<p>photo: </p>
+	
 	<p>descriptif: </p>
     <p>sexe: {{ content.sex}}</p>
 
