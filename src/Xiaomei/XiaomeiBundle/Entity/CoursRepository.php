@@ -32,15 +32,20 @@ class CoursRepository extends EntityRepository
 		//$tri='c.lieu'
 
 		//utiliser formulaire get pour obtenir le valeur de $tri: 
-
+        $datecours=new Datetime();
 		$query = $this->createQueryBuilder('c')
-				->select('c, cat,user')	//hyper facile à oublier						    
+				->select('c, cat,user')	//hyper facile à oublier
+				//->where('c.dateCours >= :dateCours')	
+				//->andWhere('c.isannulation' =:isannulation')					    
 			    ->leftJoin('c.category', 'cat')	
 			    ->leftJoin('c.user', 'user')
+			   //  ->setParameter('dateCours', $datecours)
+			   // ->setParameter('isannulation', false)
 			    ->orderBy($tri,'DESC')
-			    //->LIMIT BY 30 
-			    ->getQuery();
-         //order by limit by 
+			    //LIMIT $offset;
+			    //->LIMIT 30
+	       	    ->getQuery();
+       
 		$contents = $query->getResult();
 
 		return $contents;

@@ -7,16 +7,22 @@
 {% block wrapper %}
 	<h1>Les formations que j'ai crées </h1>
 	{% for content in contents.cours %}
-
+      <p>{{ content.id }}</p>
 	 <p>{{ content.name}}</p>
-	
-	     
-    {# content.dateCreated|date('d-m-Y')#}
-	</li>
 
+{% if content.isannulation %}
+     <p class='rouge'> cette formation a été annulée par vous</p>
+    
+     {% else %}
+    
+     <a href=" {{ path('xiaomei_xiaomei_cancelcours', {'id':content.id}) }}">
+     Supprimer le cours</a>
 
+      {% endif %} 
 
 {% endfor %}
 
 
 {% endblock %}
+
+

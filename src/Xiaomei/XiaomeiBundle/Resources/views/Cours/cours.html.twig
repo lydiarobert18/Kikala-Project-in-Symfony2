@@ -22,10 +22,17 @@
 	     {% else %}
 	     non-catégorisée
 	     {% endif %})
-      place:{{ content.nrPlacerestant}} 
-      {% if content.nrPlacerestant==0  %} <span id='spancours'>Complete    </span> {% endif %}
+
 
 <span>{{content.dateCours|date('d-m-Y')}}</span> 
+<span>{{content.lieu}}</span> 
+
+ place:{{ content.nrPlacerestant}} 
+      {% if content.nrPlacerestant==0  %} <span class='rouge'>Complete    </span> {% endif %}
+
+       {% if content.dateCours < date('+2days') and content.dateCours > date('+0days') %} <span class='rouge'>Nouvelle  </span> {% endif %}
+
+        {% if content.dateCours < date('+2days') and content.dateCours > date('+0days')  and  content.nrPlacerestant > 0 %} <span class='rouge'>Ne tardez pas  </span> {% endif %}
 	</li>
 
 

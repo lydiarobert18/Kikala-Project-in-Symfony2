@@ -60,6 +60,9 @@ xiaomei_xiaomei_create_cours:
     path:     /moncompte/createcours/
     defaults: { _controller: XiaomeiXiaomeiBundle:Cours:createcours }
 
+xiaomei_xiaomei_cancelcours:
+    path:     /moncompte/cancelcours/{id}
+    defaults: { _controller: XiaomeiXiaomeiBundle:Cours:cancelcours }
 xiaomei_xiaomei_formateur:
     path:     /formateur/{id}
     defaults: { _controller: XiaomeiXiaomeiBundle:User:formateur }

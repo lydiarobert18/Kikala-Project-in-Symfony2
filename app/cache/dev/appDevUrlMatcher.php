@@ -265,6 +265,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                     return array (  '_controller' => 'Xiaomei\\XiaomeiBundle\\Controller\\CoursController::createcoursAction',  '_route' => 'xiaomei_xiaomei_create_cours',);
                 }
 
+                // xiaomei_xiaomei_cancelcours
+                if (0 === strpos($pathinfo, '/moncompte/cancelcours') && preg_match('#^/moncompte/cancelcours/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'xiaomei_xiaomei_cancelcours')), array (  '_controller' => 'Xiaomei\\XiaomeiBundle\\Controller\\CoursController::cancelcoursAction',));
+                }
+
             }
 
         }

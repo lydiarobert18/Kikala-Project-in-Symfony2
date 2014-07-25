@@ -68,6 +68,17 @@ class CoursController extends Controller
        
         //récupère tous les contenus de la table, avec tri et limit
         $contents = $contentRepository->findHomeContents($tri='c.dateCours');
+
+         $dateactuelle=new Datetime();
+
+  //faire calcul de 2 jours 
+       /* foreach($contents as $content)
+        {$datecours=$content->getDateCours();
+         $datedifference=(time()-strtotime($datecours))/(24*60*60);
+         $datedifference=round($datedifference);
+        }*/
+
+        
         
         //$daydifference=(time()-strtotime($this->birthday))/(24*60*60);
            
@@ -84,9 +95,7 @@ class CoursController extends Controller
          ->getForm();
          $form->handleRequest($request);
 
-       
-
-
+  
         if ($form->isValid()) {
             // Les données sont un tableau avec les clés "name", "email", et "message"
             $data = $form->getData();
@@ -105,6 +114,7 @@ class CoursController extends Controller
         $params2 = array(
             "order" => $contentCreateFormView1,
               "contents" => $contents,
+            //  "daydifference" =>$daydifference
 
         );
         // ... affiche le formulaire
@@ -122,8 +132,7 @@ class CoursController extends Controller
          $dejainscrit=$InscriptionRepository->findFullSingleContent($user,$id);
          $dejainscrit= $dejainscrit[1];
      
-           
-          
+ 
         
         //récupère l'objet Content dont l'id est égal à celui dans l'url
         $content = $contentRepository->findFullSingleContent($id);
@@ -303,12 +312,6 @@ class CoursController extends Controller
                 
                 $em->flush();
    
-     // cours devient annulé avec date:
-               $cours=$inscription->getCours();
-               $cours->setIsannulation(true);
-               $cours->setDateCancellation(new Datetime());
-
-
       //  //trafic de score : $scorerecuperer=$duration coursid/2   dans user
      //$scoreperdu=$duraton coursid/2 dans cours
              $creditcours=$cours->getDuration();
@@ -324,6 +327,49 @@ class CoursController extends Controller
               
        return $this->redirect($this->generateUrl('xiaomei_xiaomei_mesinscriptions'));
 }
+
+   public function cancelcoursAction($id){
+       $coursRepository = $this->getDoctrine()->getRepository("XiaomeiXiaomeiBundle:Cours");
+       $cours= $coursRepository ->find($id);         
+       $cours->setIsannulation(true);
+       $cours->setDateCancellation(new Datetime());
+
+        $em = $this->getDoctrine()->getManager();      
+
+                $em->persist( $cours );
+                
+                $em->flush();
+   
+
+      //  //trafic de score : rendre les scores duration à tous les inscrits ;
+        //perdre duration *nombre d'inscrits:
+
+             $creditcours=$cours->getDuration();
+             
+            $inscriptions=$cours->getInscription();
+            $count=count($inscriptions);
+            $user=$cours->getUser();
+            $creditactuel=$user->getNombreCredit(); 
+            $user->setNombreCredit( $creditactuel-$count*$creditcours);
+
+
+              //une boucle : chaque inscrit recoit $nombrecredit dans son crédit actuelle:
+           $inscriptions=$cours->getInscription();
+           
+
+         foreach($inscriptions as $key => $inscription){
+             $user= $inscription->getUser() ;
+             $NombreCredit=$user->getNombreCredit(); 
+             $user->setNombreCredit( $creditactuel+$creditcours);
+          }
+
+            
+             
+             $em->flush();
+              
+       return $this->redirect($this->generateUrl('xiaomei_xiaomei_mesformations'));
+
+   }
 
 
 }
