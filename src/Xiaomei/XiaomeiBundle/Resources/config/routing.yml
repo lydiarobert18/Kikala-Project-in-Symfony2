@@ -51,6 +51,11 @@ xiaomei_xiaomei_mesinscriptions:
     path:     /moncompte/mesinscriptions/
     defaults: { _controller: XiaomeiXiaomeiBundle:User:mesinscriptions }
 
+xiaomei_xiaomei_cancelinscriptions:
+    path:     /moncompte/cancelinscriptions/{id}
+    defaults: { _controller: XiaomeiXiaomeiBundle:Cours:cancelinscriptions }
+
+
 xiaomei_xiaomei_create_cours:
     path:     /moncompte/createcours/
     defaults: { _controller: XiaomeiXiaomeiBundle:Cours:createcours }

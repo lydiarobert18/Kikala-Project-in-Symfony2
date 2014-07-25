@@ -250,13 +250,21 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
             }
 
-            // xiaomei_xiaomei_create_cours
-            if (rtrim($pathinfo, '/') === '/moncompte/createcours') {
-                if (substr($pathinfo, -1) !== '/') {
-                    return $this->redirect($pathinfo.'/', 'xiaomei_xiaomei_create_cours');
+            if (0 === strpos($pathinfo, '/moncompte/c')) {
+                // xiaomei_xiaomei_cancelinscriptions
+                if (0 === strpos($pathinfo, '/moncompte/cancelinscriptions') && preg_match('#^/moncompte/cancelinscriptions/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'xiaomei_xiaomei_cancelinscriptions')), array (  '_controller' => 'Xiaomei\\XiaomeiBundle\\Controller\\CoursController::cancelinscriptionsAction',));
                 }
 
-                return array (  '_controller' => 'Xiaomei\\XiaomeiBundle\\Controller\\CoursController::createcoursAction',  '_route' => 'xiaomei_xiaomei_create_cours',);
+                // xiaomei_xiaomei_create_cours
+                if (rtrim($pathinfo, '/') === '/moncompte/createcours') {
+                    if (substr($pathinfo, -1) !== '/') {
+                        return $this->redirect($pathinfo.'/', 'xiaomei_xiaomei_create_cours');
+                    }
+
+                    return array (  '_controller' => 'Xiaomei\\XiaomeiBundle\\Controller\\CoursController::createcoursAction',  '_route' => 'xiaomei_xiaomei_create_cours',);
+                }
+
             }
 
         }

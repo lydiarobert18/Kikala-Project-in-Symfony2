@@ -6,14 +6,27 @@
 
 {% block wrapper %}
 	<h1>Les cours danslequelles où je suis inscrites  </h1>
+
+
 	{% for content in contents.inscription %}
 			
 	 <p>{{ content.id ~")"}}</p>
 	 <p>nom du cours inscrit:{{ content.cours.name}}</p>
+	  <a href=" {{ path('xiaomei_xiaomei_showcour', {'id':content.cours.id}) }}">
+      voir le détail du cours</a>
     
      <p>date d'inscription: {{ content.dateInscription|date('d-m-Y')}}</p>
      
+     {% if content.isannulation %}
+     <p class='rouge'> cet inscription a été annulée par vous</p>
     
+     {% else %}
+    
+     <a href=" {{ path('xiaomei_xiaomei_cancelinscriptions', {'id':content.id}) }}">
+     Supprimer l'inscription</a>
+
+      {% endif %} 
+  
 
 {% endfor %}
 

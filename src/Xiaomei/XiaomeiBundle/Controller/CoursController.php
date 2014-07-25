@@ -149,7 +149,7 @@ class CoursController extends Controller
         if ($contentCreateForm->isValid()){
             $place=$content->getNrPlaceTotal();
             $content->setNrPlaceRestant($place);
-
+            $content->setIsannulation(false);
             $content->setDateCreated(new DateTime());
             $user= $this->getUser();
             $content->setUser($user);
@@ -290,9 +290,42 @@ class CoursController extends Controller
  
     }
 
+    
+    public function cancelinscriptionsAction($id){
+      $insRepository = $this->getDoctrine()->getRepository("XiaomeiXiaomeiBundle:Inscription");
+      $inscription= $insRepository ->find($id);         
+       $inscription->setIsannulation(true);
+       $inscription->setDateCancellation(new Datetime());
+
+        $em = $this->getDoctrine()->getManager();      
+
+                $em->persist( $inscription );
+                
+                $em->flush();
+   
+     // cours devient annulé avec date:
+               $cours=$inscription->getCours();
+               $cours->setIsannulation(true);
+               $cours->setDateCancellation(new Datetime());
+
+
+      //  //trafic de score : $scorerecuperer=$duration coursid/2   dans user
+     //$scoreperdu=$duraton coursid/2 dans cours
+             $creditcours=$cours->getDuration();
+             $creditcours=$creditcours/2;
+
+             $user=$inscription->getUser();
+             $nombrecredit= $user->getNombreCredit();
+             $user->setNombreCredit($nombrecredit+$creditcours);
+           
+            $createur= $cours->getUser();
+            $createur->setNombreCredit($nombrecredit-$creditcours);
+            $em->flush();
+              
+       return $this->redirect($this->generateUrl('xiaomei_xiaomei_mesinscriptions'));
 }
 
 
-    
+}
 
 

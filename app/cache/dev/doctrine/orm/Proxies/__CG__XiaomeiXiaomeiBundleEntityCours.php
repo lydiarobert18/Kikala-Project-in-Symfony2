@@ -64,10 +64,10 @@ class Cours extends \Xiaomei\XiaomeiBundle\Entity\Cours implements \Doctrine\ORM
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'id', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'name', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'image', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'dateCours', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'lieu', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'duration', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'descriptif', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'nrPlaceTotal', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'nrPlaceRestant', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'dateCreated', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'category', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'user', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'inscription');
+            return array('__isInitialized__', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'id', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'name', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'image', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'dateCours', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'lieu', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'duration', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'descriptif', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'nrPlaceTotal', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'nrPlaceRestant', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'dateCreated', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'isannulation', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'dateCancellation', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'category', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'user', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'inscription');
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'id', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'name', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'image', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'dateCours', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'lieu', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'duration', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'descriptif', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'nrPlaceTotal', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'nrPlaceRestant', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'dateCreated', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'category', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'user', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'inscription');
+        return array('__isInitialized__', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'id', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'name', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'image', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'dateCours', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'lieu', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'duration', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'descriptif', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'nrPlaceTotal', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'nrPlaceRestant', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'dateCreated', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'isannulation', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'dateCancellation', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'category', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'user', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'inscription');
     }
 
     /**
@@ -461,6 +461,50 @@ class Cours extends \Xiaomei\XiaomeiBundle\Entity\Cours implements \Doctrine\ORM
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getInscription', array());
 
         return parent::getInscription();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setDateCancellation($dateCancellation)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDateCancellation', array($dateCancellation));
+
+        return parent::setDateCancellation($dateCancellation);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getDateCancellation()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDateCancellation', array());
+
+        return parent::getDateCancellation();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setIsannulation($isannulation)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsannulation', array($isannulation));
+
+        return parent::setIsannulation($isannulation);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getIsannulation()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsannulation', array());
+
+        return parent::getIsannulation();
     }
 
 }

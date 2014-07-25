@@ -64,10 +64,10 @@ class User extends \Xiaomei\XiaomeiBundle\Entity\User implements \Doctrine\ORM\P
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'id', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'username', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'email', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'password', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'name', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'firstname', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'nombreCredit', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'birthyear', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'sex', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'metier', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'descriptifFormateur', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'descriptifEtudiant', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'photo', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'salt', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'token', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'isActive', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'dateRegistered', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'roles', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'cours', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'inscription');
+            return array('__isInitialized__', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'id', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'username', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'email', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'password', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'name', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'firstname', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'nombreCredit', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'birthyear', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'sex', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'metier', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'descriptifFormateur', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'descriptifEtudiant', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'photo', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'file', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'salt', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'token', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'isActive', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'dateRegistered', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'roles', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'cours', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'inscription');
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'id', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'username', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'email', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'password', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'name', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'firstname', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'nombreCredit', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'birthyear', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'sex', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'metier', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'descriptifFormateur', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'descriptifEtudiant', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'photo', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'salt', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'token', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'isActive', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'dateRegistered', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'roles', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'cours', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'inscription');
+        return array('__isInitialized__', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'id', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'username', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'email', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'password', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'name', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'firstname', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'nombreCredit', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'birthyear', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'sex', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'metier', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'descriptifFormateur', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'descriptifEtudiant', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'photo', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'file', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'salt', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'token', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'isActive', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'dateRegistered', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'roles', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'cours', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\User' . "\0" . 'inscription');
     }
 
     /**
@@ -428,6 +428,28 @@ class User extends \Xiaomei\XiaomeiBundle\Entity\User implements \Doctrine\ORM\P
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPhoto', array());
 
         return parent::getPhoto();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setFile($file)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setFile', array($file));
+
+        return parent::setFile($file);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getFile()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFile', array());
+
+        return parent::getFile();
     }
 
     /**

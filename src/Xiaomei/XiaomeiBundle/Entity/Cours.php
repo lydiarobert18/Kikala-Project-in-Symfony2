@@ -102,6 +102,22 @@ class Cours
      */
     private $dateCreated;
 
+     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="isannulation", type="boolean")
+     */
+    private $isannulation;
+
+
+    /**
+     * @var \DateTime
+     * 
+     * @ORM\Column(name="dateCancellation", type="datetime",nullable=true)
+     */
+    private $dateCancellation;
+
+
     /**
        * @var Xiaomei\XiaomeiBundle\Entity\Category;
        *
@@ -434,4 +450,54 @@ class Cours
     {
         return $this->inscription;
     }
+
+
+    /**
+     * Set dateCancellation
+     *
+     * @param \DateTime $dateCancellation
+     * @return Cancellation
+     */
+    public function setDateCancellation($dateCancellation)
+    {
+        $this->dateCancellation = $dateCancellation;
+
+        return $this;
+    }
+
+    /**
+     * Get dateCancellation
+     *
+     * @return \DateTime 
+     */
+    public function getDateCancellation()
+    {
+        return $this->DateCancellation;
+    }
+
+
+
+    /**
+     * Set isannulation
+     *
+     * @param boolean $isannulation
+     * @return Inscription
+     */
+    public function setIsannulation($isannulation)
+    {
+        $this->isannulation = $isannulation;
+
+        return $this;
+    }
+
+    /**
+     * Get isannulation
+     *
+     * @return boolean 
+     */
+    public function getIsannulation()
+    {
+        return $this->isannulation;
+    }
+    
 }
