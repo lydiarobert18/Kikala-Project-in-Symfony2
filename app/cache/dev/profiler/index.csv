@@ -30,3 +30,8 @@ bc7f04,::1,GET,http://localhost/Symfony/web/app_dev.php/showcours/c.lieu,1406558
 a44e46,::1,GET,http://localhost/Symfony/web/app_dev.php/showcours/c.lieu,1406558819,
 6df1c1,::1,GET,http://localhost/Symfony/web/app_dev.php/showcours,1406559015,6fdf70
 6fdf70,::1,GET,http://localhost/Symfony/web/app_dev.php/showcours,1406559015,
+66b377,::1,GET,http://localhost/Symfony/web/app_dev.php/showcours,1406559500,b9637c
+b9637c,::1,GET,http://localhost/Symfony/web/app_dev.php/showcours,1406559500,
+55aa6d,::1,GET,http://localhost/Symfony/web/app_dev.php/showcours,1406559565,
+1adf64,::1,POST,http://localhost/Symfony/web/app_dev.php/showtri/,1406559572,
+3ae1fa,::1,GET,http://localhost/Symfony/web/app_dev.php/showcours/c.lieu,1406559572,

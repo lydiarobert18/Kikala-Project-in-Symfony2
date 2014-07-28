@@ -97,15 +97,20 @@ class CoursRepository extends EntityRepository
     }
 
   public function countcourspage(){
-          $query = $this->createQueryBuilder('c')
-				->select( "COUNT ( c)"	)
-				//->WHERE date 
-				//->WHERE 'isannulation' =false
-				->getQuery();
-				$nombrecours = $query->getSingleResult();
-        
-		return $nombrecours;
-    }
+
+			$query = $this->createQueryBuilder('c')
+				->select( "COUNT ( c)"	)//hyper facile à oublier
+				//->where('c.dateCours >= :dateCours')	
+				//->andWhere('c.isannulation' =:isannulation')					    
+		 
+	       	    ->getQuery();
+       
+		$count = $query->getResult();
+       
+		return $count;
+
+		}
+
 
   }  
 
