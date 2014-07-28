@@ -28,4 +28,32 @@ class InscriptionRepository extends EntityRepository
        
 		return $dejainscrit;
 }
+
+
+   public function findnombreinscrit($idcours){
+          $query = $this->createQueryBuilder('i')
+          ->select( "COUNT ( i)"  )
+          ->leftJoin('i.cours', 'cours')
+           ->where('cours.id = :id')
+           ->andWhere('i.isannulation=false')
+          ->setParameter('id', $idcours)
+        ->getQuery();
+         $nombreinscrit = $query->getSingleScalarResult();
+       
+    return $nombreinscrit;
+    }
+
+    public function nombreinscritannule($idcours){
+          $query = $this->createQueryBuilder('i')
+          ->select( "COUNT ( i)"  )
+          ->leftJoin('i.cours', 'cours')
+           ->where('cours.id = :id')
+           ->andWhere('i.isannulation=true')
+          ->setParameter('id', $idcours)
+        ->getQuery();
+         $nombredésinscrit = $query->getSingleScalarResult();
+       
+    return $nombredésinscrit;
+    }
+
 }

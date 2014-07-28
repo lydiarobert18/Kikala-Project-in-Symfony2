@@ -20,6 +20,7 @@ class UserRepository extends EntityRepository
 				 ->leftJoin('u.inscription', 'i')	
 			    ->leftJoin('u.cours', 'c')					   
 			    ->setParameter(':id', $id)
+			    //->orderby (u.cours.dateCreation,ASC)
 			    ->getQuery();
 
 		 $content = $query->getSingleResult();
@@ -30,6 +31,8 @@ class UserRepository extends EntityRepository
 //comment faire jointure many to many ; User et cours, pour avoir liste des cours dispensé et liste de cours suivi
 	
 	}
+
+  
 
 	public function findcount(){
           $query = $this->createQueryBuilder('u')

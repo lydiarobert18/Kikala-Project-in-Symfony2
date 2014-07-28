@@ -54,7 +54,7 @@ class CoursRepository extends EntityRepository
 		}
 
 		
-		public function countcourspage(){
+		/*public function countcourspage(){
 
 			$query = $this->createQueryBuilder('c')
 				->select( "COUNT ( c)"	)//hyper facile à oublier
@@ -68,7 +68,7 @@ class CoursRepository extends EntityRepository
 		return $count;
 
 		}
-
+*/
 
 
 	public function findFullSingleContent($id){
@@ -96,7 +96,17 @@ class CoursRepository extends EntityRepository
 		return $nombrecours;
     }
 
+  public function countcourspage(){
+          $query = $this->createQueryBuilder('c')
+				->select( "COUNT ( c)"	)
+				//->WHERE date 
+				//->WHERE 'isannulation' =false
+				->getQuery();
+				$nombrecours = $query->getSingleResult();
+        
+		return $nombrecours;
+    }
 
-}
+  }  
 
  

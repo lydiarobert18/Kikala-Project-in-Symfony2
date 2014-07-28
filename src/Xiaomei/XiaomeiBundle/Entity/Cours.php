@@ -145,6 +145,38 @@ class Cours
 
 
 
+
+
+    private $countInscrit;
+    public function getCountInscrit()
+    {
+        return $this->countInscrit;
+    }
+
+    public function setCountInscrit($countInscrit)
+    {
+        $this->countInscrit = $countInscrit;
+
+        return $this;
+    }
+
+   private $inscritannule;
+    public function getInscritannule()
+    {
+        return $this->inscritannule;
+    }
+
+    public function setInscritannule($inscritannule)
+    {
+        $this->inscritannule = $inscritannule;
+
+        return $this;
+    }
+
+
+
+
+
     /**
      * Get id
      *
@@ -293,6 +325,8 @@ class Cours
     {
         return $this->descriptif;
     }
+
+
 
     /**
      * Set nrPlaceTotal

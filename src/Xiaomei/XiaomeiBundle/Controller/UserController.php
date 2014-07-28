@@ -60,17 +60,43 @@ public function formateurAction($id)
 public function moncompteAction()
     {
         $contentRepository = $this->getDoctrine()->getRepository("XiaomeiXiaomeiBundle:User");
+        $inRepository = $this->getDoctrine()->getRepository("XiaomeiXiaomeiBundle:Inscription");
         
         $iduser=$this->getUser()->getID();
       
         $content = $contentRepository->findFullSingleContent($iduser);
-        
-        //shoote ça à la vue
+        $cours=$content->getCours();
+
+      /*  foreach( $cours as $cour){
+        $inscriptions=$cour->getInscription();
+        $nombreinscrit=count($inscriptions);
+        //print_r($nombreinscrit);
+        }*/
+
+//methode 2       
+         foreach( $cours as $cour){
+         $inscriptions=$cour->getInscription();
+         $idcours=$cour->getID();
+         $nombreinscrit=$inRepository->findnombreinscrit($idcours);
+         $nombredésinscrit=$inRepository->nombreinscritannule($idcours);
+         $cour->setCountInscrit($nombreinscrit);
+         $cour->setInscritannule($nombredésinscrit);
+         $em=$this->getDoctrine()->getManager();
+         $em->persist($cour);
+         $em->flush();
+         /*$inscrit=$cour->getCountInscrit();
+         print_r($inscrit);*/
+      
+}
+  //shoote ça à la vue
         $params = array(
-            "content" => $content
+            "contents" => $content,
+            'nombreinscrit' =>$nombreinscrit,
+
         );
 
-        
+//je veux ajouter toutes mes statisques/historiques de User:
+     
         return $this->render("XiaomeiXiaomeiBundle:User:moncompte.html.twig",$params);
     }
 

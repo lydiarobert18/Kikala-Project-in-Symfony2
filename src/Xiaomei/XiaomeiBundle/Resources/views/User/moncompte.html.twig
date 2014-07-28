@@ -6,15 +6,53 @@
 
 {% block wrapper %}
 {#  content.image etc  comme la page de kilkologue  #}
-<p> nombre de kilos: {#  content.inscription.dateInscription #} {{  content.nombreCredit}} </p>
+<img src="{{ asset('uploads/medium/'~ contents.photo) }}" alt="photo">
+<p> nombre de kilos: {#  content.inscription.dateInscription #} {{  contents.nombreCredit}} </p>
 
 <div id='moncompte'>
 
 <a href="{{ path('xiaomei_xiaomei_modifierprofil') }}">Modifier mon profil </a>
-<a href="{{ path('xiaomei_xiaomei_create_cours') }}">creer formation</a>
-<a href="{{ path('xiaomei_xiaomei_mesformations') }}">mes formation</a>
-<a href="{{ path('xiaomei_xiaomei_mesinscriptions') }}">mes inscriptions</a>
+<a href="{{ path('xiaomei_xiaomei_create_cours') }}">Creer formation</a>
+<a href="{{ path('xiaomei_xiaomei_mesformations') }}">Mes formations</a>
+<a href="{{ path('xiaomei_xiaomei_mesinscriptions') }}">Mes inscriptions</a>
 
 </div>
+
+<div id='statistique'>
+
+<!-- cours créer: nom des cours (date de création)     nombre inscrit    nombre d'inscrits annulé    score gagné 
+
+ (annulé)
+	 
+
+cours suivis: nom des cours(inscription  ou si annulé , date d'annulation)                       score ajouté 
+ -->
+
+{% for content in contents.cours %}
+   <span>date created in:{{ content.dateCreated|date('d-m-Y')}}</span>
+   <span>date de formation:{{ content.dateCours|date('d-m-Y')}}</span>
+    <span>{{ content.id}}</span> 
+	 <span>{{ content.name}}</span> 
+	 <span>{{ content.duration}} heures</span> 
+    
+     <span>nombre inscrit: {{ content.countInscrit }}</span>
+    <span>nombre d'inscription annulées: {{ content.inscritannule}}</span>
+    <span>score obtenu:{{  content.countInscrit *content.duration-content.inscritannule*content.duration }} </span>
+    
+     <br/>
+   <!-- foreach( $cours as $cour){
+        $inscriptions=$cour->getInscription();
+         foreach($inscriptions as $inscription){
+          $inscrits=$inscription->getUser();
+         // print_r($inscrits);
+         }
+        } -->
+
+{% endfor %}
+
+</div>
+
+
+
 
 {% endblock %}

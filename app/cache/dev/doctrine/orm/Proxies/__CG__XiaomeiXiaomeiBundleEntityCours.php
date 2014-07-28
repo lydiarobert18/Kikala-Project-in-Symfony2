@@ -64,10 +64,10 @@ class Cours extends \Xiaomei\XiaomeiBundle\Entity\Cours implements \Doctrine\ORM
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'id', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'name', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'image', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'dateCours', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'lieu', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'duration', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'descriptif', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'nrPlaceTotal', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'nrPlaceRestant', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'dateCreated', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'isannulation', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'dateCancellation', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'category', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'user', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'inscription');
+            return array('__isInitialized__', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'id', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'name', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'image', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'dateCours', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'lieu', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'duration', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'descriptif', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'nrPlaceTotal', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'nrPlaceRestant', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'dateCreated', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'isannulation', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'dateCancellation', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'category', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'user', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'inscription', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'countInscrit', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'inscritannule');
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'id', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'name', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'image', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'dateCours', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'lieu', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'duration', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'descriptif', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'nrPlaceTotal', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'nrPlaceRestant', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'dateCreated', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'isannulation', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'dateCancellation', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'category', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'user', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'inscription');
+        return array('__isInitialized__', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'id', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'name', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'image', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'dateCours', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'lieu', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'duration', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'descriptif', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'nrPlaceTotal', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'nrPlaceRestant', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'dateCreated', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'isannulation', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'dateCancellation', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'category', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'user', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'inscription', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'countInscrit', '' . "\0" . 'Xiaomei\\XiaomeiBundle\\Entity\\Cours' . "\0" . 'inscritannule');
     }
 
     /**
@@ -173,6 +173,50 @@ class Cours extends \Xiaomei\XiaomeiBundle\Entity\Cours implements \Doctrine\ORM
     }
 
     
+    /**
+     * {@inheritDoc}
+     */
+    public function getCountInscrit()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCountInscrit', array());
+
+        return parent::getCountInscrit();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setCountInscrit($countInscrit)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCountInscrit', array($countInscrit));
+
+        return parent::setCountInscrit($countInscrit);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getInscritannule()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getInscritannule', array());
+
+        return parent::getInscritannule();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setInscritannule($inscritannule)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setInscritannule', array($inscritannule));
+
+        return parent::setInscritannule($inscritannule);
+    }
+
     /**
      * {@inheritDoc}
      */
