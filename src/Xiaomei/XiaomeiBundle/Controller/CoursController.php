@@ -51,37 +51,25 @@ class CoursController extends Controller
           
             //print_r($_POST);
             $tri=$_POST['form']['order'];
-           
-           /* 
-            $request=$this->getRequest();
-            $form=$request->query->get('form'); 
-            print_r($form);*/
+             /*$request=$this->getRequest();
+            $form=$request->query->get('form'); */
+        
          
            // Array ( [form] => Array ( [order] => c.lieu [ok] => [_token] => drjgPLARQ6qb2GUTJkSfgnWyk08o0bBRJO7LUmhxPGM ) )
          return $this->redirect($this->generateUrl('xiaomei_xiaomei_showcoursall',array('tri'=>"$tri")));  
+
        }
     
 
-    public function showcoursAction($tri='c.dateCours',Request $request)
+    public function showcoursAction($tri,Request $request)
     {
        $contentRepository = $this->getDoctrine()->getRepository("XiaomeiXiaomeiBundle:Cours");
        
         //récupère tous les contenus de la table, avec tri et limit
-        $contents = $contentRepository->findHomeContents($tri='c.dateCours');
+        $contents = $contentRepository->findHomeContents($tri);
 
          $dateactuelle=new Datetime();
 
-  //faire calcul de 2 jours 
-       /* foreach($contents as $content)
-        {$datecours=$content->getDateCours();
-         $datedifference=(time()-strtotime($datecours))/(24*60*60);
-         $datedifference=round($datedifference);
-        }*/
-
-        
-        
-        //$daydifference=(time()-strtotime($this->birthday))/(24*60*60);
-           
 
 // début 
     $defaultData = array();
@@ -90,7 +78,7 @@ class CoursController extends Controller
          ->setAction($this->generateUrl('xiaomei_xiaomei_showtri'))
          //->setMethod('GET')
          ->add('order', 'choice', array(
-         'choices' => array('c.categorie.name' => 'Category', 'c.lieu' => 'lieu de formation','c.nrPlaceReste' => 'places restantes')))
+         'choices' => array('cat.name' => 'Category', 'c.lieu' => 'lieu de formation','c.nrPlaceRestant' => 'places restantes')))
          ->add('ok','submit')
          ->getForm();
          $form->handleRequest($request);

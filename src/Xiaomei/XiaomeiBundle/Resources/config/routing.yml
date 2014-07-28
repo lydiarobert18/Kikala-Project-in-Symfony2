@@ -21,7 +21,7 @@ xiaomei_xiaomei_about:
 
 xiaomei_xiaomei_showcoursall:
     path:     /showcours/{tri}
-    defaults: { _controller: XiaomeiXiaomeiBundle:Cours:showcours,tri:null}
+    defaults: { _controller: XiaomeiXiaomeiBundle:Cours:showcours,tri:'c.dateCours'}
 
 xiaomei_xiaomei_showtri:
     path:     /showtri/
