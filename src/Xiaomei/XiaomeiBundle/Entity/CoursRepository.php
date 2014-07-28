@@ -25,11 +25,12 @@ class CoursRepository extends EntityRepository
 	// 	return $contents;
 	// 	}
 
-	public function findHomeContents($tri){
+	public function findHomeContents($tri,$page){
 
 		//$tri="c.nrPlaceReste"
 		//$tri='c.categorie.name'
 		//$tri='c.lieu'
+		$offset=($page-1)*5;
 
 		//utiliser formulaire get pour obtenir le valeur de $tri: 
         $datecours=new Datetime();
@@ -39,18 +40,36 @@ class CoursRepository extends EntityRepository
 				//->andWhere('c.isannulation' =:isannulation')					    
 			    ->leftJoin('c.category', 'cat')	
 			    ->leftJoin('c.user', 'user')
-			   //  ->setParameter('dateCours', $datecours)
+			   //  ->setParameter('dateCours', NOW())
 			   // ->setParameter('isannulation', false)
 			    ->orderBy($tri,'DESC')
-			    //LIMIT $offset;
-			    //->LIMIT 30
+			    //LIMIT $offset;			    
+			     ->setMaxResults(5)
+                ->setFirstResult($offset)
 	       	    ->getQuery();
        
 		$contents = $query->getResult();
 
 		return $contents;
 		}
+
 		
+		public function countcourspage(){
+
+			$query = $this->createQueryBuilder('c')
+				->select( "COUNT ( c)"	)//hyper facile à oublier
+				//->where('c.dateCours >= :dateCours')	
+				//->andWhere('c.isannulation' =:isannulation')					    
+		 
+	       	    ->getQuery();
+       
+		$count = $query->getResult();
+       
+		return $count;
+
+		}
+
+
 
 	public function findFullSingleContent($id){
 

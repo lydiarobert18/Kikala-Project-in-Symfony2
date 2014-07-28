@@ -178,8 +178,8 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         if (0 === strpos($pathinfo, '/show')) {
             // xiaomei_xiaomei_showcoursall
-            if (0 === strpos($pathinfo, '/showcours') && preg_match('#^/showcours(?:/(?P<tri>[^/]++))?$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'xiaomei_xiaomei_showcoursall')), array (  '_controller' => 'Xiaomei\\XiaomeiBundle\\Controller\\CoursController::showcoursAction',  'tri' => 'c.dateCours',));
+            if (0 === strpos($pathinfo, '/showcours') && preg_match('#^/showcours(?:/(?P<tri>[^/]++)(?:/(?P<page>[^/]++))?)?$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'xiaomei_xiaomei_showcoursall')), array (  '_controller' => 'Xiaomei\\XiaomeiBundle\\Controller\\CoursController::showcoursAction',  'tri' => 'c.dateCours',  'page' => 1,));
             }
 
             // xiaomei_xiaomei_showtri

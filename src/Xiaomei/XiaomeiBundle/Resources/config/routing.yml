@@ -20,8 +20,8 @@ xiaomei_xiaomei_about:
     defaults: { _controller: XiaomeiXiaomeiBundle:Default:about }
 
 xiaomei_xiaomei_showcoursall:
-    path:     /showcours/{tri}
-    defaults: { _controller: XiaomeiXiaomeiBundle:Cours:showcours,tri:'c.dateCours'}
+    path:     /showcours/{tri}/{page}
+    defaults: { _controller: XiaomeiXiaomeiBundle:Cours:showcours,tri:'c.dateCours',page:1}
 
 xiaomei_xiaomei_showtri:
     path:     /showtri/

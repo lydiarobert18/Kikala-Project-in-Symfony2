@@ -61,14 +61,18 @@ class CoursController extends Controller
        }
     
 
-    public function showcoursAction($tri,Request $request)
+    public function showcoursAction($tri,Request $request,$page)
     {
        $contentRepository = $this->getDoctrine()->getRepository("XiaomeiXiaomeiBundle:Cours");
        
         //récupère tous les contenus de la table, avec tri et limit
-        $contents = $contentRepository->findHomeContents($tri);
-
-         $dateactuelle=new Datetime();
+        $contents = $contentRepository->findHomeContents($tri,$page);
+        $count=$contentRepository->countcourspage();
+        //print_r($count[0][1]);
+        $count=$count[0][1];
+        $nombrepage=$count/5;
+      
+        $dateactuelle=new Datetime();
 
 
 // début 
@@ -87,6 +91,7 @@ class CoursController extends Controller
         if ($form->isValid()) {
             // Les données sont un tableau avec les clés "name", "email", et "message"
             $data = $form->getData();
+            $tri=$data['order'];
         }
 
              //print_r($data);         
@@ -101,7 +106,10 @@ class CoursController extends Controller
 
         $params2 = array(
             "order" => $contentCreateFormView1,
+            'tri'=>$tri,
               "contents" => $contents,
+              'page'=>$page,
+              'nombrepage' =>$nombrepage
             //  "daydifference" =>$daydifference
 
         );

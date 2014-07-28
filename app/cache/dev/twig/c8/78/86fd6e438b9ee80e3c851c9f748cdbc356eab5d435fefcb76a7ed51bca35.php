@@ -44,77 +44,100 @@ class __TwigTemplate_c87886fd6e438b9ee80e3c851c9f748cdbc356eab5d435fefcb76a7ed51
         echo         $this->env->getExtension('form')->renderer->renderBlock((isset($context["order"]) ? $context["order"] : $this->getContext($context, "order")), 'form', array("attr" => array("novalidate" => "novalidate")));
         echo "
 
+<div class='rouge'>
+";
+        // line 12
+        if (((isset($context["page"]) ? $context["page"] : $this->getContext($context, "page")) < (isset($context["nombrepage"]) ? $context["nombrepage"] : $this->getContext($context, "nombrepage")))) {
+            // line 13
+            echo "<a href=\"";
+            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("xiaomei_xiaomei_showcoursall", array("tri" => (isset($context["tri"]) ? $context["tri"] : $this->getContext($context, "tri")), "page" => ((isset($context["page"]) ? $context["page"] : $this->getContext($context, "page")) + 1))), "html", null, true);
+            echo "\">Page suivante</a>
+ ";
+        }
+        // line 15
+        echo "</div>
 
+<div class='green'>
+";
+        // line 18
+        if (((isset($context["page"]) ? $context["page"] : $this->getContext($context, "page")) > 1)) {
+            echo "<a href=\"";
+            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("xiaomei_xiaomei_showcoursall", array("tri" => (isset($context["tri"]) ? $context["tri"] : $this->getContext($context, "tri")), "page" => ((isset($context["page"]) ? $context["page"] : $this->getContext($context, "page")) - 1))), "html", null, true);
+            echo "\">Page précédente</a>
+ ";
+        }
+        // line 20
+        echo "</div> 
 
 <ul class=\"liste\">
 ";
-        // line 15
+        // line 24
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable((isset($context["contents"]) ? $context["contents"] : $this->getContext($context, "contents")));
         foreach ($context['_seq'] as $context["_key"] => $context["content"]) {
-            // line 16
+            // line 25
             echo "
 \t";
-            // line 18
+            // line 27
             echo "\t<li><a href=\"";
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("xiaomei_xiaomei_showcour", array("id" => $this->getAttribute((isset($context["content"]) ? $context["content"] : $this->getContext($context, "content")), "id"))), "html", null, true);
             echo "\" 
 \t     title=\"";
-            // line 19
+            // line 28
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["content"]) ? $context["content"] : $this->getContext($context, "content")), "name"), "html", null, true);
             echo "\">";
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["content"]) ? $context["content"] : $this->getContext($context, "content")), "name"), "html", null, true);
             echo "</a> 
 \t     (";
-            // line 20
+            // line 29
             if ((!(null === $this->getAttribute((isset($context["content"]) ? $context["content"] : $this->getContext($context, "content")), "category")))) {
-                // line 21
+                // line 30
                 echo "\t      catégorie: ";
                 echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["content"]) ? $context["content"] : $this->getContext($context, "content")), "category"), "name"), "html", null, true);
                 echo "     
 \t     ";
             } else {
-                // line 23
+                // line 32
                 echo "\t     non-catégorisée
 \t     ";
             }
-            // line 24
+            // line 33
             echo ")
 
 
 <span>";
-            // line 27
+            // line 36
             echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute((isset($context["content"]) ? $context["content"] : $this->getContext($context, "content")), "dateCours"), "d-m-Y"), "html", null, true);
             echo "</span> 
 <span>";
-            // line 28
+            // line 37
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["content"]) ? $context["content"] : $this->getContext($context, "content")), "lieu"), "html", null, true);
             echo "</span> 
 
  place:";
-            // line 30
+            // line 39
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["content"]) ? $context["content"] : $this->getContext($context, "content")), "nrPlacerestant"), "html", null, true);
             echo " 
       ";
-            // line 31
+            // line 40
             if (($this->getAttribute((isset($context["content"]) ? $context["content"] : $this->getContext($context, "content")), "nrPlacerestant") == 0)) {
                 echo " <span class='rouge'>Complete    </span> ";
             }
-            // line 32
+            // line 41
             echo "
        ";
-            // line 33
+            // line 42
             if ((($this->getAttribute((isset($context["content"]) ? $context["content"] : $this->getContext($context, "content")), "dateCours") < twig_date_converter($this->env, "+2days")) && ($this->getAttribute((isset($context["content"]) ? $context["content"] : $this->getContext($context, "content")), "dateCours") > twig_date_converter($this->env, "+0days")))) {
                 echo " <span class='rouge'>Nouvelle  </span> ";
             }
-            // line 34
+            // line 43
             echo "
         ";
-            // line 35
+            // line 44
             if (((($this->getAttribute((isset($context["content"]) ? $context["content"] : $this->getContext($context, "content")), "dateCours") < twig_date_converter($this->env, "+2days")) && ($this->getAttribute((isset($context["content"]) ? $context["content"] : $this->getContext($context, "content")), "dateCours") > twig_date_converter($this->env, "+0days"))) && ($this->getAttribute((isset($context["content"]) ? $context["content"] : $this->getContext($context, "content")), "nrPlacerestant") > 0))) {
                 echo " <span class='rouge'>Ne tardez pas  </span> ";
             }
-            // line 36
+            // line 45
             echo "\t</li>
 
 
@@ -124,7 +147,7 @@ class __TwigTemplate_c87886fd6e438b9ee80e3c851c9f748cdbc356eab5d435fefcb76a7ed51
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['content'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 41
+        // line 50
         echo "</ul>
 
 
@@ -143,6 +166,6 @@ class __TwigTemplate_c87886fd6e438b9ee80e3c851c9f748cdbc356eab5d435fefcb76a7ed51
 
     public function getDebugInfo()
     {
-        return array (  128 => 41,  118 => 36,  114 => 35,  111 => 34,  107 => 33,  104 => 32,  100 => 31,  96 => 30,  91 => 28,  87 => 27,  82 => 24,  78 => 23,  72 => 21,  70 => 20,  64 => 19,  59 => 18,  56 => 16,  52 => 15,  44 => 9,  41 => 8,  38 => 7,  32 => 4,  29 => 3,);
+        return array (  151 => 50,  141 => 45,  137 => 44,  134 => 43,  130 => 42,  127 => 41,  123 => 40,  119 => 39,  114 => 37,  110 => 36,  105 => 33,  101 => 32,  95 => 30,  93 => 29,  87 => 28,  82 => 27,  79 => 25,  75 => 24,  70 => 20,  63 => 18,  58 => 15,  52 => 13,  50 => 12,  44 => 9,  41 => 8,  38 => 7,  32 => 4,  29 => 3,);
     }
 }
