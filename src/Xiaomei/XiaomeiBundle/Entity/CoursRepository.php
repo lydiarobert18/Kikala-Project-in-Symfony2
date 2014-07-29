@@ -70,6 +70,19 @@ class CoursRepository extends EntityRepository
 		}
 */
 
+    public function cours_rec_afficher($arraycoursid){
+           $query = $this->createQueryBuilder('c')            
+          ->select("c")
+           ->where('c.id in (:arraycoursid)')
+           ->setParameter(':arraycoursid', $arraycoursid)
+          ->getQuery();
+
+   $cours_rec_resulats = $query->getResult();
+       
+    return $cours_rec_resulats;
+
+    }
+
 
 	public function findFullSingleContent($id){
 

@@ -29,6 +29,30 @@ class InscriptionRepository extends EntityRepository
 		return $dejainscrit;
 }
 
+/*SELECT Shippers.ShipperName,COUNT(Orders.OrderID) AS NumberOfOrders FROM Orders
+LEFT JOIN Shippers
+ON Orders.ShipperID=Shippers.ShipperID
+GROUP BY ShipperName;*/
+
+  public function coursrecommendation($arrayuserid){
+           $query = $this->createQueryBuilder('i')            
+          ->select("cours.id,COUNT(cours.id) as c")
+          //ajouter condition cours.id !==$coursid;
+           ->where('user.id in (:arrayuserid)')
+           //->whereIn('user.id =:arrayid')
+          ->leftJoin('i.user', 'user') 
+          ->leftJoin('i.cours', 'cours')
+          ->groupBy( 'cours.id' )
+           ->setParameter(':arrayuserid', $arrayuserid)
+           ->orderBy('c','DESC')
+           ->setMaxResults(5)
+          ->getQuery();
+
+   $coursrecommendation_resulat = $query->getResult();
+       
+    return $coursrecommendation_resulat;
+  }
+
 
    public function findnombreinscrit($idcours){
           $query = $this->createQueryBuilder('i')

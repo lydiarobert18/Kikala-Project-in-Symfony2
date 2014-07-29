@@ -127,23 +127,58 @@ class CoursController extends Controller
         //if ($user==true && $dejainscrit=false  )    
          $dejainscrit=$InscriptionRepository->findFullSingleContent($user,$id);
          $dejainscrit= $dejainscrit[1];
-     
- 
-        
+   
         //récupère l'objet Content dont l'id est égal à celui dans l'url
         $content = $contentRepository->findFullSingleContent($id);
-       // $content->getInscription();
+        $inscriptions= $content->getInscription();
+        $arrayuserid=[];
 
+         //recupérer  array id des users inscrits dans cette formation;
+         foreach( $inscriptions as $inscription){
+          $user=$inscription->getUser();
+          $userid=$user->getID();
+          $arrayuserid[]=$userid;   
+          } ;
+
+          //print_r($arrayuserid); 
+
+
+        
+    
+        // passe cet array id users comme paramètre dans la function coursrecommendation($arrayuserid)
+          $courscounts = $InscriptionRepository->coursrecommendation($arrayuserid);
+         //  print_r($courscounts );
+
+           $arraycoursid=[];
+           foreach($courscounts as $courscount){
+            $arraycoursid[]=$courscount['id'];
+           };
+             
+            //print_r($arraycoursid);
+           
+           
+          //il faut supprimer le premer $content2[0], avec array_pop;ensuite il faut recomposer un array avec seulement la clé idcours
+          //il faut stocker dans la table cours  un champs array cours_rec_id;(option)
+          //il faut ensuite écrire une méthode cours_rec_afficher($arraycoursid);
+           $cours_rec_resulats=$contentRepository->cours_rec_afficher($arraycoursid);
+           
+         
+          //avec cette fonction, doit sortir $content qui est sous objet tous les cours ,
+          //dans twig, on fait boucle et on affiche tout ; 
+    
         //shoote ça à la vue
-        $params = array(
+         $params = array(
             "content" => $content,
             "dejainscrit" => $dejainscrit,
-            "connected"=>$user
+            "connected"=>$user,
+             "cours_rec_resulats"=> $cours_rec_resulats
         );
 
         return $this->render('XiaomeiXiaomeiBundle:Cours:cours_show.html.twig', $params);
 
      }
+
+
 
      public function createcoursAction(Request $request){
         //session user id,username
