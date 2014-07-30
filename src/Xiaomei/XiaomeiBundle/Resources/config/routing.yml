@@ -6,6 +6,10 @@ xiaomei_xiaomei_home:
     path:     /
     defaults: { _controller: XiaomeiXiaomeiBundle:Default:home }
 
+xiaomei_xiaomei_suggestion:
+    path:     /suggestion/
+    defaults: { _controller: XiaomeiXiaomeiBundle:Default:suggestion}
+
 xiaomei_xiaomei_legal:
     path:     /legal/
     defaults: { _controller: XiaomeiXiaomeiBundle:Default:legal }

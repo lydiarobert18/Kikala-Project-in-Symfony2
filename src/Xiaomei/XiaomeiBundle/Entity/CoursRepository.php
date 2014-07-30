@@ -204,6 +204,21 @@ class CoursRepository extends EntityRepository
     }
 
 
+   public function autoSuggestions($keyword){
+     
+          $query = $this->createQueryBuilder('c')
+          ->select('c.name')
+          ->where('c.name LIKE :keyword' )
+           ->setParameter('keyword', '%'.$keyword.'%')
+		          
+          ->orderBy('c.name','ASC');
+
+
+        $contents = $query->getQuery() ->getResult();
+
+		return $contents;
+
+   }
 
   }  
 

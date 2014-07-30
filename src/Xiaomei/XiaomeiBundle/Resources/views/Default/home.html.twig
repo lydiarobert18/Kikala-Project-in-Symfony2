@@ -7,9 +7,64 @@
 {% block wrapper %}
  <h1> Acueuil<h1>
  {{ form(keyword, {'attr': {'novalidate': 'novalidate'}}) }}
+
+
+<div id='form_keyword_results'>
+	
+	
+</div>
+
  <div class='home_stat'>nombre de formation en cours: {{ nombrecours}} </div> 
  <div class='home_stat'>nombre de kikologues inscrites:  {{ nombreusers}} </div>
 
 {{ form(recherche, {'attr': {'novalidate': 'novalidate'}}) }}
+
+<div id='form_keyword_results'>
+
+</div>
+
+{% endblock %}
+
+
+
+ {% block javascripts %}  
+{{ parent() }}
+
+<script>
+$("#form_keyword").on("keyup", getSuggestions);
+
+function getSuggestions(){
+			if ($("#form_keyword").val().length >= 1){
+				$.ajax({
+					url: "{{ path('xiaomei_xiaomei_suggestion')}}",
+					type: "GET",
+					data: {
+						keyword: $("#form_keyword").val() 
+					},
+					success: function(response){
+						console.log(response.length);
+						if (response.length > 0){
+							$("#form_keyword_results").html(response).slideDown(250);
+						}
+					},
+					error: function(){
+					}
+				});
+			}
+			else {
+				$("#form_keyword_results").slideUp(150);
+			}
+		}
+
+		
+		$("#form_keyword_results").on("click", "li", function(){
+			var content = $(this).html(); //$(this) fait référence au li qui vient d'être cliqué
+			$("#form_keyword").val( content );    //val() permet également de changer la valeur d'un input
+			$("#form_keyword_results").slideUp(150);
+		});
+
+
+</script>
+
 
 {% endblock %}

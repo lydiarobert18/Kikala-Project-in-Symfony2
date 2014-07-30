@@ -99,13 +99,29 @@ class DefaultController extends Controller
             "nombrecours"=> $nombrecours,
             "nombreusers"=> $nombreusers,
             "recherche" => $contentCreateFormView,
-            'keyword'=>$formkeywordview
+            'keyword'=>$formkeywordview,      
             );
         
         return $this->render('XiaomeiXiaomeiBundle:Default:home.html.twig',$params);
     }
 
 
+  public function suggestionAction(Request $request){
+     $coursRepository = $this->getDoctrine()->getRepository("XiaomeiXiaomeiBundle:Cours");
+//get query tout ce qui est noms dans les coursnames:  function ($keyword )
+    $request=$this->getRequest();
+    $keyword= $request->query->get ('keyword');     //get a $_get parameter 
+  
+    $contents = $coursRepository->autoSuggestions($keyword);
+
+     $params=array(
+
+       'contents'=>$contents
+     );
+
+      return $this->render('XiaomeiXiaomeiBundle:Default:suggestions.html.twig',$params);
+
+  }
 
 
     public function legalAction()
