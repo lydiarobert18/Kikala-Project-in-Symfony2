@@ -20,8 +20,8 @@ xiaomei_xiaomei_about:
     defaults: { _controller: XiaomeiXiaomeiBundle:Default:about }
 
 xiaomei_xiaomei_showcoursall:
-    path:     /showcours/{lieu}/{duration}/{category}/{tri}/{page}
-    defaults: { _controller: XiaomeiXiaomeiBundle:Cours:showcours,lieu:'all',duration:'all',category:'1',tri:'c.dateCours',page:1}
+    path:     /showcours/{lieu}/{duration}/{category}/{keyword}/{tri}/{page}
+    defaults: { _controller: XiaomeiXiaomeiBundle:Cours:showcours,lieu:'all',duration:'all',category:'1',keyword:'all',tri:'c.dateCours',page:1}
 
 xiaomei_xiaomei_showtri:
     path:     /showtri/

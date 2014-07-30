@@ -60,17 +60,20 @@ class CoursController extends Controller
        }
     
 
-    public function showcoursAction($tri,$page,$lieu,$duration,$category,Request $request)
+    public function showcoursAction($tri,$page,$lieu,$duration,$keyword,$category,Request $request)
     {
        $contentRepository = $this->getDoctrine()->getRepository("XiaomeiXiaomeiBundle:Cours");
        
         //récupère tous les contenus de la table, avec tri et limit
-        $contents = $contentRepository->findHomeContents_essai($tri,$page,$lieu,$duration,$category);
-        $count=$contentRepository->countcourspage($lieu,$duration,$category);
+        $contents = $contentRepository->findHomeContents_essai($tri,$page,$lieu,$duration,$keyword,$category);
+         //\Doctrine\Common\Util\Debug::dump($contents);
+
+        $count=$contentRepository->countcourspage($lieu,$duration,$keyword,$category);
         //print_r($count[0][1]);
+       
         $count=$count[0][1];
         $nombrepage=$count/5;
-      
+        
         $dateactuelle=new Datetime();
 
 
@@ -92,7 +95,7 @@ class CoursController extends Controller
             $data = $form->getData();
             $tri=$data['order'];
            return $this->redirect($this->generateUrl('xiaomei_xiaomei_showcoursall',
-            array('lieu'=>"$lieu",'duration'=>"$duration",'category'=>"$category",'tri'=>$tri)));  
+            array('lieu'=>"$lieu",'duration'=>"$duration",'category'=>"$category",'keyword'=>$keyword,'tri'=>$tri)));  
 
         }
 
@@ -114,7 +117,8 @@ class CoursController extends Controller
               'lieu'=>$lieu,
               'duration'=>$duration,
               'category' =>$category,
-              'nombrepage' =>$nombrepage
+              'nombrepage' =>$nombrepage,
+              'keyword'=>$keyword
             //  "daydifference" =>$daydifference
 
         );

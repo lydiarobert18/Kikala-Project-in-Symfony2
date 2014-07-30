@@ -6,6 +6,7 @@
 
 {% block wrapper %}
  <h1> Acueuil<h1>
+ {{ form(keyword, {'attr': {'novalidate': 'novalidate'}}) }}
  <div class='home_stat'>nombre de formation en cours: {{ nombrecours}} </div> 
  <div class='home_stat'>nombre de kikologues inscrites:  {{ nombreusers}} </div>
 

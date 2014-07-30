@@ -57,7 +57,7 @@ class CoursRepository extends EntityRepository
 
 
 
-	public function findHomeContents_essai($tri,$page,$lieu,$duration,$category){
+	public function findHomeContents_essai($tri,$page,$lieu,$duration,$keyword,$category){
 	  $offset=($page-1)*5;
 
       $query = $this->createQueryBuilder('c')
@@ -79,6 +79,13 @@ class CoursRepository extends EntityRepository
 				$query->andWhere('cat.id=:category')
 				->setParameter('category', $category);
 			     }
+                
+                if($keyword !=='all'){
+			    $query->andWhere('c.descriptif LIKE :keyword' )
+			    ->orWhere('c.name LIKE :keyword'  )
+			     ->orWhere('c.lieu LIKE :keyword' )
+			     ->setParameter('keyword', '%'.$keyword.'%');
+			   }
 
 			    $query->leftJoin('c.category', 'cat')	
 			          ->leftJoin('c.user', 'user')
@@ -98,7 +105,7 @@ class CoursRepository extends EntityRepository
 
 
 
-	public function countcourspage($lieu,$duration,$category){
+	public function countcourspage($lieu,$duration,$keyword,$category){
 
 			$query = $this->createQueryBuilder('c')
 				->select( "COUNT ( c)"	)
@@ -118,16 +125,25 @@ class CoursRepository extends EntityRepository
 				$query->andWhere('cat.id=:category')
 				->setParameter('category', $category);
 			     }
+//ajouter keywords:
+			     if($keyword !=='all'){
+			    $query->andWhere('c.descriptif LIKE :keyword' )
+			    ->orWhere('c.name LIKE :keyword'  )
+			     ->orWhere('c.lieu LIKE :keyword' )
+			     ->setParameter('keyword', '%'.$keyword.'%');
+			   }
+
 
 			    $query->leftJoin('c.category', 'cat')	
 			          //->leftJoin('c.user', 'user')
-			  
+
+
 			    ->setParameter('isannulation', false)
-	       	   ;
+	       	     ;
        
-		$count = $query->getQuery() ->getResult();
+		     $count = $query->getQuery() ->getResult();
        
-		return $count;
+		      return $count;
 
 		}
 

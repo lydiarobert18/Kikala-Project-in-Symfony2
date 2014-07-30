@@ -27,6 +27,27 @@ class DefaultController extends Controller
         $nombreusers= $usersRepository->findcount();
         $nombreusers= $nombreusers[1];
 
+//formualaire mot clé:
+        $defaultData = array();
+
+        $formkeyword = $this->createFormBuilder($defaultData)
+         //->setAction($this->generateUrl('xiaomei_xiaomei_showtri'))
+         //->setMethod('GET')
+         ->add('keyword')
+         ->add('ok','submit')
+         ->getForm();
+         $formkeyword->handleRequest($request);
+
+        if ($formkeyword->isValid()) {
+    
+            $data = $formkeyword->getData();
+            $keyword=$data['keyword'];
+
+           return $this->redirect($this->generateUrl('xiaomei_xiaomei_showcoursall',
+            //array('lieu'=>"$lieu",'duration'=>"$duration",'category'=>"$category",'tri'=>$tri)));  
+            array('keyword' =>$keyword)));  
+        }
+
 //formualaire de recherche
        
        //methode 2: créer un formulaire sans class:
@@ -40,18 +61,37 @@ class DefaultController extends Controller
  
         if ($form->isValid()) {
             //getdata POST  generate url
-            print_r($_POST);
-            $duration=$_POST['xiaomei_xiaomeibundle_recherchecours']['duration'];
+            //print_r($_POST);
+           /* $duration=$_POST['xiaomei_xiaomeibundle_recherchecours']['duration'];
             $lieu=$_POST['xiaomei_xiaomeibundle_recherchecours']['lieu'];
+            $category=$_POST['xiaomei_xiaomeibundle_recherchecours']['category'];*/
+            //comment obtenir au lieu de $_POST;
+             $data = $form->getData();
+
+            //\Doctrine\Common\Util\Debug::dump($data);
+            $duration=$data->getDuration();
+             $lieu=$data->getLieu();
+              $duration=$data->getDuration();
+               $category=$data->getCategory();
+               $category=$category->getID();
+           /* print_r($duration);
+              print_r($lieu);
+              print_r($category);
+*/
+              //print_r($data);
+
+
             if(empty($lieu)){$lieu='all';}
             if(empty($duration)){$duration='all';}
             if(empty($category)){$category='1';}
-            $category=$_POST['xiaomei_xiaomeibundle_recherchecours']['category'];
+
+           
          return $this->redirect($this->generateUrl('xiaomei_xiaomei_showcoursall',array(
             'lieu'=>"$lieu",'duration'=>"$duration",'category'=>"$category")));  
            };
          
          $contentCreateFormView = $form->createView();
+         $formkeywordview = $formkeyword->createView();
 
 
    //fin d'ajout formulaire      
@@ -59,6 +99,7 @@ class DefaultController extends Controller
             "nombrecours"=> $nombrecours,
             "nombreusers"=> $nombreusers,
             "recherche" => $contentCreateFormView,
+            'keyword'=>$formkeywordview
             );
         
         return $this->render('XiaomeiXiaomeiBundle:Default:home.html.twig',$params);
