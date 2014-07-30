@@ -57,17 +57,16 @@ class CoursController extends Controller
          
            // Array ( [form] => Array ( [order] => c.lieu [ok] => [_token] => drjgPLARQ6qb2GUTJkSfgnWyk08o0bBRJO7LUmhxPGM ) )
          return $this->redirect($this->generateUrl('xiaomei_xiaomei_showcoursall',array('tri'=>"$tri")));  
-
        }
     
 
-    public function showcoursAction($tri,Request $request,$page)
+    public function showcoursAction($tri,$page,$lieu,$duration,$category,Request $request)
     {
        $contentRepository = $this->getDoctrine()->getRepository("XiaomeiXiaomeiBundle:Cours");
        
         //récupère tous les contenus de la table, avec tri et limit
-        $contents = $contentRepository->findHomeContents($tri,$page);
-        $count=$contentRepository->countcourspage();
+        $contents = $contentRepository->findHomeContents_essai($tri,$page,$lieu,$duration,$category);
+        $count=$contentRepository->countcourspage($lieu,$duration,$category);
         //print_r($count[0][1]);
         $count=$count[0][1];
         $nombrepage=$count/5;
@@ -79,7 +78,7 @@ class CoursController extends Controller
     $defaultData = array();
 
         $form = $this->createFormBuilder($defaultData)
-         ->setAction($this->generateUrl('xiaomei_xiaomei_showtri'))
+         //->setAction($this->generateUrl('xiaomei_xiaomei_showtri'))
          //->setMethod('GET')
          ->add('order', 'choice', array(
          'choices' => array('cat.name' => 'Category', 'c.lieu' => 'lieu de formation','c.nrPlaceRestant' => 'places restantes')))
@@ -92,6 +91,9 @@ class CoursController extends Controller
             // Les données sont un tableau avec les clés "name", "email", et "message"
             $data = $form->getData();
             $tri=$data['order'];
+           return $this->redirect($this->generateUrl('xiaomei_xiaomei_showcoursall',
+            array('lieu'=>"$lieu",'duration'=>"$duration",'category'=>"$category",'tri'=>$tri)));  
+
         }
 
              //print_r($data);         
@@ -109,6 +111,9 @@ class CoursController extends Controller
             'tri'=>$tri,
               "contents" => $contents,
               'page'=>$page,
+              'lieu'=>$lieu,
+              'duration'=>$duration,
+              'category' =>$category,
               'nombrepage' =>$nombrepage
             //  "daydifference" =>$daydifference
 

@@ -10,12 +10,12 @@
 
 <div class='rouge'>
 {% if( page < nombrepage) %}
-<a href="{{path('xiaomei_xiaomei_showcoursall',{'tri':tri ,'page': page+1} ) }}">Page suivante</a>
+<a href="{{path('xiaomei_xiaomei_showcoursall',{'tri':tri ,'lieu':lieu, 'category':category, 'duration':duration,'page': page+1} ) }}">Page suivante</a>
  {% endif %}
 </div>
 
 <div class='green'>
-{% if( page > 1)%}<a href="{{path('xiaomei_xiaomei_showcoursall',{'tri':tri ,'page': page-1} ) }}">Page précédente</a>
+{% if( page > 1)%}<a href="{{path('xiaomei_xiaomei_showcoursall',{'tri':tri ,'lieu':lieu,'category':category, 'duration':duration,'page': page-1} ) }}">Page précédente</a>
  {% endif %}
 </div> 
 

@@ -7,5 +7,8 @@
 {% block wrapper %}
  <h1> Acueuil<h1>
  <div class='home_stat'>nombre de formation en cours: {{ nombrecours}} </div> 
- <div class='home_stat'>nombre de kikologues inscrites:  {{ nombreusers}} </div>	
+ <div class='home_stat'>nombre de kikologues inscrites:  {{ nombreusers}} </div>
+
+{{ form(recherche, {'attr': {'novalidate': 'novalidate'}}) }}
+
 {% endblock %}
