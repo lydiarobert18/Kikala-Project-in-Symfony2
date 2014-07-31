@@ -84,6 +84,8 @@ class CoursRepository extends EntityRepository
 			    $query->andWhere('c.descriptif LIKE :keyword' )
 			    ->orWhere('c.name LIKE :keyword'  )
 			     ->orWhere('c.lieu LIKE :keyword' )
+			     //ajouter après orWhere category
+			     ->orWhere('cat.name LIKE :keyword')
 			     ->setParameter('keyword', '%'.$keyword.'%');
 			   }
 
@@ -130,6 +132,7 @@ class CoursRepository extends EntityRepository
 			    $query->andWhere('c.descriptif LIKE :keyword' )
 			    ->orWhere('c.name LIKE :keyword'  )
 			     ->orWhere('c.lieu LIKE :keyword' )
+			     ->orWhere('cat.name LIKE :keyword')
 			     ->setParameter('keyword', '%'.$keyword.'%');
 			   }
 
@@ -207,18 +210,27 @@ class CoursRepository extends EntityRepository
    public function autoSuggestions($keyword){
      
           $query = $this->createQueryBuilder('c')
-          ->select('c.name')
+         // ->select('c.name')
+          ->select('c,cat')
           ->where('c.name LIKE :keyword' )
-           ->setParameter('keyword', '%'.$keyword.'%')
-		          
-          ->orderBy('c.name','ASC');
+          ->orWhere('c.descriptif LIKE :keyword')
+          ->orWhere('c.lieu LIKE :keyword')
+          ->orWhere('cat.name LIKE :keyword')
+         
+           ->setParameter('keyword', '%'.$keyword.'%');		          
+          //->orderBy('c.name','ASC');
 
-
+          $query->leftJoin('c.category', 'cat')	;
         $contents = $query->getQuery() ->getResult();
 
 		return $contents;
 
    }
+
+//possible de faire plusieurs requête;
+
+  
+      
 
   }  
 

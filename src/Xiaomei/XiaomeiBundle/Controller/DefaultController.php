@@ -113,10 +113,11 @@ class DefaultController extends Controller
     $keyword= $request->query->get ('keyword');     //get a $_get parameter 
   
     $contents = $coursRepository->autoSuggestions($keyword);
-
+   
      $params=array(
 
-       'contents'=>$contents
+       'contents'=>$contents,
+       
      );
 
       return $this->render('XiaomeiXiaomeiBundle:Default:suggestions.html.twig',$params);

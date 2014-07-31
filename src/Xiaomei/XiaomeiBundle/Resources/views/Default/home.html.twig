@@ -31,7 +31,8 @@
 {{ parent() }}
 
 <script>
-$("#form_keyword").on("keyup", getSuggestions);
+si je ne veux pas cette fonction 
+/*$("#form_keyword").on("keyup", getSuggestions);*/
 
 function getSuggestions(){
 			if ($("#form_keyword").val().length >= 1){
@@ -57,11 +58,11 @@ function getSuggestions(){
 		}
 
 		
-		$("#form_keyword_results").on("click", "li", function(){
+		/*$("#form_keyword_results").on("click", "li", function(){
 			var content = $(this).html(); //$(this) fait référence au li qui vient d'être cliqué
 			$("#form_keyword").val( content );    //val() permet également de changer la valeur d'un input
 			$("#form_keyword_results").slideUp(150);
-		});
+		});*/
 
 
 </script>

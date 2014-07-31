@@ -1,5 +1,6 @@
      <ul>
       {% for content in contents %}
-         <li>{{content.name}}</li>
+        <li><a href="{{path('xiaomei_xiaomei_showcour',{'id': content.id})}}">category {{content.category.name}}:{{content.name}} à {{content.lieu}}</a></li>
 	    {% endfor %}
+	   
 	</ul>
