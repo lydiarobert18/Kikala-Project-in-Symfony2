@@ -1,20 +1,24 @@
 @import "reset.css";
 
 
-body{
+/* body{
 	background-color:lightgrey;
 	margin:auto;
 	width:85%;
 
 }
+ */
 
 #wrapper{
-	height:900px;
-	border:1px solid black;
+	/* height:900px; */
+	border-top:1px solid lightgrey;
+	
 	padding:20px;
-	position:relative;
+	/* position:relative; */
 
 }
+
+
 
 #wrapper p{
 	margin-top:15px;
@@ -40,25 +44,17 @@ body{
 h1{
 	font-size:1.3em;
 	font-weight: bold;
-	padding:15px;
+	
 }
 
 
-footer{
-	position:fix;
-	bottom:0;
-}
-
-footer li{
-	list-style: none
-}
 
 .MYCLASSFOR_LABEL{
 	width:50px;
 	display:block;
 }
 
-.menu li{
+/* .menu li{
  float:left;
  padding:15px;
 
@@ -66,7 +62,7 @@ footer li{
 
 .menu{
 	overflow:hidden;
-}
+} */
 
 .home_stat{
 	color:red;
@@ -79,7 +75,7 @@ footer li{
 }
 
 
-#moncompte a{
+/* #moncompte a{
  margin-right:20px;
 
  color:red;
@@ -88,24 +84,21 @@ footer li{
 
 #moncompte{
 	padding-top:20px;
-}
+} */
 
 #cours{
 	background-color:pink;
 }
 
 
+/* #page{
+	margin-top:150px;
+} */
+
+
 .rouge{
 	color:red;
 	margin:20px;
-}
-
-
-.rouge a{
-	position: absolute;
-	top:10px;
-	left:10px;
-	color:grey;
 }
 
 .rouge a: hover{
@@ -120,3 +113,121 @@ footer li{
 	color:grey;
 }
 
+/**********************ajout mon css sur *******************/
+
+
+.motcle{
+	width:178px;
+	height:30px;
+}
+
+.fond{
+	position:absolute;
+	left:0;
+	right:0;
+	width:100%;
+	height:500px;
+
+    z-index:-99;
+	display:block;
+
+}
+
+footer{
+	 position:fixed;
+	top:850px;
+	margin-left:20px;
+	border-top:1px solid lightgrey;
+	
+}
+
+section{
+	text-align: center;
+	
+}
+
+section h2{
+	color:white;
+	text-weight:bold;
+	font-size:2.3em;
+	line-height: 67px;
+	background-color:grey;
+	margin-left:10px;
+
+}
+
+ #recherche{
+	position:absolute;
+	top:540px;
+	margin-left:30%;
+	
+} 
+section p{
+	color:white;
+	
+}
+
+#formrecherche{
+	
+	width: 800px;
+	height: auto;
+	margin: auto;
+	margin-top:420px; 
+}
+
+#formrecherche_box{
+	margin-top:40px;
+}
+
+
+#formrecherche_box >label,#formrecherche_box>input,#formrecherche_box>select,#formrecherche_box>button{
+	float:left;
+	
+} 
+
+#formrecherce_box input[type='submit']{
+	background-color:green;
+	display:block;
+}
+
+#page a{
+	/* position: absolute;
+	top:75px;
+	left:150px; */
+	color:grey;
+	font-style:italic;
+}
+
+.produits{
+	margin-top:40px;
+}
+
+#formateur{
+	
+	
+}
+
+#descriptif{
+	height:200px;
+	border:1px solid lightgrey;
+	padding-top:30px;
+	font-family: 'Open Sans', sans-serif;
+	line-height: 20px;
+	font-size:0.9em;
+
+}
+
+.border{
+	border:1px solid lightgrey;
+	margin-top:20px;
+}
+
+#photograndformation{
+	height:100px;
+}
+
+.buttonrouge a{
+	color:white;
+}
+
+.formateur{margin-top:30px;}

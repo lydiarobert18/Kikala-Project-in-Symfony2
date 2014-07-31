@@ -1,27 +1,33 @@
 {% extends "::base.html.twig" %}
 
 {% block title %}
-{{ parent() }} - Acuueil
+{{ parent() }} - home
 {% endblock %}
 
 {% block wrapper %}
- <h1> Acueuil<h1>
- {{ form(keyword, {'attr': {'novalidate': 'novalidate'}}) }}
 
+ <section class='home' >
+  
+            <img class='fond' src="{{ asset('uploads/imagefond.jpg') }}">
+            <div class="container">
+             <form class="col-xs-12 col-md-1" class='formmotcle'>
+               <input type="text" name="" id="motcle" placeholder='Rechercher par mots clés'/> 
+             </form>
+            {{ form(keyword, {'attr': {'novalidate': 'novalidate'}}) }}
 
-<div id='form_keyword_results'>
-	
-	
+ <!-- <div id='form_keyword_results'> -->
+            <h2>PARTAGER VOS CONNAISSANCES</h2> 
+
+ <div id='formrecherche'>
+		 <div class='home_stat'>Nombre de formation en cours: {{ nombrecours}} </div> 
+		 <div class='home_stat'>Nombre de kikologues inscrites:  {{ nombreusers}} </div>
+
+       <div id='formrecherche_box'> {{ form(recherche, {'attr': {'novalidate': 'novalidate'}}) }}</div>
+ </div>
+
 </div>
-
- <div class='home_stat'>nombre de formation en cours: {{ nombrecours}} </div> 
- <div class='home_stat'>nombre de kikologues inscrites:  {{ nombreusers}} </div>
-
-{{ form(recherche, {'attr': {'novalidate': 'novalidate'}}) }}
-
-<div id='form_keyword_results'>
-
-</div>
+   
+</section>
 
 {% endblock %}
 

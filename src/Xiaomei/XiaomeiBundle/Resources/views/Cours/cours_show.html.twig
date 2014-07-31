@@ -6,25 +6,44 @@
 
 {% block wrapper %}
 
-<h1>Nom de formation: {{ content.name}}</h1>
+<h1>Nom de formation: {{ content.name}} </h1> <span> Catégorie: {{ content.category.name }}</span>
+
+Date de formation: {{ content.dateCours|date('d-m-Y')}}
+à {{ content.lieu}} avec une durée de {{ content.duration}} heures
+
+<div class='formateur'>
+          <h2> Instructor</h2>
+	        <div class='row'>
+	              <div class="col-xs-12 col-md-3">
+				<a href="{{ path( 'xiaomei_xiaomei_formateur', {'id': content.user.id} ) }}"><img src="{{ asset('uploads/thumbnails/'~ content.user.photo) }}" alt="photo" class="img-circle" ></a>  
+				 </div>
+                 
+                 <div class="col-xs-12 col-md-4">
+                 <p></p>
+                 <p></p>
+				{{ content.user.firstname}}  {{ content.user.name}}
+			     <p> {{ content.user.metier}}</p>
+			     </div>
+                 
+                 <div class="col-xs-12 col-md-5">
+			     <p>Le descriptif de la formation: {{ content.descriptif}}</p>
+				<p>Nombre de places total :{{ content.nrPlaceTotal}}</p>
+				<p>il en reste {{ content.nrPlaceRestant}} de place(s)</p>
+				p>la formation a été crée: {{ content.dateCreated|date('d-m-Y')}}</p>
+				</div>
+
+		    </div>
+   </div>
+
+
+
+
+
+
+<div id='photograndformation'>
 <p>photo de la formation ; {{ content.image}}</p>
-<h3>Nom de catégorie: {{ content.category.name }}</h3>
-<p>Date de formation: {{ content.dateCours|date('d-m-Y')}}</p>
-<p>lieu de formation: {{ content.lieu}}</p>
-<p>Durée de formation( en heures): {{ content.duration}}</p>
+</div>
 
-<a href="{{ path( 'xiaomei_xiaomei_formateur', {'id': content.user.id} ) }}">Voir les details de kikologue; {{ content.user.username}}</a>  
-
-
-<p>Le descriptif de la formation: {{ content.descriptif}}</p>
-<p>Nombre de places total :{{ content.nrPlaceTotal}}</p>
-<p>il en reste {{ content.nrPlaceRestant}} de place(s)</p>
-
-
-
-
-<p>la formation a été crée: {{ content.dateCreated|date('d-m-Y')}}</p>
-<br/> 
 
 
 {% if app.user and  dejainscrit >=1 %}
@@ -36,19 +55,17 @@
 {% else %}
 
 {# if $user.nombrecredit>=dureedeformation #}
-
-<button type="button" class="btn btn-default btn-lg">
+<div class='buttonrouge'>
+<button type="button" class="btn btn-danger"  class="btn btn-primary btn-lg">
  <a href="{{ path( 'xiaomei_xiaomei_inscriptioncoursconfirmer', {'id': content.id} ) }}" 
 	     title="{{ content.name }}">S'inscrire au cours</a> 
 </button>
-
+</div>
 
 {% endif %}
 
-
-<p> les commentaires des personnes qui ont suivi cette formation </p>
-
-<p class="rouge">Les kikala ayant suivi cette formation ont également suivi</p>
+<div class='border'>
+<p class="rouge">Les kikala ayant suivi cette formation ont également suivi:</p>
 
 {% for cours_rec_resulat in cours_rec_resulats %}
      <div>
@@ -59,6 +76,6 @@
     </div>
 
  {% endfor %}
-
+</div>
          
 {% endblock %}

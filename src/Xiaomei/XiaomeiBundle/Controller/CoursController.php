@@ -238,46 +238,6 @@ class CoursController extends Controller
     }
 
 
-    //public function registercoursconfirmerAction($id){
-     //condition déja login:$_Session(login)=true;  {% if app.user %}:déja fait
-     //condition crédit est bon :
-    //faire une requete du nombre crédit de la personne ; $nombreCredit
-            // $user = $this->getDoctrine()->getRepository("XiaomeiXiaomeiBundle:User");
-            // $userSession = $user->findOneByName($name);??
-            // $nombreCredit=$userName->getNombreCredit();
-      
-    //faire la différence entre nombre crédit et nombrekiko de la formation :durée d'heures
-     //$id est id du cours, on sait la durée
-
-            // $cours = $this->getDoctrine()->getRepository("XiaomeiXiaomeiBundle:Cours");
-            // $coursid = $cours->findOneById($id);
-            // $duration=$coursid->getDuration();
-             //$NrPlaceRestant=$coursid->getNrPlaceRestant();
-
-
-
-    // if (($nombreCredit-$duration)>=0) then le reste: 
-    //resultat: table intermédiare cours-user: deux ligne de plus
-    // id cours id user statut (stagiaire)
-
-           
-    //????ajouter  statut stagiaire ????
-
-
-   //id cours  id user(psydoformateur du cours);statut (enseignant)
-       
-    //resultat: débiter dans nombrecrédit de l'inscripteur (deja fait en haut)
-      //nombrecredit-=$durée
-
-    //resultat: créditer dans nombrecrédit de formateur: ()
-    //nombreCredit+=$durée
-
-   //update $NrPlaceRestant-1 dans Cours.php:
-    
-
-    //return $this->render('XiaomeiXiaomeiBundle:Cours:registerok.html.twig');
-
-   // }
 
     public function registercoursconfirmerAction($id){
 //pas encore fait la condition de crédit pour qu'il puisse pouvoir s'inscrire 

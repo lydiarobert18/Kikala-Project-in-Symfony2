@@ -40,16 +40,17 @@ public function loginAction()
     }
 
 
-
 public function formateurAction($id)
     {
         $contentRepository = $this->getDoctrine()->getRepository("XiaomeiXiaomeiBundle:User");
 
         $content = $contentRepository->findFullSingleContent($id);
-        
+
         //shoote ça à la vue
+
         $params = array(
-            "content" => $content
+            "content" => $content,
+           
         );
 
         
