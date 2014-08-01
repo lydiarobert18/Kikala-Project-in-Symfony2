@@ -33,13 +33,30 @@ class Cours
      */
     private $name;
 
-    /**
+
+
+
+  /**
      * @var string
-     * @Assert\NotBlank(message="Le name ne peut pas être vide !")
      *
-     * @ORM\Column(name="image", type="string", length=255)
+     * @ORM\Column(name="image", type="string", length=255,nullable=true)
      */
     private $image;
+
+    
+     /**
+      * @Assert\Image(
+      *     minWidth = 50,
+      *     maxWidth = 2400,
+      *     minHeight = 50,
+      *     maxHeight = 2400
+      * )
+    */
+ 
+    private $file;
+
+
+
 
     /**
      * @var \DateTime
@@ -533,5 +550,31 @@ class Cours
     {
         return $this->isannulation;
     }
+
+
     
+
+
+    /**
+     * Set file
+     *
+     * @param string $file
+     * @return Profile
+     */
+    public function setFile($file)
+    {
+        $this->file = $file;
+
+        return $this;
+    }
+
+    /**
+     * Get file
+     *
+     * @return string 
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
 }

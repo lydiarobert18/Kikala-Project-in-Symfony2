@@ -43,7 +43,8 @@ Date de formation: {{ content.dateCours|date('d-m-Y')}}
 
 
 <div id='photograndformation' class='border'>
-<p>photo de la formation ; {{ content.image}}</p>
+<p><img src="{{ asset('uploads/medium/'~ content.image) }}" alt="photo" class="img-circle" height='200px'></p>
+
 </div>
 
 

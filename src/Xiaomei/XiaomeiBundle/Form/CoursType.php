@@ -16,8 +16,7 @@ class CoursType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('image',null,array(
-                    "required" => false))
+          
             
             ->add('dateCours', "datetime", array(
                     "label" => "Date de formation", 
@@ -46,6 +45,7 @@ class CoursType extends AbstractType
                 "property"=>"name"
                 //"query-builder"=>
                 ))  
+            ->add('file', 'file')  
             ->add('Create!','submit')
         ;
     }

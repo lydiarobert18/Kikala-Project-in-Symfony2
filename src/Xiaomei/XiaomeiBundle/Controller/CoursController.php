@@ -11,6 +11,7 @@ use \Datetime;
 use \time;
 use \strtotime;
 
+use abeautifulsite\SimpleImage;
 
 class CoursController extends Controller
 
@@ -196,6 +197,49 @@ class CoursController extends Controller
         $contentCreateForm->handleRequest($request);
 
         if ($contentCreateForm->isValid()){
+
+
+          // photo reçue
+
+         $file = $content->getFile();
+         //print_r($file);
+         $filename=$file->getPathName();
+        // $filename="C:/xampp/tmp/".$filename;
+
+         //print_r($filename);
+   
+         //print_r($file['tmp_name']);
+        
+
+
+//      donnner nouveau nom et move et web/uploads
+        $dir = $this->get('kernel')->getRootDir() . '/../web/uploads';
+        $extension = $file->guessExtension();
+        //pour que le newname soit unique et aussi random; 
+        $newFilename = base64_encode(microtime()).'.'.$extension;
+
+       
+//simpleimage
+
+
+            $img = new SimpleImage($filename);
+
+            //medium image
+            $img->best_fit(400, 400)->save($dir.'/medium/'.$newFilename);
+ 
+            //thumbnails 
+            $img->thumbnail(150)->save($dir.'/thumbnails/'.$newFilename);
+           
+            //original
+           // move_uploaded_file($tmp_name, 'uploads/img/originals/'.$newFilename);
+
+ //original
+             $file->move($dir.'/original/', $newFilename);
+             $content->setImage($newFilename);
+
+
+
+        
             $place=$content->getNrPlaceTotal();
             $content->setNrPlaceRestant($place);
             $content->setIsannulation(false);

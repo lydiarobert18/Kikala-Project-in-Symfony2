@@ -54,10 +54,12 @@
 
 	  <div class='produit_image_lists'>
 	    {% for content in contents %}
-	       <div id='block'>
-	       	
-	       	
-	       </div>
+	        <div class='produit_image'>
+	       	<img src="{{ asset('uploads/thumbnails/'~ content.image) }}" alt="photo" width="300px" height='100px'>
+	       	{% if content.nrPlacerestant==0  %} <button type="button" class="btn btn-link">Complete</button>  {% endif %}
+	       	<p>{{ content.name }} à {{content.lieu}} date:{{content.dateCours|date('d-m-Y')}} </p>
+	       	 </div>
+	       
 	 	 
         {% endfor %}
 	 </div>
