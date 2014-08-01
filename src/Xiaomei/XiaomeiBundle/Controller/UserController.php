@@ -66,6 +66,7 @@ public function moncompteAction()
         $iduser=$this->getUser()->getID();
       
         $content = $contentRepository->findFullSingleContent($iduser);
+
         $cours=$content->getCours();
 
       /*  foreach( $cours as $cour){
@@ -76,6 +77,11 @@ public function moncompteAction()
 
 //methode 2       
          foreach( $cours as $cour){
+            //if $cour->getAnnualtion is true
+          $isannulation=$cour->getIsannulation();
+            if (
+               $isannulation==false){
+
          $inscriptions=$cour->getInscription();
          $idcours=$cour->getID();
          $nombreinscrit=$inRepository->findnombreinscrit($idcours);
@@ -87,12 +93,12 @@ public function moncompteAction()
          $em->flush();
          /*$inscrit=$cour->getCountInscrit();
          print_r($inscrit);*/
-      
+      } 
 }
   //shoote ça à la vue
         $params = array(
             "contents" => $content,
-            'nombreinscrit' =>$nombreinscrit,
+           // 'nombreinscrit' =>$nombreinscrit,
 
         );
 
@@ -135,6 +141,8 @@ public function mesinscriptionsAction(){
   
         return $this->render("XiaomeiXiaomeiBundle:User:mesinscriptions.html.twig",$params);
 }
+
+
      
 
 
@@ -149,11 +157,11 @@ public function registerAction(Request $request){
 // photo reçue
 
          $file = $user->getFile();
-         print_r($file);
+         //print_r($file);
          $filename=$file->getPathName();
         // $filename="C:/xampp/tmp/".$filename;
 
-         print_r($filename);
+         //print_r($filename);
    
          //print_r($file['tmp_name']);
         
@@ -222,6 +230,8 @@ public function registerAction(Request $request){
         
         $em->persist($user);
         $em->flush();
+
+       return $this->redirect($this->generateUrl('xiaomei_xiaomei_moncompte'));
         }
         //print_r($user);
 

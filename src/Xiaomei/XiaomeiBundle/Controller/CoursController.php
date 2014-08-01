@@ -246,15 +246,20 @@ class CoursController extends Controller
            $userSession = $user->findOneByName($name);??
             $nombreCredit=$user->getNombreCredit();*/
       
+      //pour avoir user session connecté et son crédit 
               $user=$this->getUser();
               $nombrecredit= $user->getNombreCredit();
+
               //requete avec $id pour avoir $cours;
             
               $coursRepo= $this->getDoctrine()->getRepository("XiaomeiXiaomeiBundle:Cours");
               $cours = $coursRepo->findOneById($id);
               $creditcours=$cours->getDuration();
               $nombreplacerestant=$cours->getNrPlaceRestant();
+
+              //comment avoir nombrecredit de créateur du cours
               $createur=$cours->getUser();
+              $nombrecredit_createur=$createur->getNombreCredit();
               
                $userID=$user->getID();
                $createurID=$createur->getID(); 
@@ -277,11 +282,9 @@ class CoursController extends Controller
             //update: nombrecrdit dans user autre ID  + durée de cours:
             $cours->setNrPlaceRestant( $nombreplacerestant-1);
             $user->setNombreCredit($nombrecredit-$creditcours);
-            $createur->setNombreCredit($nombrecredit+$creditcours);
+            $createur->setNombreCredit($nombrecredit_createur+$creditcours);
             $em->flush();
-         
-
-
+    
           return $this->render('XiaomeiXiaomeiBundle:Cours:inscriptionreussi.html.twig');}
            elseif( $nombrecredit < $creditcours)
 
@@ -306,6 +309,12 @@ class CoursController extends Controller
        $inscription->setIsannulation(true);
        $inscription->setDateCancellation(new Datetime());
 
+//trouver $cours
+       $coursRepository = $this->getDoctrine()->getRepository("XiaomeiXiaomeiBundle:Cours");
+       $cours=$inscription->getCours();
+       $coursid=$cours->getID();
+       $cours= $coursRepository ->find($coursid);      
+
         $em = $this->getDoctrine()->getManager();      
 
                 $em->persist( $inscription );
@@ -322,10 +331,11 @@ class CoursController extends Controller
              $user->setNombreCredit($nombrecredit+$creditcours);
            
             $createur= $cours->getUser();
-            $createur->setNombreCredit($nombrecredit-$creditcours);
+            $nombrecredit_createur=$createur->getNombreCredit();
+            $createur->setNombreCredit($nombrecredit_createur-$creditcours);
             $em->flush();
               
-       return $this->redirect($this->generateUrl('xiaomei_xiaomei_mesinscriptions'));
+       return $this->redirect($this->generateUrl('xiaomei_xiaomei_moncompte'));
 }
 
    public function cancelcoursAction($id){
@@ -360,14 +370,14 @@ class CoursController extends Controller
          foreach($inscriptions as $key => $inscription){
              $user= $inscription->getUser() ;
              $NombreCredit=$user->getNombreCredit(); 
-             $user->setNombreCredit( $creditactuel+$creditcours);
+             $user->setNombreCredit( $NombreCredit+$creditcours);
           }
 
             
              
              $em->flush();
               
-       return $this->redirect($this->generateUrl('xiaomei_xiaomei_mesformations'));
+       return $this->redirect($this->generateUrl('xiaomei_xiaomei_moncompte'));
 
    }
 

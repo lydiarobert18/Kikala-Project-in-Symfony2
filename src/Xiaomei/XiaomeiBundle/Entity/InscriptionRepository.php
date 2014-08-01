@@ -59,7 +59,7 @@ GROUP BY ShipperName;*/
           ->select( "COUNT ( i)"  )
           ->leftJoin('i.cours', 'cours')
            ->where('cours.id = :id')
-           ->andWhere('i.isannulation=false')
+           //->andWhere('i.isannulation=false')
           ->setParameter('id', $idcours)
         ->getQuery();
          $nombreinscrit = $query->getSingleScalarResult();

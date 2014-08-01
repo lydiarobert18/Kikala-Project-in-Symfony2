@@ -286,12 +286,13 @@ select{
 }
 
 #motcle button{
+	position:relative;
 	width: 34px;
 height: 26px;
 background: blue;
 color: white;
-margin-left: 167px;
-margin-top: -25px;
+left: 153px;
+top: -25px;
 }
 
 
@@ -361,4 +362,22 @@ width:400px;
 	margin-top:40px;
 	clear:left;
 }
-/*****************************/
+/******************page moncompte*********************/
+
+#credit a{
+	margin-right:10px;
+	color:violet;
+	font-weight: bold
+}
+
+
+#creditscore{
+  color:red;
+  font-weight: bold
+}
+
+
+#statistique button{
+	width:120px;
+	margin-left:40px;
+}

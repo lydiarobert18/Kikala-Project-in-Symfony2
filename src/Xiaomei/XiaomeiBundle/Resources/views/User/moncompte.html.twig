@@ -6,17 +6,24 @@
 
 {% block wrapper %}
 {#  content.image etc  comme la page de kilkologue  #}
-<img src="{{ asset('uploads/medium/'~ contents.photo) }}" alt="photo" class="img-circle">
-<p> nombre de kilos: {#  content.inscription.dateInscription #} {{  contents.nombreCredit}} </p>
+<div class='row'>
+             <div class="col-xs-12 col-md-3">
+            <img src="{{ asset('uploads/medium/'~ contents.photo) }}" alt="photo" class="img-circle">
+            </div>
+            <div class="col-xs-12 col-md-3" id='creditscore'> Nombre de kilos: {#  content.inscription.dateInscription #} {{  contents.nombreCredit}} 
+            </div>
 
-<div id='moncompte'>
 
-<a href="{{ path('xiaomei_xiaomei_modifierprofil') }}">Modifier mon profil </a>
-<a href="{{ path('xiaomei_xiaomei_create_cours') }}">Creer formation</a>
-<a href="{{ path('xiaomei_xiaomei_mesformations') }}">Mes formations</a>
-<a href="{{ path('xiaomei_xiaomei_mesinscriptions') }}">Mes inscriptions</a>
+          <div class="col-xs-12 col-md-6" id='credit'id='moncompte'>
 
+          <a href="{{ path('xiaomei_xiaomei_modifierprofil') }}">Modifier mon profil </a>
+          <a href="{{ path('xiaomei_xiaomei_create_cours') }}">Creer formation</a>
+          <a href="{{ path('xiaomei_xiaomei_mesformations') }}">Mes formations</a>
+          <a href="{{ path('xiaomei_xiaomei_mesinscriptions') }}">Mes inscriptions</a>
+
+          </div>
 </div>
+
 
 <div id='statistique'>
 
@@ -27,28 +34,124 @@
 
 cours suivis: nom des cours(inscription  ou si annulé , date d'annulation)                       score ajouté 
  -->
-
+<!-- 
 {% for content in contents.cours %}
    <span>date created in:{{ content.dateCreated|date('d-m-Y')}}</span>
    <span>date de formation:{{ content.dateCours|date('d-m-Y')}}</span>
     <span>{{ content.id}}</span> 
-	 <span>{{ content.name}}</span> 
-	 <span>{{ content.duration}} heures</span> 
+   <span>{{ content.name}}</span> 
+   <span>{{ content.duration}} heures</span> 
     
      <span>nombre inscrit: {{ content.countInscrit }}</span>
     <span>nombre d'inscription annulées: {{ content.inscritannule}}</span>
-    <span>score obtenu:{{  content.countInscrit *content.duration-content.inscritannule*content.duration }} </span>
-    
+    <span>score obtenu:{{  content.countInscrit *content.duration-content.inscritannule*content.duration }} </span> 
      <br/>
-   <!-- foreach( $cours as $cour){
-        $inscriptions=$cour->getInscription();
-         foreach($inscriptions as $inscription){
-          $inscrits=$inscription->getUser();
-         // print_r($inscrits);
-         }
-        } -->
+{% endfor %} -->
 
-{% endfor %}
+<p></p>
+<p></p>
+
+<h1>Mes formations:</h1>
+
+<table  class="table">
+         <thead>
+              <tr>
+                <th>Formations</th>       
+                <th>Durée</th>
+                <th>Date de création</th>
+                <th>Nombre d'inscrit</th>
+                <th>Nombre d'annulé</th>
+                <th>Credit gagné</th>
+              </tr>
+          </thead>
+          <tbody>
+              {% for content in contents.cours %}
+              <tr>
+              
+                <th>{{ content.id}} ) {{ content.name}}  
+
+                </th>
+                <td>{{ content.duration}} heures</td>
+                <td>{{ content.dateCreated|date('d-m-Y')}}</td>
+                <td> {% if content.countInscrit %}{{ content.countInscrit }}   {% else %}0{% endif %}</td>
+
+                <td> {{ content.inscritannule}}</td>
+                <td>{{  content.countInscrit *content.duration-content.inscritannule*content.duration }}
+                 {% if content.isannulation==false %}
+                 <button type="button" class="btn btn-warning"><a href="{{ path('xiaomei_xiaomei_cancelcours',{'id': content.id} )}}"> Annuler ce cours</a> </button>
+                 {% else %} <button type="button" class="btn btn-danger">cours annulée</button>
+                 
+                {% endif %}</td>
+               
+              </tr>
+               {% endfor %}
+
+          </tbody>
+          <tfoot>
+                <tfoot>
+                <th>Total crédit gagné:</th>
+                
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tfoot>
+          </tfoot>
+ 
+</table>
+   
+<h1>Mes Inscriptions</h1>
+
+   <table  class="table">
+         <thead>
+              <tr>
+                <th>Cour inscrit</th>
+                <th>Durée</th>
+                <th>Date d'inscription</th>
+                <th>Annuler ou pas </th>
+                <!-- <th>date d'annulation </th> -->
+                <th>credit utilisé</th>
+               </tr>
+          </thead>
+          
+
+          <tbody>
+             {% for content in contents.inscription %}
+              <tr>
+              
+                <th> <a href=" {{ path('xiaomei_xiaomei_showcour', {'id':content.cours.id}) }}">
+                 {{ content.id}} ) {{ content.cours.name}} 
+                 </th> 
+                 > 
+                <td>{{ content.cours.duration}} heures</td>
+                <td>{{ content.dateInscription|date('d-m-Y')}}</td>
+                <td> {% if content.isannulation %} inscription annulée {% else %}non{% endif %}</td>
+               
+                <td>{% if content.isannulation==false %} {{ content.cours.duration}} {% else %}
+                {{ content.cours.duration /2}}{% endif %}
+                    {% if content.isannulation==false %}
+                 <button type="button" class="btn btn-warning"><a href="{{ path('xiaomei_xiaomei_cancelinscriptions',{'id': content.id} )}}"> Annuler cette inscription</a> </button>
+                   {% else %}  <button type="button" class="btn btn-danger">inscription annulée</button>
+                {% endif %}
+                </td>
+               
+              </tr>
+               {% endfor %}
+
+          </tbody>
+          <tfoot>
+                <tfoot>
+                <th>Total crédit utilisé:</th>
+                
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tfoot>
+          </tfoot>
+</table>
 
 </div>
 
