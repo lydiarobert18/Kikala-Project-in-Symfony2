@@ -16,11 +16,28 @@ class RechercheCoursType extends AbstractType
     {
         $builder
             
-            ->add('lieu',null, array('required'=>false))
-            ->add('duration')
+            ->add('lieu',null, array(
+                'required'=>false,
+                'label' => false,
+                "attr" => array(
+
+                        "placeholder" => "lieu")
+                       ))
+               
+            ->add('duration',null, array(
+                'required'=>false,
+                'label' => false,
+                "attr" => array(
+
+                        "placeholder" => "max duration")
+                       ))
             ->add( 'category','entity',array(
+                 'label' => false,
                 "class"=>"XiaomeiXiaomeiBundle:Category",
                 "property"=>"name",
+                "attr" => array(
+
+                        "placeholder" => "category")
                               ))  
             ->add('Rechercher!','submit')
         ;

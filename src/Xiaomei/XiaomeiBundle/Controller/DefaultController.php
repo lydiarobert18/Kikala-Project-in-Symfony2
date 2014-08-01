@@ -33,8 +33,16 @@ class DefaultController extends Controller
         $formkeyword = $this->createFormBuilder($defaultData)
          //->setAction($this->generateUrl('xiaomei_xiaomei_showtri'))
          //->setMethod('GET')
-         ->add('keyword')
+         ->add('keyword',null,array(
+          'label' => false,
+          "attr" => array(
+                       "class" => 'form_keyword',
+
+                        "placeholder" => "Rechercher par mots clés")
+                       ))
+
          ->add('ok','submit')
+
          ->getForm();
          $formkeyword->handleRequest($request);
 

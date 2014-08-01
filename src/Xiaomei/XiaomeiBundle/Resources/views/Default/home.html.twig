@@ -10,10 +10,10 @@
   
             <img class='fond' src="{{ asset('uploads/imagefond.jpg') }}">
             <div class="container">
-             <form class="col-xs-12 col-md-1" class='formmotcle'>
-               <input type="text" name="" id="motcle" placeholder='Rechercher par mots clés'/> 
-             </form>
-            {{ form(keyword, {'attr': {'novalidate': 'novalidate'}}) }}
+             <div class="col-xs-12 col-md-1" class='formmotcle' id='motcle'>
+                 {{ form(keyword, {'attr': {'novalidate': 'novalidate'}}) }}
+             </div>
+          
 
  <!-- <div id='form_keyword_results'> -->
             <h2>PARTAGER VOS CONNAISSANCES</h2> 
