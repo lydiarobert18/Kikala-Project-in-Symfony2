@@ -6,30 +6,32 @@
 
 {% block wrapper %}
 
-<h1>Nom de formation: {{ content.name}} </h1> <span> Catégorie: {{ content.category.name }}</span>
+<h1>Nom de formation: {{ content.name}} </h1> 
+<p id='accroche'> Catégorie: {{ content.category.name }}
 
 Date de formation: {{ content.dateCours|date('d-m-Y')}}
 à {{ content.lieu}} avec une durée de {{ content.duration}} heures
+</p>
 
-<div class='formateur'>
+<div class='formateur' class='border'>
           <h2> Instructor</h2>
 	        <div class='row'>
-	              <div class="col-xs-12 col-md-3">
+	              <div class="col-xs-12 col-md-3" >
 				<a href="{{ path( 'xiaomei_xiaomei_formateur', {'id': content.user.id} ) }}"><img src="{{ asset('uploads/thumbnails/'~ content.user.photo) }}" alt="photo" class="img-circle" ></a>  
 				 </div>
                  
-                 <div class="col-xs-12 col-md-4">
+                 <div class="col-xs-12 col-md-4" class='border'>
                  <p></p>
                  <p></p>
 				{{ content.user.firstname}}  {{ content.user.name}}
 			     <p> {{ content.user.metier}}</p>
 			     </div>
                  
-                 <div class="col-xs-12 col-md-5">
+                 <div class="col-xs-12 col-md-5" class='border'>
 			     <p>Le descriptif de la formation: {{ content.descriptif}}</p>
 				<p>Nombre de places total :{{ content.nrPlaceTotal}}</p>
 				<p>il en reste {{ content.nrPlaceRestant}} de place(s)</p>
-				p>la formation a été crée: {{ content.dateCreated|date('d-m-Y')}}</p>
+				la formation a été crée: {{ content.dateCreated|date('d-m-Y')}}</p>
 				</div>
 
 		    </div>
@@ -40,7 +42,7 @@ Date de formation: {{ content.dateCours|date('d-m-Y')}}
 
 
 
-<div id='photograndformation'>
+<div id='photograndformation' class='border'>
 <p>photo de la formation ; {{ content.image}}</p>
 </div>
 

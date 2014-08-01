@@ -75,25 +75,10 @@ h1{
 }
 
 
-/* #moncompte a{
- margin-right:20px;
-
- color:red;
-}
-
-
-#moncompte{
-	padding-top:20px;
-} */
 
 #cours{
 	background-color:pink;
 }
-
-
-/* #page{
-	margin-top:150px;
-} */
 
 
 .rouge{
@@ -113,7 +98,7 @@ h1{
 	color:grey;
 }
 
-/**********************ajout mon css sur *******************/
+/**********************ajout mon css sur sur header et footer*******************/
 
 
 .motcle{
@@ -202,10 +187,7 @@ section p{
 	margin-top:40px;
 }
 
-#formateur{
-	
-	
-}
+
 
 #descriptif{
 	height:200px;
@@ -232,24 +214,62 @@ section p{
 
 .formateur{margin-top:30px;}
 
+
+
+/****************tous les autres formulaires*************/
+
+label{
+	width:200px;
+	display:block;
+	float:left;
+
+
+} 
+
+textarea{
+
+width:400px;
+height:300px;
+margin-left:150px;
+}
+input,select{
+	width:400px;
+}
+
+button{
+background-color:red;
+color:white;}
+
+/***************create cours*************/
+#createcours{
+
+	margin-top:40px;
+}
+
+#xiaomei_xiaomeibundle_cours button{
+clear:left;}
+
+select{
+	width:300px;
+}
+
 /************recherche formualire home *************/
 
 #xiaomei_xiaomeibundle_recherchecours {
 	margin-left:20%;
 }
 
-#xiaomei_xiaomeibundle_recherchecours input,select,button{
-	width:180px;
-	float:left;
+#xiaomei_xiaomeibundle_recherchecours input,#xiaomei_xiaomeibundle_recherchecours select,
+#xiaomei_xiaomeibundle_recherchecours button{
+	float:left ;
+	width:160px;
 	height:50px;
 }
 	
 
-
-
 #xiaomei_xiaomeibundle_recherchecours button{
 	background:red;
-	width:100px;
+	width:160px;
 	height:50px;
 }
 
@@ -258,15 +278,87 @@ section p{
 	font-weight: bold
 }
 
-/**********recherche keyword*/
-#motcle input ,button{
+/**********recherche keyword**********************************/
+#motcle input ,#motcle input button{
 	
-	float:left
+	float:left;
+	width:170px;
 }
 
 #motcle button{
-	width:34px;
-	height:22px;
-	background:blue;
-	color:white;
+	width: 34px;
+height: 26px;
+background: blue;
+color: white;
+margin-left: 167px;
+margin-top: -25px;
 }
+
+
+/***************showcours************************************/
+#cours{
+	margin-top:40px;
+}
+
+#formtri select,#formtri button{
+ 
+    float:left ;
+	width:100px;
+	height:31px;
+
+}
+
+#accroche{
+	color:green;
+	font-style:italic;
+	font-weight:bold;
+}
+
+/**********modifier profil*****************/
+
+#xiaomei_xiaomeibundle_modifierprofil{margin-top:20px;}
+#xiaomei_xiaomeibundle_modifierprofil textarea{
+
+height:70px;
+margin-left:-2px;
+width:400px;
+
+
+}
+
+#xiaomei_xiaomeibundle_modifierprofil input,xiaomei_xiaomeibundle_modifierprofil select,
+#xiaomei_xiaomeibundle_modifierprofil button{
+	
+	width:300px;
+	height:40px;
+
+}
+
+#xiaomei_xiaomeibundle_modifierprofil button{
+	margin-top:40px;
+	clear:left;
+}
+
+/************xiaomei_xiaomeibundle_register*/
+#xiaomei_xiaomeibundle_register{margin-top:20px;}
+#xiaomei_xiaomeibundle_register  textarea{
+
+height:100px;
+margin-left:-2px;
+width:400px;
+
+
+}
+
+#xiaomei_xiaomeibundle_register input,select,button{
+	
+	width:300px;
+	height:40px;
+
+}
+
+#xiaomei_xiaomeibundle_register button{
+	margin-top:40px;
+	clear:left;
+}
+/*****************************/

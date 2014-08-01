@@ -27,7 +27,7 @@ class ModifierType extends AbstractType
                 ))
             ->add('sex','choice', array(
              'choices' => array('m' => 'Male', 'f' => 'Female')))            
-            ->add('metier')
+            ->add('metier','text')
             ->add('descriptifFormateur')
             ->add('descriptifEtudiant')
             
