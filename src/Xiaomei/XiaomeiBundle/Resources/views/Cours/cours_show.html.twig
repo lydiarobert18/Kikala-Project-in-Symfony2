@@ -43,7 +43,7 @@ Date de formation: {{ content.dateCours|date('d-m-Y')}}
 
 
 <div id='photograndformation' class='border'>
-<p><img src="{{ asset('uploads/medium/'~ content.image) }}" alt="photo" class="img-circle" height='200px'></p>
+<p><img src="{{ asset('uploads/medium/'~ content.image) }}" alt="photo" height='200px'></p>
 
 </div>
 
@@ -71,9 +71,9 @@ Date de formation: {{ content.dateCours|date('d-m-Y')}}
 <p class="rouge">Les kikala ayant suivi cette formation ont également suivi:</p>
 
 {% for cours_rec_resulat in cours_rec_resulats %}
-     <div>
-      <img src="" alt="image">
-       <a href="{{ path('xiaomei_xiaomei_showcour',{'id':cours_rec_resulat.id})}}"> {{ cours_rec_resulat.name}}</a> 
+     <div id='rec_resultats'>
+       <img src="{{ asset('uploads/thumbnails/'~ cours_rec_resulat.image) }}" alt="image">
+      <p><a href="{{ path('xiaomei_xiaomei_showcour',{'id':cours_rec_resulat.id})}}"> {{ cours_rec_resulat.name}}</a> </p>
     
         Place qui reste:{{ cours_rec_resulat.nrPlaceRestant}}
     </div>

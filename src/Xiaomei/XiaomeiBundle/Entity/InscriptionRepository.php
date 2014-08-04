@@ -34,16 +34,16 @@ LEFT JOIN Shippers
 ON Orders.ShipperID=Shippers.ShipperID
 GROUP BY ShipperName;*/
 
-  public function coursrecommendation($arrayuserid){
+  public function coursrecommendation($arrayuserid,$id){
            $query = $this->createQueryBuilder('i')            
           ->select("cours.id,COUNT(cours.id) as c")
-          //ajouter condition cours.id !==$coursid;
-           ->where('user.id in (:arrayuserid)')
-           //->whereIn('user.id =:arrayid')
+          ->where ('cours.id != :id')
+           ->andWhere('user.id in (:arrayuserid)')
           ->leftJoin('i.user', 'user') 
           ->leftJoin('i.cours', 'cours')
           ->groupBy( 'cours.id' )
            ->setParameter(':arrayuserid', $arrayuserid)
+           ->setParameter(':id', $id)
            ->orderBy('c','DESC')
            ->setMaxResults(5)
           ->getQuery();

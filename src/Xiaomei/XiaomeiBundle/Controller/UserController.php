@@ -46,6 +46,18 @@ public function formateurAction($id)
 
         $content = $contentRepository->findFullSingleContent($id);
 
+        // $year=$content->getBirthyear();
+        //  $year=Datetime('yyyy',$year);
+        // print_r($year->getDate());
+         
+
+        // $year=$year[0];
+        // $year2=new Datetime();
+        //  $year2=$year2[0];
+        //  $dif=$year2-$year;
+        //  print_r($dif);
+       
+
         //shoote ça à la vue
 
         $params = array(
@@ -254,7 +266,7 @@ public function registerAction(Request $request){
         if($register_form->isValid()){
 
         //remettre photo
-        $file = $user->getFile();
+         $file = $user->getFile();
          print_r($file);
          $filename=$file->getPathName();
 
@@ -303,6 +315,7 @@ public function registerAction(Request $request){
         
         $em->persist($user);
         $em->flush();
+        return $this->redirect($this->generateUrl('xiaomei_xiaomei_moncompte'));
         }
         //print_r($user);
 

@@ -5,6 +5,7 @@ namespace Xiaomei\XiaomeiBundle\Entity;
 use Doctrine\ORM\EntityRepository;
 use \Datetime;
 
+
 /**
  * CoursRepository
  *
@@ -36,11 +37,12 @@ class CoursRepository extends EntityRepository
         $datecours=new Datetime();
 		$query = $this->createQueryBuilder('c')
 				->select('c, cat,user')	//hyper facile à oublier
-				//->where('c.dateCours >= :dateCours')	
+	
+				//->where('c.dateCours >= dateCours')	
 				//->andWhere('c.isannulation' =:isannulation')					    
 			    ->leftJoin('c.category', 'cat')	
 			    ->leftJoin('c.user', 'user')
-			   //  ->setParameter('dateCours', NOW())
+			    //->setParameter('dateCours',new Datetime())
 			   // ->setParameter('isannulation', false)
 			    ->orderBy($tri,'DESC')
 			    //LIMIT $offset;			    
@@ -63,7 +65,8 @@ class CoursRepository extends EntityRepository
       $query = $this->createQueryBuilder('c')
 
 				->select('c, cat,user')
-				->where('c.isannulation =:isannulation');
+				->where('c.isannulation =:isannulation')
+				->andWhere('c.dateCours >=:dateCours');
 
 				if($lieu!=="all"){
 				$query->andWhere('c.lieu = :lieu')
@@ -86,13 +89,16 @@ class CoursRepository extends EntityRepository
 			     ->orWhere('c.lieu LIKE :keyword' )
 			     //ajouter après orWhere category
 			     ->orWhere('cat.name LIKE :keyword')
-			     ->setParameter('keyword', '%'.$keyword.'%');
+			     ->setParameter('keyword', '%'.$keyword.'%')
+			     ;
 			   }
 
 			    $query->leftJoin('c.category', 'cat')	
 			          ->leftJoin('c.user', 'user')
 			  
 			    ->setParameter('isannulation', false)
+			    ->setParameter('dateCours',new Datetime())
+
 
 			    ->orderBy($tri,'DESC')
 			     ->setMaxResults(5)

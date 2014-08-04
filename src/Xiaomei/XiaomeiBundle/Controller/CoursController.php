@@ -156,7 +156,7 @@ class CoursController extends Controller
         
     
         // passe cet array id users comme paramètre dans la function coursrecommendation($arrayuserid)
-          $courscounts = $InscriptionRepository->coursrecommendation($arrayuserid);
+          $courscounts = $InscriptionRepository->coursrecommendation($arrayuserid,$id);
          //  print_r($courscounts );
 
            $arraycoursid=[];
@@ -292,6 +292,7 @@ class CoursController extends Controller
       
       //pour avoir user session connecté et son crédit 
               $user=$this->getUser();
+              if($user){
               $nombrecredit= $user->getNombreCredit();
 
               //requete avec $id pour avoir $cours;
@@ -326,6 +327,7 @@ class CoursController extends Controller
             //update: nombrecrdit dans user autre ID  + durée de cours:
             $cours->setNrPlaceRestant( $nombreplacerestant-1);
             $user->setNombreCredit($nombrecredit-$creditcours);
+            //ajouter condition  if(datecours > Datetime())
             $createur->setNombreCredit($nombrecredit_createur+$creditcours);
             $em->flush();
     
@@ -340,18 +342,24 @@ class CoursController extends Controller
          };
      }
      else{
-        return $this->render('XiaomeiXiaomeiBundle:Cours:pasderepetition.html.twig');;
-     }
-
+        return $this->render('XiaomeiXiaomeiBundle:Cours:pasderepetition.html.twig');
+     };
+}
+else{
+  return $this->redirect($this->generateUrl('xiaomei_xiaomei_register'));
+  }
  
     }
 
     
     public function cancelinscriptionsAction($id){
       $insRepository = $this->getDoctrine()->getRepository("XiaomeiXiaomeiBundle:Inscription");
-      $inscription= $insRepository ->find($id);         
+      $inscription= $insRepository ->find($id);   
+      //peut ajouter condition 24 heures maxim, ou ajouter cette condition dans twig , condition pour afficher le bouton 
+      //annuler       
        $inscription->setIsannulation(true);
        $inscription->setDateCancellation(new Datetime());
+
 
 //trouver $cours
        $coursRepository = $this->getDoctrine()->getRepository("XiaomeiXiaomeiBundle:Cours");
